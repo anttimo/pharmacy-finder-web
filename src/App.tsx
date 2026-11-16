@@ -5,7 +5,7 @@ import { useNearestPharmacies, type NearestState } from "./hooks/useNearestPharm
 import { useI18n, type I18n } from "./i18n/context";
 
 const buttonClass =
-  "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 aria-disabled:cursor-not-allowed aria-disabled:opacity-60 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
+  "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
 /** The one message for the polite live region. */
 function statusMessage(state: NearestState, { t, tn }: I18n): string {
@@ -29,17 +29,14 @@ function App() {
   const i18n = useI18n();
   const { t } = i18n;
   const { state, locate } = useNearestPharmacies();
-  const busy = state.status === "locating" || state.status === "loading";
 
-  // aria-disabled instead of disabled: a disabled button would drop keyboard focus mid-search.
-  const onLocate = () => {
-    if (!busy) locate();
-  };
+  // The button stays active during a search: tapping it again starts over. That's the way out
+  // if the browser never answers, for example when its permission prompt is dismissed.
   // The retry button disappears once the search restarts, so keep focus on the main button.
   const locateButtonRef = useRef<HTMLButtonElement>(null);
   const onRetry = () => {
     locateButtonRef.current?.focus();
-    onLocate();
+    locate();
   };
 
   return (
@@ -55,8 +52,7 @@ function App() {
         <button
           ref={locateButtonRef}
           type="button"
-          onClick={onLocate}
-          aria-disabled={busy}
+          onClick={locate}
           className={`mt-4 ${buttonClass}`}
         >
           {t("locate.button")}

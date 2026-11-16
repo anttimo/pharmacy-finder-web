@@ -58,6 +58,10 @@ export function mockGeolocation() {
 
   return {
     getCurrentPosition,
+    /** Drops the oldest pending request unanswered, as a browser can when its prompt is dismissed. */
+    ignore() {
+      take();
+    },
     succeed(lat = 60.1719, lon = 24.9414) {
       take().success({
         coords: { latitude: lat, longitude: lon, accuracy: 20 },

@@ -80,6 +80,26 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   expect(screen.getByText(/Check opening hours with the pharmacy/)).toBeInTheDocument();
 });
 
+it("starts over when the button is tapped again while the browser hasn't answered", async () => {
+  const user = userEvent.setup();
+  const geo = mockGeolocation();
+  load.mockResolvedValueOnce([
+    pharmacy({ id: "a", name: "A Apteekki", lat: 60.172, lon: 24.9414 }),
+  ]);
+  renderApp();
+
+  const button = screen.getByRole("button", { name: "Use my location" });
+  await user.click(button);
+  expect(screen.getByRole("status")).toHaveTextContent("Finding your location…");
+  // The first request never gets an answer (e.g. a dismissed permission prompt).
+  await user.click(button);
+  expect(geo.getCurrentPosition).toHaveBeenCalledTimes(2);
+
+  geo.ignore();
+  geo.succeed();
+  expect(await screen.findByRole("heading", { name: "Pharmacies near you" })).toBeInTheDocument();
+});
+
 it("explains what to do when location permission is denied", async () => {
   const user = userEvent.setup();
   const geo = mockGeolocation();
