@@ -50,6 +50,19 @@ describe("toRecord", () => {
     });
   });
 
+  it("prefers the everyday name over the numbered licence name", () => {
+    const rec = toRecord(
+      item({
+        ...helsinki4,
+        LongName: "Helsingin 54. apteekki",
+        Abbreviation: "Helsingin Vuosaaren apteekki",
+      }),
+    );
+    expect(rec.name).toBe("Helsingin Vuosaaren apteekki");
+    const { Abbreviation: _, ...noAbbreviation } = helsinki4;
+    expect(toRecord(item(noAbbreviation)).name).toBe("Helsingin 4. apteekki");
+  });
+
   it("falls back to the postal street when there is no visiting address", () => {
     const { StreetAddress: _, ...rest } = helsinki4;
     expect(toRecord(item({ ...rest, PostAddress: "Puntarikatu 3, 20780, Kaarina" })).address).toBe(

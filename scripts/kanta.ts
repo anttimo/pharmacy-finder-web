@@ -93,7 +93,9 @@ export function toRecord(item: KantaItem): PharmacyRecord {
   const phone = attr(item, "PhoneNumber");
   const rec: PharmacyRecord = {
     id: item.conceptCodeId,
-    name: attr(item, "LongName") || attr(item, "Abbreviation"),
+    // Abbreviation is the everyday name ("Helsingin Vuosaaren apteekki"); LongName is often
+    // the licence's numbered name ("Helsingin 54. apteekki").
+    name: attr(item, "Abbreviation") || attr(item, "LongName"),
     address: attr(item, "StreetAddress") || postalStreet,
     postcode: attr(item, "PostNumber"),
     city: attr(item, "PostOffice"),

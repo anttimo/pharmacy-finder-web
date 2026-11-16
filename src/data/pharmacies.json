@@ -1,13 +1,13 @@
 {
   "source": "https://koodistopalvelu.kanta.fi/codeserver/csapi/v8/classifications/1.2.246.537.6.200/conceptcodes",
-  "generatedAt": "2026-11-16T18:48:39.242Z",
+  "generatedAt": "2026-11-16T21:18:41.649Z",
   "sourceTotal": 983,
   "openTotal": 814,
   "needsReview": 0,
   "pharmacies": [
     {
       "id": "1.2.246.553.1.1",
-      "name": "Kauhavan 4. apteekki",
+      "name": "Kauhavan Alahärmän apteekki",
       "address": "Saharavainiontie 1",
       "postcode": "62300",
       "city": "Härmä",
@@ -29,7 +29,7 @@
     },
     {
       "id": "1.2.246.553.1.3",
-      "name": "Loimaan 3. apteekki",
+      "name": "Loimaan Alastaron apteekki",
       "address": "Loimijoentie 84",
       "postcode": "32440",
       "city": "Alastaro",
@@ -51,7 +51,7 @@
     },
     {
       "id": "1.2.246.553.1.5",
-      "name": "Alavuden 1. apteekki",
+      "name": "Alavuden apteekki",
       "address": "Kuulantie 2",
       "postcode": "63300",
       "city": "Alavus",
@@ -62,7 +62,7 @@
     },
     {
       "id": "1.2.246.553.1.6",
-      "name": "Kouvolan 10. apteekki",
+      "name": "Kouvolan Inkeroisten apteekki",
       "address": "Lauttatie 1",
       "postcode": "46900",
       "city": "Inkeroinen",
@@ -73,7 +73,7 @@
     },
     {
       "id": "1.2.246.553.1.7",
-      "name": "Kouvolan 11. apteekki",
+      "name": "Kouvolan Myllykosken apteekki",
       "address": "Karjalantie 3",
       "postcode": "46800",
       "city": "Myllykoski",
@@ -84,7 +84,7 @@
     },
     {
       "id": "1.2.246.553.1.8",
-      "name": "Artjärven sivuapteekki",
+      "name": "Orimattilan Artjärven sivuapteekki",
       "address": "Salmelantie 2",
       "postcode": "16200",
       "city": "Artjärvi",
@@ -128,7 +128,7 @@
     },
     {
       "id": "1.2.246.553.1.12",
-      "name": "Kouvolan 12. apteekki",
+      "name": "Kouvolan Elimäen apteekki",
       "address": "Vanhamaantie 16",
       "postcode": "47200",
       "city": "Elimäki",
@@ -139,7 +139,7 @@
     },
     {
       "id": "1.2.246.553.1.13",
-      "name": "Joensuun 6. apteekki",
+      "name": "Joensuun Enon apteekki",
       "address": "Niskantie 19",
       "postcode": "81200",
       "city": "Eno",
@@ -150,7 +150,7 @@
     },
     {
       "id": "1.2.246.553.1.14",
-      "name": "Espoon 1. apteekki",
+      "name": "Espoon Tapiolan apteekki",
       "address": "Länsituuli 5",
       "postcode": "02100",
       "city": "Espoo",
@@ -161,7 +161,7 @@
     },
     {
       "id": "1.2.246.553.1.15",
-      "name": "Espoon 2. apteekki",
+      "name": "Espoon Apteekki Elixir Leppävaara",
       "address": "Hevosenkenkä 3",
       "postcode": "02650",
       "city": "Espoo",
@@ -172,7 +172,7 @@
     },
     {
       "id": "1.2.246.553.1.16",
-      "name": "Espoon 3. apteekki",
+      "name": "Espoon Keskustan apteekki",
       "address": "Teirinsyrjä 2b, K-Supermarket Kunkun yhteydessä",
       "postcode": "02770",
       "city": "Espoo",
@@ -183,7 +183,7 @@
     },
     {
       "id": "1.2.246.553.1.17",
-      "name": "Espoon 4. apteekki",
+      "name": "Espoon Viherlaakson apteekki",
       "address": "Kuusiniementie 2",
       "postcode": "02710",
       "city": "Espoo",
@@ -194,7 +194,7 @@
     },
     {
       "id": "1.2.246.553.1.18",
-      "name": "Espoon 5. apteekki",
+      "name": "Espoon Lasihytin apteekki",
       "address": "Lasihytti 2",
       "postcode": "02780",
       "city": "Espoo",
@@ -205,7 +205,7 @@
     },
     {
       "id": "1.2.246.553.1.19",
-      "name": "Espoon 6. apteekki",
+      "name": "Espoon Ison Omenan apteekki",
       "address": "Kauppakeskus Iso Omena",
       "postcode": "02230",
       "city": "Espoo",
@@ -216,7 +216,7 @@
     },
     {
       "id": "1.2.246.553.1.20",
-      "name": "Espoon 7. apteekki",
+      "name": "Espoon Tapiolan Aino apteekki",
       "address": "AINOA kauppakeskus",
       "postcode": "02100",
       "city": "Espoo",
@@ -227,7 +227,7 @@
     },
     {
       "id": "1.2.246.553.1.21",
-      "name": "Espoon 8. apteekki",
+      "name": "Espoon Olarin apteekki",
       "address": "Kuunkierros 1",
       "postcode": "02210",
       "city": "Espoo",
@@ -238,7 +238,7 @@
     },
     {
       "id": "1.2.246.553.1.22",
-      "name": "Espoon 9. apteekki",
+      "name": "Espoon Espoonlahden apteekki",
       "address": "Kauppakeskus Lippulaiva",
       "postcode": "02320",
       "city": "Espoo",
@@ -249,7 +249,7 @@
     },
     {
       "id": "1.2.246.553.1.23",
-      "name": "Espoon 10. apteekki",
+      "name": "Espoon Sellon apteekki",
       "address": "Leppävaarankatu 3-9",
       "postcode": "02600",
       "city": "Espoo",
@@ -260,7 +260,7 @@
     },
     {
       "id": "1.2.246.553.1.24",
-      "name": "Eurajoen 1. apteekki",
+      "name": "Eurajoen apteekki",
       "address": "Riikontie 2",
       "postcode": "27100",
       "city": "Eurajoki",
@@ -271,7 +271,7 @@
     },
     {
       "id": "1.2.246.553.1.25",
-      "name": "Euran 1. apteekki",
+      "name": "Euran apteekki",
       "address": "Satakunnankatu 22",
       "postcode": "27510",
       "city": "Eura",
@@ -293,7 +293,7 @@
     },
     {
       "id": "1.2.246.553.1.27",
-      "name": "Forssan 1. apteekki",
+      "name": "Forssan Vanha apteekki",
       "address": "Prismakeskus",
       "postcode": "30100",
       "city": "Forssa",
@@ -304,7 +304,7 @@
     },
     {
       "id": "1.2.246.553.1.28",
-      "name": "Forssan 2. apteekki",
+      "name": "Forssan Kutomon apteekki",
       "address": "Kutomon kauppakeskus, C-sisäänkäynti",
       "postcode": "30100",
       "city": "Forssa",
@@ -315,7 +315,7 @@
     },
     {
       "id": "1.2.246.553.1.29",
-      "name": "Forssan 3. apteekki",
+      "name": "Forssan Keskusapteekki",
       "address": "Prismakeskus",
       "postcode": "30100",
       "city": "Forssa",
@@ -359,7 +359,7 @@
     },
     {
       "id": "1.2.246.553.1.33",
-      "name": "Salon 3. apteekki",
+      "name": "Salon Halikon apteekki",
       "address": "Prismantie 2",
       "postcode": "24800",
       "city": "Halikko",
@@ -370,7 +370,7 @@
     },
     {
       "id": "1.2.246.553.1.34",
-      "name": "Haminan 1. apteekki",
+      "name": "Haminan Keskus-apteekki",
       "address": "Satamakatu 9",
       "postcode": "49400",
       "city": "Hamina",
@@ -381,7 +381,7 @@
     },
     {
       "id": "1.2.246.553.1.35",
-      "name": "Haminan 2. apteekki",
+      "name": "Haminan Uusi apteekki",
       "address": "Puistokatu 6",
       "postcode": "49400",
       "city": "Hamina",
@@ -392,7 +392,7 @@
     },
     {
       "id": "1.2.246.553.1.36",
-      "name": "Haminan 3. apteekki",
+      "name": "Haminan Itäväylän apteekki",
       "address": "Helsingintie 1",
       "postcode": "49460",
       "city": "Hamina",
@@ -458,7 +458,7 @@
     },
     {
       "id": "1.2.246.553.1.42",
-      "name": "Hämeenlinnan 8. apteekki",
+      "name": "Hämeenlinnan Hauhon apteekki",
       "address": "Hauhontie 19",
       "postcode": "14700",
       "city": "Hauho",
@@ -469,7 +469,7 @@
     },
     {
       "id": "1.2.246.553.1.43",
-      "name": "Oulun 14. apteekki",
+      "name": "Haukiputaan apteekki",
       "address": "Haukiputaan Ykkönen",
       "postcode": "90830",
       "city": "Haukipudas",
@@ -480,7 +480,7 @@
     },
     {
       "id": "1.2.246.553.1.44",
-      "name": "Mikkelin 5. apteekki",
+      "name": "Mikkelin Haukivuoren apteekki",
       "address": "Keskustie 64-66",
       "postcode": "51600",
       "city": "Haukivuori",
@@ -491,7 +491,7 @@
     },
     {
       "id": "1.2.246.553.1.45",
-      "name": "Hausjärven apteekki",
+      "name": "Hausjärven Oitin apteekki",
       "address": "Tammitie 5",
       "postcode": "12100",
       "city": "Oitti",
@@ -502,7 +502,7 @@
     },
     {
       "id": "1.2.246.553.1.46",
-      "name": "Heinolan 1. apteekki",
+      "name": "Heinolan Vanha apteekki",
       "address": "Kirkkokatu 15",
       "postcode": "18100",
       "city": "Heinola",
@@ -513,7 +513,7 @@
     },
     {
       "id": "1.2.246.553.1.47",
-      "name": "Heinolan 2. apteekki",
+      "name": "Heinolan Keskusapteekki",
       "address": "Savontie 7",
       "postcode": "18100",
       "city": "Heinola",
@@ -535,7 +535,7 @@
     },
     {
       "id": "1.2.246.553.1.50",
-      "name": "Helsingin 2. apteekki",
+      "name": "Helsingin Ruoholahden Uusi Apteekki",
       "address": "Itämerenkatu 21",
       "postcode": "00180",
       "city": "Helsinki",
@@ -546,7 +546,7 @@
     },
     {
       "id": "1.2.246.553.1.51",
-      "name": "Helsingin 3. apteekki",
+      "name": "Helsingin Yliopiston Apteekki",
       "address": "Mannerheimintie 5",
       "postcode": "00100",
       "city": "Helsinki",
@@ -557,7 +557,7 @@
     },
     {
       "id": "1.2.246.553.1.52",
-      "name": "Helsingin 4. apteekki",
+      "name": "Helsingin Erottajan apteekki",
       "address": "Mannerheimintie 1",
       "postcode": "00100",
       "city": "Helsinki",
@@ -568,7 +568,7 @@
     },
     {
       "id": "1.2.246.553.1.53",
-      "name": "Helsingin 5. apteekki",
+      "name": "Helsingin Kruununhaan apteekki",
       "address": "Liisankatu 21",
       "postcode": "00170",
       "city": "Helsinki",
@@ -579,7 +579,7 @@
     },
     {
       "id": "1.2.246.553.1.54",
-      "name": "Helsingin 6. apteekki",
+      "name": "Helsingin CityCenter apteekki",
       "address": "Kauppakeskus CityCenter",
       "postcode": "00100",
       "city": "Helsinki",
@@ -590,7 +590,7 @@
     },
     {
       "id": "1.2.246.553.1.55",
-      "name": "Helsingin 7. apteekki",
+      "name": "Helsingin Punavuoren apteekki",
       "address": "Fredrikinkatu 23",
       "postcode": "00120",
       "city": "Helsinki",
@@ -601,7 +601,7 @@
     },
     {
       "id": "1.2.246.553.1.56",
-      "name": "Helsingin 8. apteekki",
+      "name": "Helsingin Apteekki 360 Ympyrätalo",
       "address": "Ympyrätalo",
       "postcode": "00530",
       "city": "Helsinki",
@@ -612,7 +612,7 @@
     },
     {
       "id": "1.2.246.553.1.57",
-      "name": "Helsingin 9. apteekki",
+      "name": "Helsingin Töölön apteekki",
       "address": "Kampinkuja 2",
       "postcode": "00100",
       "city": "Helsinki",
@@ -623,7 +623,7 @@
     },
     {
       "id": "1.2.246.553.1.58",
-      "name": "Helsingin 10. apteekki",
+      "name": "Helsingin Kalasataman apteekki",
       "address": "REDI",
       "postcode": "00580",
       "city": "Helsinki",
@@ -634,7 +634,7 @@
     },
     {
       "id": "1.2.246.553.1.59",
-      "name": "Helsingin 11. apteekki",
+      "name": "Helsingin Mellunmäen Uusi apteekki",
       "address": "Pallaksentie 2",
       "postcode": "00970",
       "city": "Helsinki",
@@ -645,7 +645,7 @@
     },
     {
       "id": "1.2.246.553.1.60",
-      "name": "Helsingin 12. apteekki",
+      "name": "Helsingin VuoApteekki",
       "address": "Mustalahdentie 4",
       "postcode": "00960",
       "city": "Helsinki",
@@ -656,7 +656,7 @@
     },
     {
       "id": "1.2.246.553.1.61",
-      "name": "Helsingin 13. apteekki",
+      "name": "Helsingin Katajanokan apteekki",
       "address": "Kruunuvuorenkatu 1",
       "postcode": "00160",
       "city": "Helsinki",
@@ -667,7 +667,7 @@
     },
     {
       "id": "1.2.246.553.1.62",
-      "name": "Helsingin 14. apteekki",
+      "name": "Helsingin Pohjois-Haagan apteekki",
       "address": "Aino Acktén tie 8",
       "postcode": "00400",
       "city": "Helsinki",
@@ -678,7 +678,7 @@
     },
     {
       "id": "1.2.246.553.1.63",
-      "name": "Helsingin 15. apteekki",
+      "name": "Helsingin Hietalahden apteekki",
       "address": "Hietalahdenranta 5-7",
       "postcode": "00120",
       "city": "Helsinki",
@@ -689,7 +689,7 @@
     },
     {
       "id": "1.2.246.553.1.64",
-      "name": "Helsingin 16. apteekki",
+      "name": "Helsingin Kluuvin apteekki",
       "address": "Keskuskatu 7",
       "postcode": "00100",
       "city": "Helsinki",
@@ -700,7 +700,7 @@
     },
     {
       "id": "1.2.246.553.1.65",
-      "name": "Helsingin 17. apteekki",
+      "name": "Helsingin Kaivopuiston apteekki",
       "address": "Korkeavuorenkatu 2 a",
       "postcode": "00140",
       "city": "Helsinki",
@@ -711,7 +711,7 @@
     },
     {
       "id": "1.2.246.553.1.66",
-      "name": "Helsingin 18. apteekki",
+      "name": "Helsingin Arabianrannan apteekki",
       "address": "Hämeentie 111",
       "postcode": "00560",
       "city": "Helsinki",
@@ -722,7 +722,7 @@
     },
     {
       "id": "1.2.246.553.1.67",
-      "name": "Helsingin 19. apteekki",
+      "name": "Helsingin Kampin apteekki",
       "address": "Salomonkatu 19",
       "postcode": "00100",
       "city": "Helsinki",
@@ -733,7 +733,7 @@
     },
     {
       "id": "1.2.246.553.1.68",
-      "name": "Helsingin 20. apteekki",
+      "name": "Helsingin Vallilan Uusi Apteekki",
       "address": "Bruno Granholminkuja 2",
       "postcode": "00510",
       "city": "Helsinki",
@@ -744,7 +744,7 @@
     },
     {
       "id": "1.2.246.553.1.69",
-      "name": "Helsingin 21. apteekki",
+      "name": "Helsingin Käpylän apteekki",
       "address": "Käpyläntie 8",
       "postcode": "00600",
       "city": "Helsinki",
@@ -755,7 +755,7 @@
     },
     {
       "id": "1.2.246.553.1.70",
-      "name": "Helsingin 22. apteekki",
+      "name": "Helsingin Carelia apteekki",
       "address": "Runeberginkatu 46",
       "postcode": "00260",
       "city": "Helsinki",
@@ -766,7 +766,7 @@
     },
     {
       "id": "1.2.246.553.1.71",
-      "name": "Helsingin 23. apteekki",
+      "name": "Helsingin Apteekki Kampinkeskus",
       "address": "Urho Kekkosen katu 1, Kampin kauppakeskus E-taso",
       "postcode": "00100",
       "city": "Helsinki",
@@ -777,7 +777,7 @@
     },
     {
       "id": "1.2.246.553.1.72",
-      "name": "Helsingin 24. apteekki",
+      "name": "Helsingin Steissin apteekki",
       "address": "Elielinaukio 3",
       "postcode": "00100",
       "city": "Helsinki",
@@ -788,7 +788,7 @@
     },
     {
       "id": "1.2.246.553.1.73",
-      "name": "Helsingin 25. apteekki",
+      "name": "Helsingin Bulevardian apteekki",
       "address": "Bulevardi 13",
       "postcode": "00120",
       "city": "Helsinki",
@@ -799,7 +799,7 @@
     },
     {
       "id": "1.2.246.553.1.74",
-      "name": "Helsingin 26. apteekki",
+      "name": "Helsingin Apteekki Primavera",
       "address": "Vanhanlinnantie 1",
       "postcode": "00900",
       "city": "Helsinki",
@@ -810,7 +810,7 @@
     },
     {
       "id": "1.2.246.553.1.75",
-      "name": "Helsingin 27. apteekki",
+      "name": "Helsingin Runebergin apteekki",
       "address": "Runeberginkatu 32",
       "postcode": "00100",
       "city": "Helsinki",
@@ -821,7 +821,7 @@
     },
     {
       "id": "1.2.246.553.1.76",
-      "name": "Helsingin 28. apteekki",
+      "name": "Helsingin Oulunkylän apteekki",
       "address": "Liikekeskus Ogeli",
       "postcode": "00640",
       "city": "Helsinki",
@@ -832,7 +832,7 @@
     },
     {
       "id": "1.2.246.553.1.77",
-      "name": "Helsingin 29. apteekki",
+      "name": "Helsingin Malmin apteekki",
       "address": "Ylä-Malmin tori 3",
       "postcode": "00700",
       "city": "Helsinki",
@@ -843,7 +843,7 @@
     },
     {
       "id": "1.2.246.553.1.78",
-      "name": "Helsingin 31. apteekki",
+      "name": "Helsingin Lauttiksen apteekki",
       "address": "Lauttasaarentie 28",
       "postcode": "00200",
       "city": "Helsinki",
@@ -854,7 +854,7 @@
     },
     {
       "id": "1.2.246.553.1.79",
-      "name": "Helsingin 32. apteekki",
+      "name": "Helsingin Munkkiniemen apteekki",
       "address": "Professoritie 2",
       "postcode": "00330",
       "city": "Helsinki",
@@ -865,7 +865,7 @@
     },
     {
       "id": "1.2.246.553.1.80",
-      "name": "Helsingin 33. apteekki",
+      "name": "Helsingin Munkkiniemen Puisto apteekki",
       "address": "Munkkiniemen puistotie 15",
       "postcode": "00330",
       "city": "Helsinki",
@@ -876,7 +876,7 @@
     },
     {
       "id": "1.2.246.553.1.81",
-      "name": "Helsingin 34. apteekki",
+      "name": "Helsingin Medena apteekki",
       "address": "Itäkatu 1-7 A 23",
       "postcode": "00930",
       "city": "Helsinki",
@@ -887,7 +887,7 @@
     },
     {
       "id": "1.2.246.553.1.82",
-      "name": "Helsingin 36. apteekki",
+      "name": "Helsingin Pakilan apteekki",
       "address": "Pakilantie 56",
       "postcode": "00660",
       "city": "Helsinki",
@@ -898,7 +898,7 @@
     },
     {
       "id": "1.2.246.553.1.83",
-      "name": "Helsingin 37. apteekki",
+      "name": "Helsingin Herttoniemen apteekki",
       "address": "Hiihtomäentie 14",
       "postcode": "00810",
       "city": "Helsinki",
@@ -909,7 +909,7 @@
     },
     {
       "id": "1.2.246.553.1.84",
-      "name": "Helsingin 38. apteekki",
+      "name": "Helsingin Maunulan apteekki",
       "address": "Pakilantie 10",
       "postcode": "00630",
       "city": "Helsinki",
@@ -920,7 +920,7 @@
     },
     {
       "id": "1.2.246.553.1.85",
-      "name": "Helsingin 39. apteekki",
+      "name": "Helsingin Tapuliapteekki",
       "address": "Ajurinaukio 5",
       "postcode": "00750",
       "city": "Helsinki",
@@ -931,7 +931,7 @@
     },
     {
       "id": "1.2.246.553.1.86",
-      "name": "Helsingin 40. apteekki",
+      "name": "Helsingin Kaaren apteekki",
       "address": "Kantelettarentie 1",
       "postcode": "00420",
       "city": "Helsinki",
@@ -942,7 +942,7 @@
     },
     {
       "id": "1.2.246.553.1.87",
-      "name": "Helsingin 41. apteekki",
+      "name": "Helsingin Hertsin apteekki",
       "address": "Insinöörinkatu 2",
       "postcode": "00810",
       "city": "Helsinki",
@@ -953,7 +953,7 @@
     },
     {
       "id": "1.2.246.553.1.88",
-      "name": "Helsingin 42. apteekki",
+      "name": "Helsingin Munkkivuoren apteekki",
       "address": "Raumantie 1 A",
       "postcode": "00350",
       "city": "Helsinki",
@@ -964,7 +964,7 @@
     },
     {
       "id": "1.2.246.553.1.89",
-      "name": "Helsingin 43. apteekki",
+      "name": "Helsingin Pitäjänmäen apteekki",
       "address": "Ajomiehentie 1",
       "postcode": "00390",
       "city": "Helsinki",
@@ -975,7 +975,7 @@
     },
     {
       "id": "1.2.246.553.1.90",
-      "name": "Helsingin 44. apteekki",
+      "name": "Helsingin Lauttasaaren Kirkko apteekki",
       "address": "Heikkiläntie 2",
       "postcode": "00210",
       "city": "Helsinki",
@@ -986,7 +986,7 @@
     },
     {
       "id": "1.2.246.553.1.91",
-      "name": "Helsingin 45. apteekki",
+      "name": "Helsingin Kaaren Uusi apteekki",
       "address": "Kantelettarentie 1",
       "postcode": "00420",
       "city": "Helsinki",
@@ -997,7 +997,7 @@
     },
     {
       "id": "1.2.246.553.1.92",
-      "name": "Helsingin 46. apteekki",
+      "name": "Helsingin Kipparlahden apteekki",
       "address": "Hitsaajankatu 13 B 67",
       "postcode": "00810",
       "city": "Helsinki",
@@ -1008,7 +1008,7 @@
     },
     {
       "id": "1.2.246.553.1.93",
-      "name": "Helsingin 47. apteekki",
+      "name": "Helsingin Pihlajamäen apteekki",
       "address": "Meripihkatie 3",
       "postcode": "00710",
       "city": "Helsinki",
@@ -1019,7 +1019,7 @@
     },
     {
       "id": "1.2.246.553.1.94",
-      "name": "Helsingin 48. apteekki",
+      "name": "Helsingin Kontulankaaren apteekki",
       "address": "Kontulankaari 1 A",
       "postcode": "00940",
       "city": "Helsinki",
@@ -1030,7 +1030,7 @@
     },
     {
       "id": "1.2.246.553.1.95",
-      "name": "Helsingin 49. apteekki",
+      "name": "Helsingin Etelä-Haagan apteekki",
       "address": "Oskelantie 1",
       "postcode": "00320",
       "city": "Helsinki",
@@ -1041,7 +1041,7 @@
     },
     {
       "id": "1.2.246.553.1.96",
-      "name": "Helsingin 50. apteekki",
+      "name": "Helsingin Itäkeskuksen apteekki",
       "address": "Itäkatu 1-7 (Kauppakeskus Itis)",
       "postcode": "00930",
       "city": "Helsinki",
@@ -1052,7 +1052,7 @@
     },
     {
       "id": "1.2.246.553.1.97",
-      "name": "Helsingin 51. apteekki",
+      "name": "Helsingin Apteekki 51 apteekki",
       "address": "Mall of Tripla Apteekki 51",
       "postcode": "00520",
       "city": "Helsinki",
@@ -1063,7 +1063,7 @@
     },
     {
       "id": "1.2.246.553.1.98",
-      "name": "Helsingin 52. apteekki",
+      "name": "Helsingin Myllypuron apteekki",
       "address": "Kiviparintie 2",
       "postcode": "00920",
       "city": "Helsinki",
@@ -1074,7 +1074,7 @@
     },
     {
       "id": "1.2.246.553.1.99",
-      "name": "Helsingin 53. apteekki",
+      "name": "Helsingin Kontulan apteekki",
       "address": "Ostostie 4",
       "postcode": "00940",
       "city": "Helsinki",
@@ -1085,7 +1085,7 @@
     },
     {
       "id": "1.2.246.553.1.100",
-      "name": "Helsingin 54. apteekki",
+      "name": "Helsingin Vuosaaren apteekki",
       "address": "Vuotie 45",
       "postcode": "00980",
       "city": "Helsinki",
@@ -1096,7 +1096,7 @@
     },
     {
       "id": "1.2.246.553.1.101",
-      "name": "Helsingin 55. apteekki",
+      "name": "Helsingin Jakomäen apteekki",
       "address": "Jakomäenkuja 2",
       "postcode": "00770",
       "city": "Helsinki",
@@ -1107,7 +1107,7 @@
     },
     {
       "id": "1.2.246.553.1.102",
-      "name": "Helsingin 56. apteekki",
+      "name": "Helsingin Laajasalon apteekki",
       "address": "Yliskylän puistokatu 4",
       "postcode": "00840",
       "city": "Helsinki",
@@ -1118,7 +1118,7 @@
     },
     {
       "id": "1.2.246.553.1.103",
-      "name": "Helsingin 57. apteekki",
+      "name": "Helsingin Pukinmäen apteekki",
       "address": "Eskolankaari 2",
       "postcode": "00720",
       "city": "Helsinki",
@@ -1129,7 +1129,7 @@
     },
     {
       "id": "1.2.246.553.1.104",
-      "name": "Helsingin 58. apteekki",
+      "name": "Helsingin Pasilan apteekki",
       "address": "Mall of Tripla Pasilan asema-aukio 1",
       "postcode": "00520",
       "city": "Helsinki",
@@ -1140,7 +1140,7 @@
     },
     {
       "id": "1.2.246.553.1.105",
-      "name": "Helsingin 59. apteekki",
+      "name": "Helsingin Lassilan apteekki",
       "address": "Kaupintie 10",
       "postcode": "00440",
       "city": "Helsinki",
@@ -1151,7 +1151,7 @@
     },
     {
       "id": "1.2.246.553.1.106",
-      "name": "Helsingin 60. apteekki",
+      "name": "Helsingin Easton apteekki",
       "address": "Kauppakartanonkatu 3",
       "postcode": "00930",
       "city": "Helsinki",
@@ -1162,7 +1162,7 @@
     },
     {
       "id": "1.2.246.553.1.107",
-      "name": "Helsingin 61. apteekki",
+      "name": "Helsingin Atlas apteekki",
       "address": "Välimerenkatu 8",
       "postcode": "00220",
       "city": "Helsinki",
@@ -1173,7 +1173,7 @@
     },
     {
       "id": "1.2.246.553.1.108",
-      "name": "Helsingin 62. apteekki",
+      "name": "Helsingin Siltamäen apteekki",
       "address": "Jousimiehentie 3",
       "postcode": "00740",
       "city": "Helsinki",
@@ -1184,7 +1184,7 @@
     },
     {
       "id": "1.2.246.553.1.109",
-      "name": "Kalajoen 2. apteekki",
+      "name": "Kalajoen Himangan apteekki",
       "address": "Kannuskyläntie 7",
       "postcode": "68100",
       "city": "Himanka",
@@ -1228,7 +1228,7 @@
     },
     {
       "id": "1.2.246.553.1.113",
-      "name": "Humppilan apteekki",
+      "name": "Apteekki Humppilan Lasi",
       "address": "Lasitehtaantie 5",
       "postcode": "31640",
       "city": "Humppila",
@@ -1250,7 +1250,7 @@
     },
     {
       "id": "1.2.246.553.1.115",
-      "name": "Hyvinkään 1. apteekki",
+      "name": "Hyvinkään Ykkösapteekki",
       "address": "Hämeenkatu 9",
       "postcode": "05800",
       "city": "Hyvinkää",
@@ -1261,7 +1261,7 @@
     },
     {
       "id": "1.2.246.553.1.116",
-      "name": "Hyvinkään 2. apteekki",
+      "name": "Hyvinkään Willan Kehrä apteekki",
       "address": "Prismakeskus",
       "postcode": "05800",
       "city": "Hyvinkää",
@@ -1272,7 +1272,7 @@
     },
     {
       "id": "1.2.246.553.1.117",
-      "name": "Hyvinkään 3. apteekki",
+      "name": "Hyvinkään Kirjavantolpan apteekki",
       "address": "Uudenmaankatu 70",
       "postcode": "05830",
       "city": "Hyvinkää",
@@ -1305,7 +1305,7 @@
     },
     {
       "id": "1.2.246.553.1.120",
-      "name": "Hämeenlinnan 1. apteekki",
+      "name": "Hämeenlinnan Tori-apteekki",
       "address": "Hallituskatu 9",
       "postcode": "13100",
       "city": "Hämeenlinna",
@@ -1316,7 +1316,7 @@
     },
     {
       "id": "1.2.246.553.1.121",
-      "name": "Hämeenlinnan 2. apteekki",
+      "name": "Hämeenlinnan Tavastilan apteekki",
       "address": "Eteläkatu 14",
       "postcode": "13100",
       "city": "Hämeenlinna",
@@ -1327,7 +1327,7 @@
     },
     {
       "id": "1.2.246.553.1.122",
-      "name": "Hämeenlinnan 3. apteekki",
+      "name": "Hämeenlinnan Keskusapteekki",
       "address": "Raatihuoneenkatu 8",
       "postcode": "13100",
       "city": "Hämeenlinna",
@@ -1338,7 +1338,7 @@
     },
     {
       "id": "1.2.246.553.1.123",
-      "name": "Hämeenlinnan 4. apteekki",
+      "name": "Hämeenlinnan Goodmanin apteekki",
       "address": "Kauppakeskus Goodman",
       "postcode": "13100",
       "city": "Hämeenlinna",
@@ -1349,7 +1349,7 @@
     },
     {
       "id": "1.2.246.553.1.124",
-      "name": "Hämeenlinnan 5. apteekki",
+      "name": "Hämeenlinnan Aulangon apteekki",
       "address": "Aulangontie 1",
       "postcode": "13210",
       "city": "Hämeenlinna",
@@ -1360,7 +1360,7 @@
     },
     {
       "id": "1.2.246.553.1.125",
-      "name": "Hämeenlinnan 6. apteekki",
+      "name": "Hämeenlinnan Tiiriön apteekki",
       "address": "Wartiamäentie 2",
       "postcode": "13130",
       "city": "Hämeenlinna",
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "1.2.246.553.1.127",
-      "name": "Iisalmen 1. apteekki",
+      "name": "Iisalmen Ykkösapteekki",
       "address": "Satamakatu 10",
       "postcode": "74100",
       "city": "Iisalmi",
@@ -1393,7 +1393,7 @@
     },
     {
       "id": "1.2.246.553.1.128",
-      "name": "Iisalmen 2. apteekki",
+      "name": "Iisalmen Uusi Apteekki",
       "address": "Eteläntie 4",
       "postcode": "74130",
       "city": "Iisalmi",
@@ -1404,7 +1404,7 @@
     },
     {
       "id": "1.2.246.553.1.129",
-      "name": "Iisalmen 3. apteekki",
+      "name": "Iisalmen Priima apteekki",
       "address": "Parkatintie 2",
       "postcode": "74120",
       "city": "Iisalmi",
@@ -1448,7 +1448,7 @@
     },
     {
       "id": "1.2.246.553.1.133",
-      "name": "Imatran 1. apteekki",
+      "name": "Imatran Ykkösapteekki",
       "address": "Tietäjänkatu 2",
       "postcode": "55120",
       "city": "Imatra",
@@ -1459,7 +1459,7 @@
     },
     {
       "id": "1.2.246.553.1.134",
-      "name": "Imatran 2. apteekki",
+      "name": "Imatran Vuoksenniskan apteekki",
       "address": "Valvatinkatu 3",
       "postcode": "55800",
       "city": "Imatra",
@@ -1470,7 +1470,7 @@
     },
     {
       "id": "1.2.246.553.1.135",
-      "name": "Imatran 3. apteekki",
+      "name": "Imatran Tainionkosken apteekki",
       "address": "Karhumäenkatu 1",
       "postcode": "55120",
       "city": "Imatra",
@@ -1525,7 +1525,7 @@
     },
     {
       "id": "1.2.246.553.1.140",
-      "name": "Kurikan 3. apteekki",
+      "name": "Jalasjärven apteekki",
       "address": "Kirkkotie 2",
       "postcode": "61600",
       "city": "Jalasjärvi",
@@ -1536,7 +1536,7 @@
     },
     {
       "id": "1.2.246.553.1.141",
-      "name": "Janakkalan 1. apteekki",
+      "name": "Janakkalan Turengin apteekki",
       "address": "Harvialantie 5",
       "postcode": "14200",
       "city": "Turenki",
@@ -1547,7 +1547,7 @@
     },
     {
       "id": "1.2.246.553.1.142",
-      "name": "Janakkalan 2. apteekki",
+      "name": "Janakkalan Tervakosken apteekki",
       "address": "Heimolantie 1",
       "postcode": "12400",
       "city": "Tervakoski",
@@ -1558,7 +1558,7 @@
     },
     {
       "id": "1.2.246.553.1.143",
-      "name": "Joensuun 1. apteekki",
+      "name": "Joensuun 1. Keskusapteekki",
       "address": "Voimatie 2",
       "postcode": "80100",
       "city": "Joensuu",
@@ -1569,7 +1569,7 @@
     },
     {
       "id": "1.2.246.553.1.144",
-      "name": "Joensuun 2. apteekki",
+      "name": "Joensuun Uusi apteekki",
       "address": "Siltakatu 10",
       "postcode": "80100",
       "city": "Joensuu",
@@ -1580,7 +1580,7 @@
     },
     {
       "id": "1.2.246.553.1.145",
-      "name": "Joensuun 3. apteekki",
+      "name": "Joensuun Niinivaaran apteekki",
       "address": "Niinivaarantie 52",
       "postcode": "80200",
       "city": "Joensuu",
@@ -1591,7 +1591,7 @@
     },
     {
       "id": "1.2.246.553.1.146",
-      "name": "Joensuun 4. apteekki",
+      "name": "Joensuun apteekki n:o 4 (Apteekki Nelonen)",
       "address": "Puronsuunkatu 1 A",
       "postcode": "80160",
       "city": "Joensuu",
@@ -1602,7 +1602,7 @@
     },
     {
       "id": "1.2.246.553.1.147",
-      "name": "Joensuun 5. apteekki",
+      "name": "Joensuun Tuupovaaran apteekki",
       "address": "Lähdetie 1",
       "postcode": "82730",
       "city": "Tuupovaara",
@@ -1646,7 +1646,7 @@
     },
     {
       "id": "1.2.246.553.1.151",
-      "name": "Lappeenrannan 5. apteekki",
+      "name": "Lappeenrannan Joutsenon apteekki",
       "address": "Keskuskatu 1",
       "postcode": "54100",
       "city": "Joutseno",
@@ -1657,7 +1657,7 @@
     },
     {
       "id": "1.2.246.553.1.152",
-      "name": "Kuopion 13. apteekki",
+      "name": "Juankosken apteekki",
       "address": "Juankoskentie 13",
       "postcode": "73500",
       "city": "Juankoski",
@@ -1668,7 +1668,7 @@
     },
     {
       "id": "1.2.246.553.1.153",
-      "name": "Kurikan 2. apteekki",
+      "name": "Kurikan Jurvan apteekki",
       "address": "Kauppatie 3 B",
       "postcode": "66300",
       "city": "Jurva",
@@ -1701,7 +1701,7 @@
     },
     {
       "id": "1.2.246.553.1.156",
-      "name": "Jyväskylän 1. apteekki",
+      "name": "Jyväskylän Ykkösapteekki",
       "address": "Vasarakatu 29",
       "postcode": "40320",
       "city": "Jyväskylä",
@@ -1712,7 +1712,7 @@
     },
     {
       "id": "1.2.246.553.1.157",
-      "name": "Jyväskylän 2. apteekki",
+      "name": "Jyväskylän Uusi apteekki",
       "address": "Sokos-keskus, Asemakatu 8",
       "postcode": "40100",
       "city": "Jyväskylä",
@@ -1723,7 +1723,7 @@
     },
     {
       "id": "1.2.246.553.1.158",
-      "name": "Jyväskylän 3. apteekki",
+      "name": "Jyväskylän Hovi apteekki",
       "address": "Kylmälahdentie 8",
       "postcode": "40500",
       "city": "Jyväskylä",
@@ -1734,7 +1734,7 @@
     },
     {
       "id": "1.2.246.553.1.159",
-      "name": "Jyväskylän 4. apteekki",
+      "name": "Jyväskylän Kyllön apteekki",
       "address": "Keskussairaalantie 20",
       "postcode": "40620",
       "city": "Jyväskylä",
@@ -1745,7 +1745,7 @@
     },
     {
       "id": "1.2.246.553.1.160",
-      "name": "Jyväskylän 5. apteekki",
+      "name": "Jyväskylän Seppälän apteekki",
       "address": "Ahjokatu 7",
       "postcode": "40320",
       "city": "Jyväskylä",
@@ -1756,7 +1756,7 @@
     },
     {
       "id": "1.2.246.553.1.161",
-      "name": "Jyväskylän 6. apteekki",
+      "name": "Jyväskylän Säynätsalon apteekki",
       "address": "Parviaisentie 6",
       "postcode": "40900",
       "city": "Säynätsalo",
@@ -1767,7 +1767,7 @@
     },
     {
       "id": "1.2.246.553.1.162",
-      "name": "Jyväskylän 7. apteekki",
+      "name": "Jyväskylän Keljon apteekki",
       "address": "Kylmälahdentie 6",
       "postcode": "40500",
       "city": "Jyväskylä",
@@ -1778,7 +1778,7 @@
     },
     {
       "id": "1.2.246.553.1.163",
-      "name": "Jyväskylän 8. apteekki",
+      "name": "Jyväskylän Vaajakosken apteekki",
       "address": "Asematie 1",
       "postcode": "40800",
       "city": "Vaajakoski",
@@ -1789,7 +1789,7 @@
     },
     {
       "id": "1.2.246.553.1.164",
-      "name": "Jyväskylän 9. apteekki",
+      "name": "Jyväskylän Palokan apteekki",
       "address": "Palokanorsi 1",
       "postcode": "40270",
       "city": "Palokka",
@@ -1800,7 +1800,7 @@
     },
     {
       "id": "1.2.246.553.1.165",
-      "name": "Jyväskylän 10. apteekki",
+      "name": "Jyväskylän Tikkakosken apteekki",
       "address": "Kirkkokatu 6",
       "postcode": "41160",
       "city": "Tikkakoski",
@@ -1811,7 +1811,7 @@
     },
     {
       "id": "1.2.246.553.1.166",
-      "name": "Jämijärven sivuapteekki",
+      "name": "Jämijärven apteekki",
       "address": "Jämijärventie 22",
       "postcode": "38800",
       "city": "Jämijärvi",
@@ -1822,7 +1822,7 @@
     },
     {
       "id": "1.2.246.553.1.167",
-      "name": "Jämsän 1. apteekki",
+      "name": "Jämsän apteekki",
       "address": "Siltakatu 10",
       "postcode": "42100",
       "city": "Jämsä",
@@ -1833,7 +1833,7 @@
     },
     {
       "id": "1.2.246.553.1.168",
-      "name": "Jämsän 2. apteekki",
+      "name": "Jämsän Jämsänkosken apteekki",
       "address": "Koskenväylä 3",
       "postcode": "42300",
       "city": "Jämsänkoski",
@@ -1844,7 +1844,7 @@
     },
     {
       "id": "1.2.246.553.1.170",
-      "name": "Järvenpään 1. apteekki",
+      "name": "Järvenpään Sonaatti apteekki",
       "address": "Prismakeskus",
       "postcode": "04400",
       "city": "Järvenpää",
@@ -1855,7 +1855,7 @@
     },
     {
       "id": "1.2.246.553.1.171",
-      "name": "Järvenpään 2. apteekki",
+      "name": "Järvenpään Avainapteekki",
       "address": "Sushikuja 1",
       "postcode": "04410",
       "city": "Järvenpää",
@@ -1866,7 +1866,7 @@
     },
     {
       "id": "1.2.246.553.1.172",
-      "name": "Kaarinan 1. apteekki",
+      "name": "Kaarinan apteekki",
       "address": "Puntarikatu 3",
       "postcode": "20780",
       "city": "Kaarina",
@@ -1888,7 +1888,7 @@
     },
     {
       "id": "1.2.246.553.1.174",
-      "name": "Kajaanin 1. apteekki",
+      "name": "Kajaanin Ykkösapteekki",
       "address": "Kauppakatu 18",
       "postcode": "87100",
       "city": "Kajaani",
@@ -1899,7 +1899,7 @@
     },
     {
       "id": "1.2.246.553.1.175",
-      "name": "Kajaanin 2. apteekki",
+      "name": "Kajaanin Veturi apteekki",
       "address": "Veturitie 1",
       "postcode": "87100",
       "city": "Kajaani",
@@ -1910,7 +1910,7 @@
     },
     {
       "id": "1.2.246.553.1.176",
-      "name": "Kajaanin 3. apteekki",
+      "name": "Kajaanin Lehtikankaan apteekki",
       "address": "Soidinkatu 2 A",
       "postcode": "87500",
       "city": "Kajaani",
@@ -1921,7 +1921,7 @@
     },
     {
       "id": "1.2.246.553.1.177",
-      "name": "Kalajoen 1. apteekki",
+      "name": "Kalajoen apteekki",
       "address": "Kalajoentie 30",
       "postcode": "85100",
       "city": "Kalajoki",
@@ -1932,7 +1932,7 @@
     },
     {
       "id": "1.2.246.553.1.178",
-      "name": "Hämeenlinnan 10. apteekki",
+      "name": "Hämeenlinnan Kalvolan apteekki",
       "address": "Kotkajärventie 1",
       "postcode": "14500",
       "city": "Iittala",
@@ -1943,7 +1943,7 @@
     },
     {
       "id": "1.2.246.553.1.179",
-      "name": "Kangasalan 1. apteekki",
+      "name": "Kangasalan apteekki",
       "address": "Keskusaukio 2",
       "postcode": "36200",
       "city": "Kangasala",
@@ -1954,7 +1954,7 @@
     },
     {
       "id": "1.2.246.553.1.180",
-      "name": "Kangasalan 2. apteekki",
+      "name": "Kangasalan Suoraman apteekki",
       "address": "Mäkirinteentie 10",
       "postcode": "36220",
       "city": "Kangasala",
@@ -1976,7 +1976,7 @@
     },
     {
       "id": "1.2.246.553.1.182",
-      "name": "Kankaanpään 1. apteekki",
+      "name": "Kankaanpään Apteekki",
       "address": "Keskuskatu 39",
       "postcode": "38700",
       "city": "Kankaanpää",
@@ -1987,7 +1987,7 @@
     },
     {
       "id": "1.2.246.553.1.183",
-      "name": "Kankaanpään 2. apteekki",
+      "name": "Kankaanpään Vuokko apteekki",
       "address": "Opistonkatu 2",
       "postcode": "38700",
       "city": "Kankaanpää",
@@ -2020,7 +2020,7 @@
     },
     {
       "id": "1.2.246.553.1.186",
-      "name": "Raaseporin 4. apteekki",
+      "name": "Raaseporin Karjaan apteekki",
       "address": "Köpmansgatan 9",
       "postcode": "10300",
       "city": "Karis",
@@ -2075,7 +2075,7 @@
     },
     {
       "id": "1.2.246.553.1.191",
-      "name": "Kauhajoen 1. apteekki",
+      "name": "Kauhajoen Ykkösapteekki",
       "address": "Topeeka 65",
       "postcode": "61800",
       "city": "Kauhajoki",
@@ -2086,7 +2086,7 @@
     },
     {
       "id": "1.2.246.553.1.192",
-      "name": "Kauhajoen 2. apteekki",
+      "name": "Kauhajoen Nuotti apteekki",
       "address": "Puistotie 51",
       "postcode": "61800",
       "city": "Kauhajoki",
@@ -2097,7 +2097,7 @@
     },
     {
       "id": "1.2.246.553.1.193",
-      "name": "Kauhavan 1. apteekki",
+      "name": "Kauhavan apteekki",
       "address": "Kauhavantie 21",
       "postcode": "62200",
       "city": "Kauhava",
@@ -2108,7 +2108,7 @@
     },
     {
       "id": "1.2.246.553.1.194",
-      "name": "Kauhavan 2. apteekki",
+      "name": "Kauhavan Kirkonkylän apteekki",
       "address": "Peltopassi 2",
       "postcode": "62200",
       "city": "Kauhava",
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "1.2.246.553.1.200",
-      "name": "Kemin apteekki",
+      "name": "Kemin Ykkösapteekki",
       "address": "Asemakatu 1",
       "postcode": "94100",
       "city": "Kemi",
@@ -2196,7 +2196,7 @@
     },
     {
       "id": "1.2.246.553.1.202",
-      "name": "Kemiönsaaren 1. apteekki",
+      "name": "Kemiön apteekki",
       "address": "Engelsbyntie 9",
       "postcode": "25700",
       "city": "Kimito",
@@ -2218,7 +2218,7 @@
     },
     {
       "id": "1.2.246.553.1.204",
-      "name": "Kempeleen 2. apteekki",
+      "name": "Kempeleen Zeppelinin Apteekki",
       "address": "Zeppelinintie 1",
       "postcode": "90450",
       "city": "Kempele",
@@ -2229,7 +2229,7 @@
     },
     {
       "id": "1.2.246.553.1.205",
-      "name": "Keravan 1. apteekki",
+      "name": "Keravan apteekki",
       "address": "Kauppakaari 2",
       "postcode": "04200",
       "city": "Kerava",
@@ -2240,7 +2240,7 @@
     },
     {
       "id": "1.2.246.553.1.206",
-      "name": "Keravan 2. apteekki",
+      "name": "Keravan Keskusapteekki",
       "address": "Nikonkatu 1",
       "postcode": "04200",
       "city": "Kerava",
@@ -2251,7 +2251,7 @@
     },
     {
       "id": "1.2.246.553.1.207",
-      "name": "Savonlinnan 4. apteekki",
+      "name": "Kerimäen apteekki",
       "address": "Kerimäentie 3",
       "postcode": "58200",
       "city": "Kerimäki",
@@ -2262,7 +2262,7 @@
     },
     {
       "id": "1.2.246.553.1.208",
-      "name": "Siikalatvan 3. apteekki",
+      "name": "Siikalatvan Kestilän apteekki",
       "address": "Taipaleentie 4",
       "postcode": "92700",
       "city": "Kestilä",
@@ -2273,7 +2273,7 @@
     },
     {
       "id": "1.2.246.553.1.209",
-      "name": "Kiteen 2. apteekki",
+      "name": "Kesälahden apteekki",
       "address": "Kesälahdentie 32 A",
       "postcode": "59800",
       "city": "Kesälahti",
@@ -2295,7 +2295,7 @@
     },
     {
       "id": "1.2.246.553.1.211",
-      "name": "Keuruun 2. apteekki",
+      "name": "Keuruun Tervan apteekki",
       "address": "Tervantie 2",
       "postcode": "42700",
       "city": "Keuruu",
@@ -2317,7 +2317,7 @@
     },
     {
       "id": "1.2.246.553.1.214",
-      "name": "Oulun 13. apteekki",
+      "name": "Kiimingin apteekki",
       "address": "Kauppareitti 2",
       "postcode": "90900",
       "city": "Kiiminki",
@@ -2328,7 +2328,7 @@
     },
     {
       "id": "1.2.246.553.1.215",
-      "name": "Kirkkonummen 2. apteekki",
+      "name": "Kirkkonummen Uusi apteekki",
       "address": "Kirkkonummi Prisma",
       "postcode": "02400",
       "city": "Kirkkonummi",
@@ -2339,7 +2339,7 @@
     },
     {
       "id": "1.2.246.553.1.216",
-      "name": "Kirkkonummen 1. apteekki",
+      "name": "Kirkkonummen apteekki",
       "address": "Saloviuksentie 3",
       "postcode": "02400",
       "city": "Kirkkonummi",
@@ -2350,7 +2350,7 @@
     },
     {
       "id": "1.2.246.553.1.217",
-      "name": "Kirkkonummen 3. apteekki",
+      "name": "Kirkkonummen Veikkolan apteekki",
       "address": "Eerikinkartanontie 2",
       "postcode": "02880",
       "city": "Veikkola",
@@ -2361,7 +2361,7 @@
     },
     {
       "id": "1.2.246.553.1.218",
-      "name": "Kiskon sivuapteekki",
+      "name": "Raaseporin Kiskon sivuapteekki",
       "address": "Toijantie 2",
       "postcode": "25460",
       "city": "Kisko",
@@ -2372,7 +2372,7 @@
     },
     {
       "id": "1.2.246.553.1.219",
-      "name": "Kiteen 1. apteekki",
+      "name": "Kiteen apteekki",
       "address": "Kiteentie 10",
       "postcode": "82500",
       "city": "Kitee",
@@ -2427,7 +2427,7 @@
     },
     {
       "id": "1.2.246.553.1.225",
-      "name": "Kokkolan 1. apteekki",
+      "name": "Kokkolan Kallentorin apteekki",
       "address": "Pitkänsillankatu 15",
       "postcode": "67100",
       "city": "Kokkola",
@@ -2438,7 +2438,7 @@
     },
     {
       "id": "1.2.246.553.1.226",
-      "name": "Kokkolan 2. apteekki",
+      "name": "Kokkolan Tervahovin apteekki",
       "address": "Tehtaankatu 43",
       "postcode": "67100",
       "city": "Kokkola",
@@ -2449,7 +2449,7 @@
     },
     {
       "id": "1.2.246.553.1.227",
-      "name": "Kokkolan 3. apteekki",
+      "name": "Kokkolan Keskusapteekki",
       "address": "Prismantie 1",
       "postcode": "67700",
       "city": "Kokkola",
@@ -2482,7 +2482,7 @@
     },
     {
       "id": "1.2.246.553.1.230",
-      "name": "Kontiolahden 1. apteekki",
+      "name": "Kontiolahden apteekki",
       "address": "Keskuskatu 24",
       "postcode": "81100",
       "city": "Kontiolahti",
@@ -2504,7 +2504,7 @@
     },
     {
       "id": "1.2.246.553.1.232",
-      "name": "Jyväskylän 11. apteekki",
+      "name": "Jyväskylän Korpilahden apteekki",
       "address": "Korpilahdentie 13",
       "postcode": "41800",
       "city": "Korpilahti",
@@ -2537,7 +2537,7 @@
     },
     {
       "id": "1.2.246.553.1.235",
-      "name": "Kauhavan 5. apteekki",
+      "name": "Kauhavan Kortesjärven apteekki",
       "address": "Jääkärintie 53",
       "postcode": "62420",
       "city": "Kortesjärvi",
@@ -2559,7 +2559,7 @@
     },
     {
       "id": "1.2.246.553.1.237",
-      "name": "Kotkan 1. apteekki",
+      "name": "Kotkan Kauppatorin apteekki",
       "address": "Kirkkokatu 10",
       "postcode": "48100",
       "city": "Kotka",
@@ -2570,7 +2570,7 @@
     },
     {
       "id": "1.2.246.553.1.238",
-      "name": "Kotkan 2. apteekki",
+      "name": "Kotkan Pasaatin apteekki",
       "address": "Kauppakeskus Pasaati",
       "postcode": "48100",
       "city": "Kotka",
@@ -2581,7 +2581,7 @@
     },
     {
       "id": "1.2.246.553.1.239",
-      "name": "Kotkan 3. apteekki",
+      "name": "Kotkan Keski-Kotkan apteekki",
       "address": "Keskuskatu 31",
       "postcode": "48100",
       "city": "Kotka",
@@ -2592,7 +2592,7 @@
     },
     {
       "id": "1.2.246.553.1.240",
-      "name": "Kotkan 4. apteekki",
+      "name": "Kotkan Ankkuriapteekki",
       "address": "Tarinatie 2",
       "postcode": "48350",
       "city": "Kotka",
@@ -2603,7 +2603,7 @@
     },
     {
       "id": "1.2.246.553.1.241",
-      "name": "Kotkan 5. apteekki",
+      "name": "Kotkan Karhulan Tori apteekki",
       "address": "Vesivallinaukio 3",
       "postcode": "48600",
       "city": "Kotka",
@@ -2614,7 +2614,7 @@
     },
     {
       "id": "1.2.246.553.1.242",
-      "name": "Kotkan 6. apteekki",
+      "name": "Kotkan Kontio apteekki",
       "address": "Karhulantie 30",
       "postcode": "48600",
       "city": "Kotka",
@@ -2625,7 +2625,7 @@
     },
     {
       "id": "1.2.246.553.1.243",
-      "name": "Kotkan 7. apteekki",
+      "name": "Kotkan Hakamäen apteekki",
       "address": "Hakamäentie 1",
       "postcode": "48400",
       "city": "Kotka",
@@ -2636,7 +2636,7 @@
     },
     {
       "id": "1.2.246.553.1.244",
-      "name": "Kotkan 8. apteekki",
+      "name": "Kotkan Apteekki Jumalniemi",
       "address": "Citymarket",
       "postcode": "48600",
       "city": "Kotka",
@@ -2647,7 +2647,7 @@
     },
     {
       "id": "1.2.246.553.1.245",
-      "name": "Kouvolan 1. apteekki",
+      "name": "Kouvolan Valtarin apteekki",
       "address": "Kouvolankatu 15",
       "postcode": "45100",
       "city": "Kouvola",
@@ -2658,7 +2658,7 @@
     },
     {
       "id": "1.2.246.553.1.246",
-      "name": "Kouvolan 2. apteekki",
+      "name": "Kouvolan Uusi apteekki",
       "address": "Kouvolankatu 22",
       "postcode": "45100",
       "city": "Kouvola",
@@ -2669,7 +2669,7 @@
     },
     {
       "id": "1.2.246.553.1.247",
-      "name": "Kouvolan 3. apteekki",
+      "name": "Kouvolan Hansa-apteekki",
       "address": "Keskikatu 4",
       "postcode": "45100",
       "city": "Kouvola",
@@ -2680,7 +2680,7 @@
     },
     {
       "id": "1.2.246.553.1.248",
-      "name": "Kouvolan 4. apteekki",
+      "name": "Kouvolan Salpa apteekki",
       "address": "Tommolankatu 9",
       "postcode": "45130",
       "city": "Kouvola",
@@ -2691,7 +2691,7 @@
     },
     {
       "id": "1.2.246.553.1.249",
-      "name": "Kouvolan 5. apteekki",
+      "name": "Kouvolan Tornionmäen apteekki",
       "address": "Utinkatu 52",
       "postcode": "45200",
       "city": "Kouvola",
@@ -2702,7 +2702,7 @@
     },
     {
       "id": "1.2.246.553.1.250",
-      "name": "Kristiinankaupungin 1. apteekki",
+      "name": "Kristiinankaupungin apteekki",
       "address": "Kauppatori 3",
       "postcode": "64100",
       "city": "Kristiinankaupunki",
@@ -2713,7 +2713,7 @@
     },
     {
       "id": "1.2.246.553.1.251",
-      "name": "Kristiinankaupungin 2. apteekki",
+      "name": "Kristiinankaupungin Lapväärtin apteekki",
       "address": "Lapväärtintie 729",
       "postcode": "64300",
       "city": "Lapväärtti",
@@ -2724,7 +2724,7 @@
     },
     {
       "id": "1.2.246.553.1.252",
-      "name": "Kruunupyyn 1. apteekki",
+      "name": "Kruunupyyn apteekki",
       "address": "Kirkkotie 4",
       "postcode": "68500",
       "city": "Kruunupyy",
@@ -2735,7 +2735,7 @@
     },
     {
       "id": "1.2.246.553.1.253",
-      "name": "Kruunupyyn 2. apteekki",
+      "name": "Kruunupyyn Teerijärven apteekki",
       "address": "Eteläinen Teerijärventie 5",
       "postcode": "68700",
       "city": "Teerijärvi",
@@ -2768,7 +2768,7 @@
     },
     {
       "id": "1.2.246.553.1.256",
-      "name": "Kuopion 1. apteekki",
+      "name": "Kuopion Eka apteekki",
       "address": "Matkuksentie 60",
       "postcode": "70800",
       "city": "Kuopio",
@@ -2779,7 +2779,7 @@
     },
     {
       "id": "1.2.246.553.1.257",
-      "name": "Kuopion 2. apteekki",
+      "name": "Kuopion Uusi apteekki",
       "address": "Kolmisopentie 3",
       "postcode": "70780",
       "city": "Kuopio",
@@ -2790,7 +2790,7 @@
     },
     {
       "id": "1.2.246.553.1.258",
-      "name": "Kuopion 3. apteekki",
+      "name": "Kuopion ToriApteekki",
       "address": "Haapaniemenkatu 24-26",
       "postcode": "70110",
       "city": "Kuopio",
@@ -2801,7 +2801,7 @@
     },
     {
       "id": "1.2.246.553.1.259",
-      "name": "Kuopion 4. apteekki",
+      "name": "Kuopion Satama-apteekki",
       "address": "Maaherrankatu 23",
       "postcode": "70100",
       "city": "Kuopio",
@@ -2812,7 +2812,7 @@
     },
     {
       "id": "1.2.246.553.1.260",
-      "name": "Kuopion 5. apteekki",
+      "name": "Kuopion Haapaniemen apteekki",
       "address": "Tasavallankatu 26",
       "postcode": "70620",
       "city": "Kuopio",
@@ -2823,7 +2823,7 @@
     },
     {
       "id": "1.2.246.553.1.261",
-      "name": "Kuopion 6. apteekki",
+      "name": "Kuopion Niiralan apteekki",
       "address": "Prisma",
       "postcode": "70700",
       "city": "Kuopio",
@@ -2834,7 +2834,7 @@
     },
     {
       "id": "1.2.246.553.1.262",
-      "name": "Kuopion 7. apteekki",
+      "name": "Kuopion Puijonlaakson apteekki",
       "address": "Sammakkolammentie 6",
       "postcode": "70200",
       "city": "Kuopio",
@@ -2845,7 +2845,7 @@
     },
     {
       "id": "1.2.246.553.1.263",
-      "name": "Kuopion 8. apteekki",
+      "name": "Kuopion Petosen apteekki",
       "address": "Jalkasenkatu 5",
       "postcode": "70820",
       "city": "Kuopio",
@@ -2878,7 +2878,7 @@
     },
     {
       "id": "1.2.246.553.1.266",
-      "name": "Kurikan 1. apteekki",
+      "name": "Kurikan apteekki",
       "address": "Kurikantie 9",
       "postcode": "61300",
       "city": "Kurikka",
@@ -2889,7 +2889,7 @@
     },
     {
       "id": "1.2.246.553.1.267",
-      "name": "Ylöjärven 3. apteekki",
+      "name": "Ylöjärven Kurun apteekki",
       "address": "Kauppatie 10",
       "postcode": "34300",
       "city": "Kuru",
@@ -2900,7 +2900,7 @@
     },
     {
       "id": "1.2.246.553.1.268",
-      "name": "Kuusamon 1. apteekki",
+      "name": "Kuusamon apteekki",
       "address": "Huoparintie 1",
       "postcode": "93600",
       "city": "Kuusamo",
@@ -2911,7 +2911,7 @@
     },
     {
       "id": "1.2.246.553.1.269",
-      "name": "Kuusamon 2. apteekki",
+      "name": "Kuusamon Keskusapteekki",
       "address": "Ouluntaival 1",
       "postcode": "93600",
       "city": "Kuusamo",
@@ -2922,7 +2922,7 @@
     },
     {
       "id": "1.2.246.553.1.270",
-      "name": "Kouvolan 6. apteekki",
+      "name": "Kouvolan Kuusankosken Ykkösapteekki",
       "address": "Kauppakeskus Kuusaantori, Kauppakatu 3",
       "postcode": "45700",
       "city": "Kuusankoski",
@@ -2933,7 +2933,7 @@
     },
     {
       "id": "1.2.246.553.1.271",
-      "name": "Kouvolan 9. apteekki",
+      "name": "Kouvolan Voikkaan apteekki",
       "address": "Kuparintie 2",
       "postcode": "45910",
       "city": "Voikkaa",
@@ -2944,7 +2944,7 @@
     },
     {
       "id": "1.2.246.553.1.272",
-      "name": "Kouvolan 7. apteekki",
+      "name": "Kouvolan kauppakeskus Veturin apteekki",
       "address": "Kauppakeskus Veturi",
       "postcode": "45720",
       "city": "Kuusankoski",
@@ -2955,7 +2955,7 @@
     },
     {
       "id": "1.2.246.553.1.273",
-      "name": "Kokkolan 4. apteekki",
+      "name": "Kokkolan Kälviän apteekki",
       "address": "Kälviäntie 32",
       "postcode": "68300",
       "city": "Kälviä",
@@ -2999,7 +2999,7 @@
     },
     {
       "id": "1.2.246.553.1.277",
-      "name": "Lahden 1. apteekki",
+      "name": "Lahden Ykkösapteekki",
       "address": "Simolanmutka 1",
       "postcode": "15680",
       "city": "Lahti",
@@ -3010,7 +3010,7 @@
     },
     {
       "id": "1.2.246.553.1.278",
-      "name": "Lahden 2. apteekki",
+      "name": "Lahden Apteekki Trio",
       "address": "Aleksanterinkatu 18",
       "postcode": "15140",
       "city": "Lahti",
@@ -3021,7 +3021,7 @@
     },
     {
       "id": "1.2.246.553.1.279",
-      "name": "Lahden 3. apteekki",
+      "name": "Lahden Ilves apteekki",
       "address": "Keskussairaalankatu 7",
       "postcode": "15850",
       "city": "Lahti",
@@ -3032,7 +3032,7 @@
     },
     {
       "id": "1.2.246.553.1.280",
-      "name": "Lahden 4. apteekki",
+      "name": "Lahden Keskusapteekki",
       "address": "Mariankatu 12",
       "postcode": "15110",
       "city": "Lahti",
@@ -3043,7 +3043,7 @@
     },
     {
       "id": "1.2.246.553.1.281",
-      "name": "Lahden 5. apteekki",
+      "name": "Lahden Lähiapteekki Syke",
       "address": "Kauppakatu 18",
       "postcode": "15140",
       "city": "Lahti",
@@ -3054,7 +3054,7 @@
     },
     {
       "id": "1.2.246.553.1.282",
-      "name": "Lahden 6. apteekki",
+      "name": "Lahden Launeen apteekki",
       "address": "Ajokatu 53",
       "postcode": "15500",
       "city": "Lahti",
@@ -3065,7 +3065,7 @@
     },
     {
       "id": "1.2.246.553.1.283",
-      "name": "Lahden 7. apteekki",
+      "name": "Lahden Helmi apteekki",
       "address": "Hämeenkatu 20",
       "postcode": "15110",
       "city": "Lahti",
@@ -3076,7 +3076,7 @@
     },
     {
       "id": "1.2.246.553.1.284",
-      "name": "Lahden 8. apteekki",
+      "name": "Lahden Apteekki Karisma",
       "address": "Kauppiaankatu 2",
       "postcode": "15160",
       "city": "Lahti",
@@ -3087,7 +3087,7 @@
     },
     {
       "id": "1.2.246.553.1.285",
-      "name": "Lahden 9. apteekki",
+      "name": "Lahden Apila apteekki",
       "address": "Ajokatu 83",
       "postcode": "15500",
       "city": "Lahti",
@@ -3098,7 +3098,7 @@
     },
     {
       "id": "1.2.246.553.1.286",
-      "name": "Lahden 10. apteekki",
+      "name": "Lahden Mukkulan apteekki",
       "address": "Ritaniemenkatu 7-9",
       "postcode": "15240",
       "city": "Lahti",
@@ -3109,7 +3109,7 @@
     },
     {
       "id": "1.2.246.553.1.287",
-      "name": "Laihian apteekki",
+      "name": "Laihian Orava apteekki",
       "address": "Kauppatie 7",
       "postcode": "66400",
       "city": "Laihia",
@@ -3120,7 +3120,7 @@
     },
     {
       "id": "1.2.246.553.1.288",
-      "name": "Laitilan 1. apteekki",
+      "name": "Laitilan Ykkösapteekki",
       "address": "Kauppakatu 8",
       "postcode": "23800",
       "city": "Laitila",
@@ -3131,7 +3131,7 @@
     },
     {
       "id": "1.2.246.553.1.289",
-      "name": "Laitilan 2. apteekki",
+      "name": "Laitilan Uusi apteekki",
       "address": "Kauppakatu 3",
       "postcode": "23800",
       "city": "Laitila",
@@ -3142,7 +3142,7 @@
     },
     {
       "id": "1.2.246.553.1.290",
-      "name": "Hämeenlinnan 9. apteekki",
+      "name": "Hämeenlinnan Lammin apteekki",
       "address": "Mommilantie 3",
       "postcode": "16900",
       "city": "Lammi",
@@ -3153,7 +3153,7 @@
     },
     {
       "id": "1.2.246.553.1.291",
-      "name": "Rauman 5. apteekki",
+      "name": "Lapin apteekki",
       "address": "Meijeritie 2",
       "postcode": "27230",
       "city": "Lappi",
@@ -3175,7 +3175,7 @@
     },
     {
       "id": "1.2.246.553.1.293",
-      "name": "Lapinlahden 1. apteekki",
+      "name": "Lapinlahden apteekki",
       "address": "Juhani Ahontie 2",
       "postcode": "73100",
       "city": "Lapinlahti",
@@ -3197,7 +3197,7 @@
     },
     {
       "id": "1.2.246.553.1.295",
-      "name": "Lappeenrannan 1. apteekki",
+      "name": "Lappeenrannan Apteekki Saimaa",
       "address": "Puhakankatu 9-11",
       "postcode": "53600",
       "city": "Lappeenranta",
@@ -3208,7 +3208,7 @@
     },
     {
       "id": "1.2.246.553.1.296",
-      "name": "Lappeenrannan 2. apteekki",
+      "name": "Lappeenrannan Apteekki Lappee",
       "address": "Kaakkoiskaari 22",
       "postcode": "53500",
       "city": "Lappeenranta",
@@ -3219,7 +3219,7 @@
     },
     {
       "id": "1.2.246.553.1.297",
-      "name": "Lappeenrannan 3. apteekki",
+      "name": "Lappeenrannan Cityapteekki",
       "address": "Kauppakatu 32",
       "postcode": "53100",
       "city": "Lappeenranta",
@@ -3230,7 +3230,7 @@
     },
     {
       "id": "1.2.246.553.1.298",
-      "name": "Lappeenrannan 4. apteekki",
+      "name": "Lappeenrannan Kaukaan apteekki",
       "address": "Telakanmäenkatu 2 A",
       "postcode": "53300",
       "city": "Lappeenranta",
@@ -3241,7 +3241,7 @@
     },
     {
       "id": "1.2.246.553.1.299",
-      "name": "Lapuan 1. apteekki",
+      "name": "Lapuan Lakeus apteekki",
       "address": "Puistotie 2",
       "postcode": "62100",
       "city": "Lapua",
@@ -3252,7 +3252,7 @@
     },
     {
       "id": "1.2.246.553.1.300",
-      "name": "Lapuan 2. apteekki",
+      "name": "Lapuan keskusapteekki",
       "address": "Alangontie 4",
       "postcode": "62100",
       "city": "Lapua",
@@ -3263,7 +3263,7 @@
     },
     {
       "id": "1.2.246.553.1.301",
-      "name": "Laukaan 1. apteekki",
+      "name": "Laukaan apteekki",
       "address": "Vuokaari 2",
       "postcode": "41340",
       "city": "Laukaa",
@@ -3274,7 +3274,7 @@
     },
     {
       "id": "1.2.246.553.1.302",
-      "name": "Laukaan 2. apteekki",
+      "name": "Laukaan Lievestuoreen apteekki",
       "address": "Liepeentie 8",
       "postcode": "41400",
       "city": "Lievestuore",
@@ -3285,7 +3285,7 @@
     },
     {
       "id": "1.2.246.553.1.303",
-      "name": "Porin 11. apteekki",
+      "name": "Porin Tiilimäen apteekki",
       "address": "Sairaalantie 3 (E-rakennus)",
       "postcode": "28500",
       "city": "Pori",
@@ -3296,7 +3296,7 @@
     },
     {
       "id": "1.2.246.553.1.304",
-      "name": "Lempäälän 1. apteekki",
+      "name": "Lempäälän Keskus Apteekki",
       "address": "Puistokatu 4",
       "postcode": "37500",
       "city": "Lempäälä",
@@ -3307,7 +3307,7 @@
     },
     {
       "id": "1.2.246.553.1.305",
-      "name": "Lempäälän 2. apteekki",
+      "name": "Lempäälän Sääksjärven apteekki",
       "address": "Tampereentie 453",
       "postcode": "33880",
       "city": "Lempäälä",
@@ -3340,7 +3340,7 @@
     },
     {
       "id": "1.2.246.553.1.308",
-      "name": "Lieksan 1. apteekki",
+      "name": "Lieksan Pietari-apteekki",
       "address": "Pielisentie 30",
       "postcode": "81700",
       "city": "Lieksa",
@@ -3351,7 +3351,7 @@
     },
     {
       "id": "1.2.246.553.1.310",
-      "name": "Lieksan 3. apteekki",
+      "name": "Lieksan Pielis-apteekki",
       "address": "Pielisentie 29",
       "postcode": "81700",
       "city": "Lieksa",
@@ -3373,7 +3373,7 @@
     },
     {
       "id": "1.2.246.553.1.312",
-      "name": "Liperin 1. apteekki",
+      "name": "Liperin Ykkös apteekki",
       "address": "Keskustie 2",
       "postcode": "83100",
       "city": "Liperi",
@@ -3384,7 +3384,7 @@
     },
     {
       "id": "1.2.246.553.1.313",
-      "name": "Lohjan 1. apteekki",
+      "name": "Lohjan Ykkösapteekki",
       "address": "Laurinkatu 37-41 A",
       "postcode": "08100",
       "city": "Lohja",
@@ -3395,7 +3395,7 @@
     },
     {
       "id": "1.2.246.553.1.314",
-      "name": "Lohjan 2. apteekki",
+      "name": "Lohjan Lohi apteekki",
       "address": "Kauppakeskus Lohi",
       "postcode": "08100",
       "city": "Lohja",
@@ -3406,7 +3406,7 @@
     },
     {
       "id": "1.2.246.553.1.315",
-      "name": "Lohjan 3. apteekki",
+      "name": "Lohjan Virkkalan Omena-apteekki",
       "address": "Virkkalantie 8",
       "postcode": "08700",
       "city": "Virkkala",
@@ -3417,7 +3417,7 @@
     },
     {
       "id": "1.2.246.553.1.316",
-      "name": "Lohjan 4. apteekki",
+      "name": "Lohjan Lempolan apteekki",
       "address": "Lehmijärventie 2",
       "postcode": "08500",
       "city": "Lohja",
@@ -3428,7 +3428,7 @@
     },
     {
       "id": "1.2.246.553.1.318",
-      "name": "Loimaan 1. apteekki",
+      "name": "Loimaan YkkösApteekki",
       "address": "Aleksis Kiven katu 7",
       "postcode": "32200",
       "city": "Loimaa",
@@ -3439,7 +3439,7 @@
     },
     {
       "id": "1.2.246.553.1.319",
-      "name": "Loimaan 2. apteekki",
+      "name": "Loimaan Uusi apteekki",
       "address": "Aleksis Kiven katu 11",
       "postcode": "32200",
       "city": "Loimaa",
@@ -3461,7 +3461,7 @@
     },
     {
       "id": "1.2.246.553.1.321",
-      "name": "Loviisan 1. apteekki",
+      "name": "Loviisan Kruunu-apteekki",
       "address": "Brandensteininkatu 11",
       "postcode": "07900",
       "city": "Loviisa",
@@ -3483,7 +3483,7 @@
     },
     {
       "id": "1.2.246.553.1.323",
-      "name": "Eurajoen 2. apteekki",
+      "name": "Luvian apteekki",
       "address": "Kuivalahdentie 2",
       "postcode": "29100",
       "city": "Luvia",
@@ -3505,7 +3505,7 @@
     },
     {
       "id": "1.2.246.553.1.325",
-      "name": "Kuopion 12. apteekki",
+      "name": "Maaningan apteekki",
       "address": "Maaningantie 43",
       "postcode": "71750",
       "city": "Maaninka",
@@ -3527,7 +3527,7 @@
     },
     {
       "id": "1.2.246.553.1.327",
-      "name": "Mariehamns 1:a apotek",
+      "name": "Mariehamns Första apoteket",
       "address": "Torggatan 3",
       "postcode": "22100",
       "city": "Mariehamn",
@@ -3538,7 +3538,7 @@
     },
     {
       "id": "1.2.246.553.1.328",
-      "name": "Mariehamns 2:a apotek",
+      "name": "Central-apoteket i Mariehamn",
       "address": "Skarpansvägen 24",
       "postcode": "22100",
       "city": "Mariehamn",
@@ -3582,7 +3582,7 @@
     },
     {
       "id": "1.2.246.553.1.333",
-      "name": "Mikkelin 1. apteekki",
+      "name": "Mikkelin ensimmäinen apteekki",
       "address": "Porrassalmenkatu 21",
       "postcode": "50100",
       "city": "Mikkeli",
@@ -3593,7 +3593,7 @@
     },
     {
       "id": "1.2.246.553.1.334",
-      "name": "Mikkelin 2. apteekki",
+      "name": "Mikkelin Omega apteekki",
       "address": "Kauppakeskus Akseli",
       "postcode": "50100",
       "city": "Mikkeli",
@@ -3604,7 +3604,7 @@
     },
     {
       "id": "1.2.246.553.1.335",
-      "name": "Mikkelin 3. apteekki",
+      "name": "Mikkelin Stella apteekki",
       "address": "Porrassalmenkatu 20",
       "postcode": "50100",
       "city": "Mikkeli",
@@ -3615,7 +3615,7 @@
     },
     {
       "id": "1.2.246.553.1.336",
-      "name": "Mikkelin 4. apteekki",
+      "name": "Mikkelin Graanin apteekki",
       "address": "Graanintie 1",
       "postcode": "50190",
       "city": "Mikkeli",
@@ -3626,7 +3626,7 @@
     },
     {
       "id": "1.2.246.553.1.337",
-      "name": "Sastamalan 3. apteekki",
+      "name": "Sastamalan Häijään apteekki",
       "address": "Kauppakuja 2",
       "postcode": "38420",
       "city": "Sastamala",
@@ -3703,7 +3703,7 @@
     },
     {
       "id": "1.2.246.553.1.344",
-      "name": "Mäntsälän 1. apteekki",
+      "name": "Mäntsälän apteekki",
       "address": "Keskuskatu 12",
       "postcode": "04600",
       "city": "Mäntsälä",
@@ -3714,7 +3714,7 @@
     },
     {
       "id": "1.2.246.553.1.345",
-      "name": "Mäntyharjun 1. apteekki",
+      "name": "Mäntyharjun Apteekki",
       "address": "Pentinpolku 2",
       "postcode": "52700",
       "city": "Mäntyharju",
@@ -3725,7 +3725,7 @@
     },
     {
       "id": "1.2.246.553.1.346",
-      "name": "Mänttä-Vilppulan 1. apteekki",
+      "name": "Mäntän apteekki",
       "address": "Itätorikatu 10",
       "postcode": "35800",
       "city": "Mänttä",
@@ -3736,7 +3736,7 @@
     },
     {
       "id": "1.2.246.553.1.347",
-      "name": "Naantalin 1. apteekki",
+      "name": "Naantalin apteekki",
       "address": "Tullikatu 18",
       "postcode": "21100",
       "city": "Naantali",
@@ -3758,7 +3758,7 @@
     },
     {
       "id": "1.2.246.553.1.349",
-      "name": "Lahden 14. apteekki",
+      "name": "Nastolan apteekki",
       "address": "Rakokiventie 19",
       "postcode": "15550",
       "city": "Nastola",
@@ -3769,7 +3769,7 @@
     },
     {
       "id": "1.2.246.553.1.350",
-      "name": "Paraisten 2. apteekki",
+      "name": "Nauvon apteekki",
       "address": "Rantapolku 1",
       "postcode": "21660",
       "city": "Nauvo",
@@ -3780,7 +3780,7 @@
     },
     {
       "id": "1.2.246.553.1.351",
-      "name": "Kuopion 11. apteekki",
+      "name": "Nilsiän apteekki",
       "address": "Nilsiäntie 63",
       "postcode": "73300",
       "city": "Nilsiä",
@@ -3802,7 +3802,7 @@
     },
     {
       "id": "1.2.246.553.1.353",
-      "name": "Nokian 1. apteekki",
+      "name": "Nokian Ensimmäinen apteekki",
       "address": "Välikatu 18",
       "postcode": "37100",
       "city": "Nokia",
@@ -3813,7 +3813,7 @@
     },
     {
       "id": "1.2.246.553.1.354",
-      "name": "Nokian 2. apteekki",
+      "name": "Nokian Härki apteekki",
       "address": "Yrittäjäkatu 10",
       "postcode": "37100",
       "city": "Nokia",
@@ -3824,7 +3824,7 @@
     },
     {
       "id": "1.2.246.553.1.355",
-      "name": "Nokian 3. apteekki",
+      "name": "Nokian Koskenmäen apteekki",
       "address": "K-Citymarket Kauppakeskus",
       "postcode": "37120",
       "city": "Nokia",
@@ -3835,7 +3835,7 @@
     },
     {
       "id": "1.2.246.553.1.356",
-      "name": "Porin 10. apteekki",
+      "name": "Porin Noormarkun apteekki",
       "address": "Palotie 2",
       "postcode": "29600",
       "city": "Noormarkku",
@@ -3857,7 +3857,7 @@
     },
     {
       "id": "1.2.246.553.1.358",
-      "name": "Nurmeksen 1. apteekki",
+      "name": "Nurmeksen apteekki",
       "address": "Kauppatori 1",
       "postcode": "75500",
       "city": "Nurmes",
@@ -3868,7 +3868,7 @@
     },
     {
       "id": "1.2.246.553.1.359",
-      "name": "Nurmeksen 2. apteekki",
+      "name": "Nurmeksen Porokylän apteekki",
       "address": "Porokylänkatu 13",
       "postcode": "75530",
       "city": "Nurmes",
@@ -3879,7 +3879,7 @@
     },
     {
       "id": "1.2.246.553.1.360",
-      "name": "Nurmijärven 1. apteekki",
+      "name": "Nurmijärven Seitsemän Veljeksen apteekki",
       "address": "Mahlamäentie 2",
       "postcode": "01900",
       "city": "Nurmijärvi",
@@ -3890,7 +3890,7 @@
     },
     {
       "id": "1.2.246.553.1.361",
-      "name": "Nurmijärven 2. apteekki",
+      "name": "Nurmijärven Rajamäen apteekki",
       "address": "Liikekeskuks Lähde",
       "postcode": "05200",
       "city": "Rajamäki",
@@ -3901,7 +3901,7 @@
     },
     {
       "id": "1.2.246.553.1.362",
-      "name": "Nurmijärven 3. apteekki",
+      "name": "Nurmijärven Klaukkalan apteekki",
       "address": "Klaukkalantie 55",
       "postcode": "01800",
       "city": "Klaukkala",
@@ -3912,7 +3912,7 @@
     },
     {
       "id": "1.2.246.553.1.363",
-      "name": "Seinäjoen 5. apteekki",
+      "name": "Seinäjoen Hyllykallion apteekki",
       "address": "Hyllykalliontie 2",
       "postcode": "60510",
       "city": "Hyllykallio",
@@ -3945,7 +3945,7 @@
     },
     {
       "id": "1.2.246.553.1.366",
-      "name": "Vöyrin 2. apteekki",
+      "name": "Oravaisten apteekki",
       "address": "Öurvägen 6 B",
       "postcode": "66800",
       "city": "Oravais",
@@ -3956,7 +3956,7 @@
     },
     {
       "id": "1.2.246.553.1.367",
-      "name": "Orimattilan 1. apteekki",
+      "name": "Orimattilan apteekki",
       "address": "Erkontie 16",
       "postcode": "16300",
       "city": "Orimattila",
@@ -4000,7 +4000,7 @@
     },
     {
       "id": "1.2.246.553.1.371",
-      "name": "Oulun 1. apteekki",
+      "name": "Oulun Toppilan apteekki",
       "address": "Satamatie 12",
       "postcode": "90520",
       "city": "Oulu",
@@ -4011,7 +4011,7 @@
     },
     {
       "id": "1.2.246.553.1.372",
-      "name": "Oulun 2. apteekki",
+      "name": "Oulun Rotuaarin apteekki",
       "address": "Kauppurienkatu 9",
       "postcode": "90100",
       "city": "Oulu",
@@ -4022,7 +4022,7 @@
     },
     {
       "id": "1.2.246.553.1.373",
-      "name": "Oulun 3. apteekki",
+      "name": "Oulun Hansa apteekki",
       "address": "Nuottasaarentie 1",
       "postcode": "90400",
       "city": "Oulu",
@@ -4033,7 +4033,7 @@
     },
     {
       "id": "1.2.246.553.1.374",
-      "name": "Oulun 4. apteekki",
+      "name": "Oulun Merikosken apteekki",
       "address": "Merikoskenkatu 11",
       "postcode": "90500",
       "city": "Oulu",
@@ -4044,7 +4044,7 @@
     },
     {
       "id": "1.2.246.553.1.375",
-      "name": "Oulun 5. apteekki",
+      "name": "Oulun Keskus apteekki",
       "address": "Isokatu  45",
       "postcode": "90100",
       "city": "Oulu",
@@ -4055,7 +4055,7 @@
     },
     {
       "id": "1.2.246.553.1.376",
-      "name": "Oulun 6. apteekki",
+      "name": "Oulun Ritaharjun apteekki",
       "address": "Ideapark, Ritaharjuntie 49",
       "postcode": "90540",
       "city": "Oulu",
@@ -4066,7 +4066,7 @@
     },
     {
       "id": "1.2.246.553.1.377",
-      "name": "Oulun 7. apteekki",
+      "name": "Oulun Kaakkurin apteekki",
       "address": "Metsokankaantie 5",
       "postcode": "90420",
       "city": "Oulu",
@@ -4077,7 +4077,7 @@
     },
     {
       "id": "1.2.246.553.1.378",
-      "name": "Oulun 8. apteekki",
+      "name": "Oulun Pateniemen apteekki",
       "address": "Väliahontie 56",
       "postcode": "90800",
       "city": "Oulu",
@@ -4088,7 +4088,7 @@
     },
     {
       "id": "1.2.246.553.1.379",
-      "name": "Oulun 9. apteekki",
+      "name": "Oulun Ruskon apteekki",
       "address": "Laakeritie 4",
       "postcode": "90620",
       "city": "Oulu",
@@ -4099,7 +4099,7 @@
     },
     {
       "id": "1.2.246.553.1.380",
-      "name": "Oulun 10. apteekki",
+      "name": "Oulun Linnanmaan apteekki",
       "address": "Kauppalinnankuja 1-3",
       "postcode": "90570",
       "city": "Oulu",
@@ -4110,7 +4110,7 @@
     },
     {
       "id": "1.2.246.553.1.381",
-      "name": "Oulun 11. apteekki",
+      "name": "Oulun Kastellin apteekki",
       "address": "Kumpulantie 1",
       "postcode": "90230",
       "city": "Oulu",
@@ -4121,7 +4121,7 @@
     },
     {
       "id": "1.2.246.553.1.382",
-      "name": "Oulun 15. apteekki",
+      "name": "Oulunsalon apteekki",
       "address": "Karhuojantie 2",
       "postcode": "90460",
       "city": "Oulunsalo",
@@ -4176,7 +4176,7 @@
     },
     {
       "id": "1.2.246.553.1.387",
-      "name": "Paraisten 1. apteekki",
+      "name": "Paraisten apteekki",
       "address": "Kirkkoesplanadi 32",
       "postcode": "21600",
       "city": "Parainen",
@@ -4187,7 +4187,7 @@
     },
     {
       "id": "1.2.246.553.1.388",
-      "name": "Parikkalan 1. apteekki",
+      "name": "Parikkalan apteekki",
       "address": "Parikkalantie 19",
       "postcode": "59100",
       "city": "Parikkala",
@@ -4198,7 +4198,7 @@
     },
     {
       "id": "1.2.246.553.1.389",
-      "name": "Saaren sivuapteekki",
+      "name": "Parikkalan Saaren sivuapteekki",
       "address": "Akapohjantie 4",
       "postcode": "59510",
       "city": "Saari",
@@ -4253,7 +4253,7 @@
     },
     {
       "id": "1.2.246.553.1.394",
-      "name": "Salon 6. apteekki",
+      "name": "Perniön apteekki",
       "address": "Haarlantie 21 A",
       "postcode": "25500",
       "city": "Perniö",
@@ -4264,7 +4264,7 @@
     },
     {
       "id": "1.2.246.553.1.395",
-      "name": "Mäntyharjun 2. apteekki",
+      "name": "Pertunmaan apteekki",
       "address": "Mäyrätie 1",
       "postcode": "19410",
       "city": "Kuortti",
@@ -4297,7 +4297,7 @@
     },
     {
       "id": "1.2.246.553.1.398",
-      "name": "Pieksämäen 2. apteekki",
+      "name": "Pieksämäen apteekki",
       "address": "Keskuskatu 30",
       "postcode": "76100",
       "city": "Pieksämäki",
@@ -4330,7 +4330,7 @@
     },
     {
       "id": "1.2.246.553.1.401",
-      "name": "Pietarsaaren 2. apteekki",
+      "name": "Apteekki Esplanad",
       "address": "Kanavapuistikko 19",
       "postcode": "68600",
       "city": "Pietarsaari",
@@ -4341,7 +4341,7 @@
     },
     {
       "id": "1.2.246.553.1.402",
-      "name": "Pietarsaaren 3. apteekki",
+      "name": "Pietarsaaren Medi apteekki",
       "address": "Koulukatu 4",
       "postcode": "68600",
       "city": "Pietarsaari",
@@ -4363,7 +4363,7 @@
     },
     {
       "id": "1.2.246.553.1.404",
-      "name": "Kaarinan 2. apteekki",
+      "name": "Kaarinan Piikkiön apteekki",
       "address": "Hadvalantie 8",
       "postcode": "21500",
       "city": "Piikkiö",
@@ -4374,7 +4374,7 @@
     },
     {
       "id": "1.2.246.553.1.405",
-      "name": "Pirkkalan 1. apteekki",
+      "name": "Pirkkalan apteekki",
       "address": "Koulutie 2",
       "postcode": "33960",
       "city": "Pirkkala",
@@ -4385,7 +4385,7 @@
     },
     {
       "id": "1.2.246.553.1.406",
-      "name": "Raaseporin 3. apteekki",
+      "name": "Raaseporin Pohjan apteekki",
       "address": "Pohjantie 6",
       "postcode": "10420",
       "city": "Pohjankuru",
@@ -4418,7 +4418,7 @@
     },
     {
       "id": "1.2.246.553.1.409",
-      "name": "Porin 1. apteekki",
+      "name": "Porin Promenadiapteekki",
       "address": "Liisankatu 2-4",
       "postcode": "28100",
       "city": "Pori",
@@ -4429,7 +4429,7 @@
     },
     {
       "id": "1.2.246.553.1.410",
-      "name": "Porin 2. apteekki",
+      "name": "Porin Tikkulan apteekki",
       "address": "Tikkulantie 2",
       "postcode": "28100",
       "city": "Pori",
@@ -4440,7 +4440,7 @@
     },
     {
       "id": "1.2.246.553.1.411",
-      "name": "Porin 3. apteekki",
+      "name": "Porin Puuvillan apteekki",
       "address": "Siltapuistokatu 14",
       "postcode": "28100",
       "city": "Pori",
@@ -4451,7 +4451,7 @@
     },
     {
       "id": "1.2.246.553.1.412",
-      "name": "Porin 5. apteekki",
+      "name": "Porin Iccon apteekki",
       "address": "Itäkeskuksenkaari 8",
       "postcode": "28130",
       "city": "Pori",
@@ -4462,7 +4462,7 @@
     },
     {
       "id": "1.2.246.553.1.413",
-      "name": "Porin 6. apteekki",
+      "name": "Porin Asema-apteekki",
       "address": "Isolinnankatu 34",
       "postcode": "28100",
       "city": "Pori",
@@ -4473,7 +4473,7 @@
     },
     {
       "id": "1.2.246.553.1.414",
-      "name": "Porin 7. apteekki",
+      "name": "Porin Meri-Porin Uusi Apteekki",
       "address": "Kiviaidantie 11",
       "postcode": "28800",
       "city": "Pori",
@@ -4484,7 +4484,7 @@
     },
     {
       "id": "1.2.246.553.1.415",
-      "name": "Porin 8. apteekki",
+      "name": "Porin Länsi-Porin Uusi apteekki",
       "address": "Eteläväylä 2",
       "postcode": "28610",
       "city": "Pori",
@@ -4495,7 +4495,7 @@
     },
     {
       "id": "1.2.246.553.1.416",
-      "name": "Porin 9. apteekki",
+      "name": "Porin Karhu Apteekki",
       "address": "Itäkeskuksenkaari 6",
       "postcode": "28130",
       "city": "Pori",
@@ -4506,7 +4506,7 @@
     },
     {
       "id": "1.2.246.553.1.417",
-      "name": "Porvoon 1. apteekki",
+      "name": "Porvoon Taidetehtaan apteekki",
       "address": "Läntinen Aleksanterinkatu 1",
       "postcode": "06100",
       "city": "Porvoo",
@@ -4517,7 +4517,7 @@
     },
     {
       "id": "1.2.246.553.1.418",
-      "name": "Porvoon 2. apteekki",
+      "name": "Porvoon Uusi apteekki",
       "address": "Piispankatu 30",
       "postcode": "06100",
       "city": "Porvoo",
@@ -4528,7 +4528,7 @@
     },
     {
       "id": "1.2.246.553.1.419",
-      "name": "Porvoon 3. apteekki",
+      "name": "Porvoon Kevätkummun apteekki",
       "address": "Sammontie 1",
       "postcode": "06150",
       "city": "Porvoo",
@@ -4561,7 +4561,7 @@
     },
     {
       "id": "1.2.246.553.1.423",
-      "name": "Siikalatvan 1. apteekki",
+      "name": "Siikalatvan Pulkkilan apteekki",
       "address": "Pulkkilantie 2",
       "postcode": "92600",
       "city": "Pulkkila",
@@ -4572,7 +4572,7 @@
     },
     {
       "id": "1.2.246.553.1.424",
-      "name": "Savonlinnan 5. apteekki",
+      "name": "Punkaharjun apteekki",
       "address": "Kauppatie 18",
       "postcode": "58500",
       "city": "Punkaharju",
@@ -4649,7 +4649,7 @@
     },
     {
       "id": "1.2.246.553.1.431",
-      "name": "Joensuun 7. apteekki",
+      "name": "Joensuun Pyhäselän apteekki",
       "address": "Lastaustie 2",
       "postcode": "82200",
       "city": "Hammaslahti",
@@ -4660,7 +4660,7 @@
     },
     {
       "id": "1.2.246.553.1.432",
-      "name": "Pälkäneen 1. apteekki",
+      "name": "Pälkäneen apteekki",
       "address": "Keskustie 5",
       "postcode": "36600",
       "city": "Pälkäne",
@@ -4671,7 +4671,7 @@
     },
     {
       "id": "1.2.246.553.1.433",
-      "name": "Pälkäneen 2. apteekki",
+      "name": "Pälkäneen Luopioisten apteekki",
       "address": "Keskitie 17",
       "postcode": "36760",
       "city": "Luopioinen",
@@ -4682,7 +4682,7 @@
     },
     {
       "id": "1.2.246.553.1.434",
-      "name": "Pöytyän 1. apteekki",
+      "name": "Pöytyän Riihikosken apteekki",
       "address": "Rekolantie 1 C 3",
       "postcode": "21870",
       "city": "Riihikoski",
@@ -4693,7 +4693,7 @@
     },
     {
       "id": "1.2.246.553.1.435",
-      "name": "Pöytyän 2. apteekki",
+      "name": "Pöytyän Kyrön apteekki",
       "address": "Kyröntie 30",
       "postcode": "21800",
       "city": "Kyrö",
@@ -4704,7 +4704,7 @@
     },
     {
       "id": "1.2.246.553.1.436",
-      "name": "Raahen 1. apteekki",
+      "name": "Raahen Kauppaporvarin apteekki",
       "address": "Mettalanväylä 1",
       "postcode": "92150",
       "city": "Raahe",
@@ -4715,7 +4715,7 @@
     },
     {
       "id": "1.2.246.553.1.437",
-      "name": "Raahen 2. apteekki",
+      "name": "Raahen Härkätorin apteekki",
       "address": "Laivurinkatu 26",
       "postcode": "92100",
       "city": "Raahe",
@@ -4726,7 +4726,7 @@
     },
     {
       "id": "1.2.246.553.1.438",
-      "name": "Raahen 3. apteekki",
+      "name": "Raahen Pattijoen apteekki",
       "address": "Puistotie 2 L 1",
       "postcode": "92140",
       "city": "Pattijoki",
@@ -4737,7 +4737,7 @@
     },
     {
       "id": "1.2.246.553.1.439",
-      "name": "Raision 1. apteekki",
+      "name": "Raision Ykkösapteekki",
       "address": "Voudinkatu 5",
       "postcode": "21200",
       "city": "Raisio",
@@ -4748,7 +4748,7 @@
     },
     {
       "id": "1.2.246.553.1.440",
-      "name": "Raision 2. apteekki",
+      "name": "Raision Tasalan apteekki",
       "address": "Raisiontori 6",
       "postcode": "21200",
       "city": "Raisio",
@@ -4770,7 +4770,7 @@
     },
     {
       "id": "1.2.246.553.1.442",
-      "name": "Rantsilan sivuapteekki",
+      "name": "Siikalatvan Rantsilan apteekki",
       "address": "Paavolantie 19",
       "postcode": "92500",
       "city": "Rantsila",
@@ -4792,7 +4792,7 @@
     },
     {
       "id": "1.2.246.553.1.444",
-      "name": "Rauman 1. apteekki",
+      "name": "Rauman Ensimmäinen apteekki",
       "address": "Karjalankatu 5",
       "postcode": "26100",
       "city": "Rauma",
@@ -4803,7 +4803,7 @@
     },
     {
       "id": "1.2.246.553.1.445",
-      "name": "Rauman 2. apteekki",
+      "name": "Rauman Duo apteekki",
       "address": "Porintie 4",
       "postcode": "26100",
       "city": "Rauma",
@@ -4814,7 +4814,7 @@
     },
     {
       "id": "1.2.246.553.1.446",
-      "name": "Rauman 3. apteekki",
+      "name": "Rauman Keskus-apteekki",
       "address": "Valtakatu 9",
       "postcode": "26100",
       "city": "Rauma",
@@ -4825,7 +4825,7 @@
     },
     {
       "id": "1.2.246.553.1.447",
-      "name": "Rauman 4. apteekki",
+      "name": "Rauman Paroalhon apteekki",
       "address": "Monnankatu 2",
       "postcode": "26660",
       "city": "Rauma",
@@ -4858,7 +4858,7 @@
     },
     {
       "id": "1.2.246.553.1.451",
-      "name": "Rautjärven apteekki",
+      "name": "Simpeleen apteekki",
       "address": "Roihankatu 12-14",
       "postcode": "56800",
       "city": "Simpele",
@@ -4880,7 +4880,7 @@
     },
     {
       "id": "1.2.246.553.1.453",
-      "name": "Riihimäen 1. apteekki",
+      "name": "Riihimäen Aurinkoapteekki",
       "address": "Voimalankatu 2",
       "postcode": "11130",
       "city": "Riihimäki",
@@ -4891,7 +4891,7 @@
     },
     {
       "id": "1.2.246.553.1.454",
-      "name": "Riihimäen 2. apteekki",
+      "name": "Riihimäen Aarre apteekki",
       "address": "Hämeenkatu 24-26",
       "postcode": "11100",
       "city": "Riihimäki",
@@ -4902,7 +4902,7 @@
     },
     {
       "id": "1.2.246.553.1.455",
-      "name": "Mikkelin 8. apteekki",
+      "name": "Ristiinan apteekki",
       "address": "Brahentie 16",
       "postcode": "52300",
       "city": "Ristiina",
@@ -4924,7 +4924,7 @@
     },
     {
       "id": "1.2.246.553.1.457",
-      "name": "Rovaniemen 1. apteekki",
+      "name": "Rovaniemen Sampo apteekki",
       "address": "Rovakatu 28",
       "postcode": "96200",
       "city": "Rovaniemi",
@@ -4935,7 +4935,7 @@
     },
     {
       "id": "1.2.246.553.1.458",
-      "name": "Rovaniemen 2. apteekki",
+      "name": "Rovaniemen Keskus apteekki",
       "address": "Teollisuustie 2",
       "postcode": "96320",
       "city": "Rovaniemi",
@@ -4946,7 +4946,7 @@
     },
     {
       "id": "1.2.246.553.1.459",
-      "name": "Rovaniemen 3. apteekki",
+      "name": "Rovaniemen Kairatien apteekki",
       "address": "Kairatie 2",
       "postcode": "96100",
       "city": "Rovaniemi",
@@ -4957,7 +4957,7 @@
     },
     {
       "id": "1.2.246.553.1.460",
-      "name": "Rovaniemen 4. apteekki",
+      "name": "Rovaniemen Saarenkylän apteekki",
       "address": "Pulkamontie 2",
       "postcode": "96900",
       "city": "Saarenkylä",
@@ -5023,7 +5023,7 @@
     },
     {
       "id": "1.2.246.553.1.466",
-      "name": "Kangasalan 3. apteekki",
+      "name": "Kangasalan Sahalahden apteekki",
       "address": "Isoniementie 1",
       "postcode": "36420",
       "city": "Sahalahti",
@@ -5045,7 +5045,7 @@
     },
     {
       "id": "1.2.246.553.1.468",
-      "name": "Salon 1. apteekki",
+      "name": "Salon Vanha apteekki",
       "address": "Vilhonkatu 8 L 1-13",
       "postcode": "24100",
       "city": "Salo",
@@ -5056,7 +5056,7 @@
     },
     {
       "id": "1.2.246.553.1.469",
-      "name": "Salon 2. apteekki",
+      "name": "Salon Uusi apteekki",
       "address": "Hämeentie 24-30",
       "postcode": "24240",
       "city": "Salo",
@@ -5067,7 +5067,7 @@
     },
     {
       "id": "1.2.246.553.1.470",
-      "name": "Lohjan 6. apteekki",
+      "name": "Saukkolan apteekki",
       "address": "Turuntie 2180",
       "postcode": "09430",
       "city": "Saukkola",
@@ -5100,7 +5100,7 @@
     },
     {
       "id": "1.2.246.553.1.473",
-      "name": "Savonlinnan 1. apteekki",
+      "name": "Savonlinnan Savon apteekki",
       "address": "Suuri Savontie 1",
       "postcode": "57510",
       "city": "Savonlinna",
@@ -5111,7 +5111,7 @@
     },
     {
       "id": "1.2.246.553.1.474",
-      "name": "Savonlinnan 2. apteekki",
+      "name": "Savonlinnan Uusi apteekki",
       "address": "Tulliportinkatu 10",
       "postcode": "57100",
       "city": "Savonlinna",
@@ -5122,7 +5122,7 @@
     },
     {
       "id": "1.2.246.553.1.475",
-      "name": "Savonlinnan 3. apteekki",
+      "name": "Savonlinnan Linnanportin apteekki",
       "address": "Nojanmaantie 15",
       "postcode": "57210",
       "city": "Savonlinna",
@@ -5133,7 +5133,7 @@
     },
     {
       "id": "1.2.246.553.1.476",
-      "name": "Seinäjoen 1. apteekki",
+      "name": "Seinäjoen Ykkösapteekki",
       "address": "Väinämöinen 2",
       "postcode": "60120",
       "city": "Seinäjoki",
@@ -5144,7 +5144,7 @@
     },
     {
       "id": "1.2.246.553.1.477",
-      "name": "Seinäjoen 2. apteekki",
+      "name": "Seinäjoen Keskus-apteekki",
       "address": "Suupohjantie 57",
       "postcode": "60320",
       "city": "Seinäjoki",
@@ -5155,7 +5155,7 @@
     },
     {
       "id": "1.2.246.553.1.478",
-      "name": "Seinäjoen 3. apteekki",
+      "name": "Seinäjoen Törnävän apteekki",
       "address": "Ruukintie 81",
       "postcode": "60100",
       "city": "Seinäjoki",
@@ -5166,7 +5166,7 @@
     },
     {
       "id": "1.2.246.553.1.479",
-      "name": "Seinäjoen 4. apteekki",
+      "name": "Seinäjoen Peräseinäjoen apteekki",
       "address": "Nikolaintie 2 C",
       "postcode": "61100",
       "city": "Peräseinäjoki",
@@ -5188,7 +5188,7 @@
     },
     {
       "id": "1.2.246.553.1.482",
-      "name": "Siilinjärven 1. apteekki",
+      "name": "Siilinjärven apteekki",
       "address": "Kuiluntie 8",
       "postcode": "71800",
       "city": "Siilinjärvi",
@@ -5210,7 +5210,7 @@
     },
     {
       "id": "1.2.246.553.1.484",
-      "name": "Sipoon 1. apteekki",
+      "name": "Sipoon apteekki",
       "address": "Iso Kylätie 20",
       "postcode": "04130",
       "city": "Sipoo",
@@ -5221,7 +5221,7 @@
     },
     {
       "id": "1.2.246.553.1.485",
-      "name": "Sipoon 2. apteekki",
+      "name": "Sipoon Söderkullan apteekki",
       "address": "Amiraalintie 4",
       "postcode": "01150",
       "city": "Söderkulla",
@@ -5276,7 +5276,7 @@
     },
     {
       "id": "1.2.246.553.1.490",
-      "name": "Porvoon 4. apteekki",
+      "name": "Porvoon Näsin apteekki",
       "address": "Aleksanterinkaari 1",
       "postcode": "06100",
       "city": "Porvoo",
@@ -5309,7 +5309,7 @@
     },
     {
       "id": "1.2.246.553.1.493",
-      "name": "Äänekosken 2. apteekki",
+      "name": "Äänekosken Suolahden apteekki",
       "address": "Asemakatu 22",
       "postcode": "44200",
       "city": "Suolahti",
@@ -5364,7 +5364,7 @@
     },
     {
       "id": "1.2.246.553.1.498",
-      "name": "Kemiönsaaren 2. apteekki",
+      "name": "Taalintehtaan apteekki",
       "address": "Kolapakantie 4 A 1",
       "postcode": "25900",
       "city": "Taalintehdas",
@@ -5408,7 +5408,7 @@
     },
     {
       "id": "1.2.246.553.1.502",
-      "name": "Raaseporin 1. apteekki",
+      "name": "Raaseporin Tammisaaren apteekki",
       "address": "Rautatienkatu 5",
       "postcode": "10600",
       "city": "Tammisaari",
@@ -5419,7 +5419,7 @@
     },
     {
       "id": "1.2.246.553.1.503",
-      "name": "Raaseporin 2. apteekki",
+      "name": "Raaseporin Tammisaaren Uusi apteekki",
       "address": "Asematie 6",
       "postcode": "10600",
       "city": "Tammisaari",
@@ -5430,7 +5430,7 @@
     },
     {
       "id": "1.2.246.553.1.504",
-      "name": "Tampereen 1. apteekki",
+      "name": "Tampereen Ensimmäinen apteekki Tampere",
       "address": "Hämeenkatu 21",
       "postcode": "33200",
       "city": "Tampere",
@@ -5441,7 +5441,7 @@
     },
     {
       "id": "1.2.246.553.1.505",
-      "name": "Tampereen 2. apteekki",
+      "name": "Tampereen Apteekki Koilliskeskus",
       "address": "Prisma-keskus Linnainmaa",
       "postcode": "33580",
       "city": "Tampere",
@@ -5452,7 +5452,7 @@
     },
     {
       "id": "1.2.246.553.1.506",
-      "name": "Tampereen 3. apteekki",
+      "name": "Tampereen Tammerkosken apteekki",
       "address": "Vuolteenkatu 1",
       "postcode": "33100",
       "city": "Tampere",
@@ -5463,7 +5463,7 @@
     },
     {
       "id": "1.2.246.553.1.507",
-      "name": "Tampereen 4. apteekki",
+      "name": "Tampereen Turtolan apteekki",
       "address": "Martinpojankatu 4 A",
       "postcode": "33710",
       "city": "Tampere",
@@ -5474,7 +5474,7 @@
     },
     {
       "id": "1.2.246.553.1.508",
-      "name": "Tampereen 5. apteekki",
+      "name": "Tampereen Tammelan apteekki",
       "address": "Itsenäisyydenkatu 17",
       "postcode": "33500",
       "city": "Tampere",
@@ -5485,7 +5485,7 @@
     },
     {
       "id": "1.2.246.553.1.509",
-      "name": "Tampereen 6. apteekki",
+      "name": "Tampereen Lähi-Apteekki Hervanta",
       "address": "Kaupakeskus Duo",
       "postcode": "33720",
       "city": "Tampere",
@@ -5496,7 +5496,7 @@
     },
     {
       "id": "1.2.246.553.1.510",
-      "name": "Tampereen 7. apteekki",
+      "name": "Tampereen Kuninkaankulman apteekki",
       "address": "Puutarhakatu 10",
       "postcode": "33210",
       "city": "Tampere",
@@ -5507,7 +5507,7 @@
     },
     {
       "id": "1.2.246.553.1.511",
-      "name": "Tampereen 8. apteekki",
+      "name": "Tampereen Tullintorin apteekki",
       "address": "Tullikatu 6",
       "postcode": "33100",
       "city": "Tampere",
@@ -5518,7 +5518,7 @@
     },
     {
       "id": "1.2.246.553.1.512",
-      "name": "Tampereen 9. apteekki",
+      "name": "Tampereen Lempi apteekki",
       "address": "Harjuntausta 7",
       "postcode": "33400",
       "city": "Tampere",
@@ -5529,7 +5529,7 @@
     },
     {
       "id": "1.2.246.553.1.513",
-      "name": "Tampereen 10. apteekki",
+      "name": "Tampereen Viinikan apteekki",
       "address": "Viinikankatu 36",
       "postcode": "33800",
       "city": "Tampere",
@@ -5540,7 +5540,7 @@
     },
     {
       "id": "1.2.246.553.1.514",
-      "name": "Tampereen 11. apteekki",
+      "name": "Tampereen Haka-apteekki",
       "address": "Sammonkatu 75",
       "postcode": "33540",
       "city": "Tampere",
@@ -5551,7 +5551,7 @@
     },
     {
       "id": "1.2.246.553.1.515",
-      "name": "Tampereen 12. apteekki",
+      "name": "Tampereen Koivu apteekki",
       "address": "Lempääläntie 21",
       "postcode": "33820",
       "city": "Tampere",
@@ -5562,7 +5562,7 @@
     },
     {
       "id": "1.2.246.553.1.516",
-      "name": "Tampereen 13. apteekki",
+      "name": "Tampereen Sammon apteekki",
       "address": "Sammonkatu 34",
       "postcode": "33540",
       "city": "Tampere",
@@ -5573,7 +5573,7 @@
     },
     {
       "id": "1.2.246.553.1.517",
-      "name": "Tampereen 14. apteekki",
+      "name": "Tampereen Moroapteekki Tesoma",
       "address": "Tesomankuja 7",
       "postcode": "33310",
       "city": "Tampere",
@@ -5584,7 +5584,7 @@
     },
     {
       "id": "1.2.246.553.1.518",
-      "name": "Tampereen 15. apteekki",
+      "name": "Tampereen Hervannan apteekki",
       "address": "Insinöörinkatu 23",
       "postcode": "33720",
       "city": "Tampere",
@@ -5595,7 +5595,7 @@
     },
     {
       "id": "1.2.246.553.1.519",
-      "name": "Tampereen 16. apteekki",
+      "name": "Tampereen Kaukajärven apteekki",
       "address": "Keskisenkatu 5",
       "postcode": "33710",
       "city": "Tampere",
@@ -5606,7 +5606,7 @@
     },
     {
       "id": "1.2.246.553.1.520",
-      "name": "Tampereen 17. apteekki",
+      "name": "Tampereen Lielahden apteekki",
       "address": "Turvesuonkatu 2",
       "postcode": "33400",
       "city": "Tampere",
@@ -5617,7 +5617,7 @@
     },
     {
       "id": "1.2.246.553.1.521",
-      "name": "Tampereen 18. apteekki",
+      "name": "Tampereen Koskikeskuksen apteekki",
       "address": "Hatanpään valtatie 1",
       "postcode": "33100",
       "city": "Tampere",
@@ -5628,7 +5628,7 @@
     },
     {
       "id": "1.2.246.553.1.522",
-      "name": "Tampereen 19. apteekki",
+      "name": "Tampereen Linnainmaan apteekki",
       "address": "Mäentakusenkatu 1",
       "postcode": "33580",
       "city": "Tampere",
@@ -5694,7 +5694,7 @@
     },
     {
       "id": "1.2.246.553.1.528",
-      "name": "Akaan 1. apteekki",
+      "name": "Akaan Toijalan apteekki",
       "address": "Valtatie 6",
       "postcode": "37800",
       "city": "Toijala",
@@ -5716,7 +5716,7 @@
     },
     {
       "id": "1.2.246.553.1.530",
-      "name": "Tornion 1. apteekki",
+      "name": "Tornion apteekki",
       "address": "Kauppakeskus Rajalla på Gränsen",
       "postcode": "95400",
       "city": "Tornio",
@@ -5727,7 +5727,7 @@
     },
     {
       "id": "1.2.246.553.1.531",
-      "name": "Tornion 2. apteekki",
+      "name": "Tornion Alatornion apteekki",
       "address": "Teollisuuskatu 5",
       "postcode": "95420",
       "city": "Tornio",
@@ -5738,7 +5738,7 @@
     },
     {
       "id": "1.2.246.553.1.533",
-      "name": "Turun 2. apteekki",
+      "name": "Turun Manhattan apteekki",
       "address": "Pitkämäenkatu 4",
       "postcode": "20250",
       "city": "Turku",
@@ -5749,7 +5749,7 @@
     },
     {
       "id": "1.2.246.553.1.534",
-      "name": "Turun 3. apteekki",
+      "name": "Turun Hansatorin apteekki",
       "address": "Yliopistonkatu 20, 2. kerros",
       "postcode": "20100",
       "city": "Turku",
@@ -5760,7 +5760,7 @@
     },
     {
       "id": "1.2.246.553.1.535",
-      "name": "Turun 4. apteekki",
+      "name": "Turun Keskus-Apteekki",
       "address": "Viilarinkatu 3",
       "postcode": "20320",
       "city": "Turku",
@@ -5771,7 +5771,7 @@
     },
     {
       "id": "1.2.246.553.1.536",
-      "name": "Turun 5. apteekki",
+      "name": "Turun Kasken apteekki",
       "address": "Kaskenkatu 10",
       "postcode": "20700",
       "city": "Turku",
@@ -5782,7 +5782,7 @@
     },
     {
       "id": "1.2.246.553.1.537",
-      "name": "Turun 6. apteekki",
+      "name": "Turun Humaliston apteekki",
       "address": "Humalistonkatu 11",
       "postcode": "20100",
       "city": "Turku",
@@ -5793,7 +5793,7 @@
     },
     {
       "id": "1.2.246.553.1.538",
-      "name": "Turun 7. apteekki",
+      "name": "Turun Wiklundin apteekki",
       "address": "Kauppiaskatu 7-9",
       "postcode": "20100",
       "city": "Turku",
@@ -5804,7 +5804,7 @@
     },
     {
       "id": "1.2.246.553.1.539",
-      "name": "Turun 8. apteekki",
+      "name": "Turun Linnan apteekki",
       "address": "Kauppiaskatu 10",
       "postcode": "20100",
       "city": "Turku",
@@ -5815,7 +5815,7 @@
     },
     {
       "id": "1.2.246.553.1.540",
-      "name": "Turun 9. apteekki",
+      "name": "Turun Pyhän Henrikin apteekki",
       "address": "Kalevantie 41",
       "postcode": "20520",
       "city": "Turku",
@@ -5826,7 +5826,7 @@
     },
     {
       "id": "1.2.246.553.1.541",
-      "name": "Turun 10. apteekki",
+      "name": "Turun Martin apteekki",
       "address": "Kupittaankatu 146",
       "postcode": "20810",
       "city": "Turku",
@@ -5837,7 +5837,7 @@
     },
     {
       "id": "1.2.246.553.1.542",
-      "name": "Turun 11. apteekki",
+      "name": "Turun Raunistulan apteekki",
       "address": "Autistenkatu 1",
       "postcode": "20300",
       "city": "Turku",
@@ -5848,7 +5848,7 @@
     },
     {
       "id": "1.2.246.553.1.543",
-      "name": "Turun 12. apteekki",
+      "name": "Turun Nummenmäen apteekki",
       "address": "Hämeentie 24",
       "postcode": "20540",
       "city": "Turku",
@@ -5859,7 +5859,7 @@
     },
     {
       "id": "1.2.246.553.1.544",
-      "name": "Turun 13. apteekki",
+      "name": "Turun Kupittaan apteekki",
       "address": "Kunnallissairaalantie 20",
       "postcode": "20700",
       "city": "Turku",
@@ -5870,7 +5870,7 @@
     },
     {
       "id": "1.2.246.553.1.545",
-      "name": "Turun 14. apteekki",
+      "name": "Turun Varissuon apteekki",
       "address": "Littoistentie 81",
       "postcode": "20610",
       "city": "Turku",
@@ -5881,7 +5881,7 @@
     },
     {
       "id": "1.2.246.553.1.546",
-      "name": "Turun 15. apteekki",
+      "name": "Turun Tampereentien apteekki",
       "address": "Vanha Tampereentie 108",
       "postcode": "20300",
       "city": "Turku",
@@ -5892,7 +5892,7 @@
     },
     {
       "id": "1.2.246.553.1.547",
-      "name": "Turun 16. apteekki",
+      "name": "Turun Länsikeskuksen apteekki",
       "address": "Markulantie 150",
       "postcode": "20320",
       "city": "Turku",
@@ -5903,7 +5903,7 @@
     },
     {
       "id": "1.2.246.553.1.548",
-      "name": "Turun 17. apteekki",
+      "name": "Turun Nova apteekki",
       "address": "Uudenmaantie 17",
       "postcode": "20700",
       "city": "Turku",
@@ -5914,7 +5914,7 @@
     },
     {
       "id": "1.2.246.553.1.549",
-      "name": "Turun 18. apteekki",
+      "name": "Turun Hirvensalon apteekki",
       "address": "Pitkäpellonkatu 2",
       "postcode": "20900",
       "city": "Turku",
@@ -5936,7 +5936,7 @@
     },
     {
       "id": "1.2.246.553.1.551",
-      "name": "Tuusulan 1. apteekki",
+      "name": "Tuusulan apteekki",
       "address": "Autoasemankatu 4",
       "postcode": "04300",
       "city": "Tuusula",
@@ -5947,7 +5947,7 @@
     },
     {
       "id": "1.2.246.553.1.552",
-      "name": "Tuusulan 2. apteekki",
+      "name": "Tuusulan Jokelan apteekki",
       "address": "Keskustie 10",
       "postcode": "05400",
       "city": "Jokela",
@@ -5980,7 +5980,7 @@
     },
     {
       "id": "1.2.246.553.1.555",
-      "name": "Alavuden 2. apteekki",
+      "name": "Töysän apteekki",
       "address": "Paavolantie 1",
       "postcode": "63600",
       "city": "Töysä",
@@ -6002,7 +6002,7 @@
     },
     {
       "id": "1.2.246.553.1.557",
-      "name": "Uudenkaupungin 1. apteekki",
+      "name": "Uudenkaupungin ensimmäinen apteekki",
       "address": "Alinenkatu 28",
       "postcode": "23500",
       "city": "Uusikaupunki",
@@ -6013,7 +6013,7 @@
     },
     {
       "id": "1.2.246.553.1.558",
-      "name": "Uudenkaupungin 2. apteekki",
+      "name": "Uudenkaupungin Uusi apteekki",
       "address": "Vakka-Suomenkatu 18",
       "postcode": "23500",
       "city": "Uusikaupunki",
@@ -6046,7 +6046,7 @@
     },
     {
       "id": "1.2.246.553.1.561",
-      "name": "Vaasan 1. apteekki",
+      "name": "Vaasan Vanha apteekki",
       "address": "Kokkokalliontie 2-6",
       "postcode": "65300",
       "city": "Vaasa",
@@ -6057,7 +6057,7 @@
     },
     {
       "id": "1.2.246.553.1.562",
-      "name": "Vaasan 2. apteekki",
+      "name": "Vaasan Keskusapteekki",
       "address": "Hovioikeudenpuistikko 15",
       "postcode": "65100",
       "city": "Vaasa",
@@ -6068,7 +6068,7 @@
     },
     {
       "id": "1.2.246.553.1.563",
-      "name": "Vaasan 3. apteekki",
+      "name": "Vaasan Minimani apteekki",
       "address": "Laivakatu 13",
       "postcode": "65100",
       "city": "Vaasa",
@@ -6079,7 +6079,7 @@
     },
     {
       "id": "1.2.246.553.1.564",
-      "name": "Vaasan 4. apteekki",
+      "name": "Vaasan Palosaaren apteekki",
       "address": "Palosaarentie 16",
       "postcode": "65200",
       "city": "Vaasa",
@@ -6090,7 +6090,7 @@
     },
     {
       "id": "1.2.246.553.1.565",
-      "name": "Vaasan 5. apteekki",
+      "name": "Vaasan Kuninkaanapteekki",
       "address": "Elementtitehtaantie 1",
       "postcode": "65380",
       "city": "Vaasa",
@@ -6101,7 +6101,7 @@
     },
     {
       "id": "1.2.246.553.1.566",
-      "name": "Vaasan 6. apteekki",
+      "name": "Vaasan Kivihaan apteekki",
       "address": "Kiilletie 2",
       "postcode": "65300",
       "city": "Vaasa",
@@ -6112,7 +6112,7 @@
     },
     {
       "id": "1.2.246.553.1.567",
-      "name": "Valkeakosken 1. apteekki",
+      "name": "Valkeakosken Keskusapteekki",
       "address": "Torikeskus",
       "postcode": "37600",
       "city": "Valkeakoski",
@@ -6123,7 +6123,7 @@
     },
     {
       "id": "1.2.246.553.1.568",
-      "name": "Valkeakosken 2. apteekki",
+      "name": "Valkeakosken Koskikaran apteekki",
       "address": "Valtakatu 9-11",
       "postcode": "37600",
       "city": "Valkeakoski",
@@ -6134,7 +6134,7 @@
     },
     {
       "id": "1.2.246.553.1.569",
-      "name": "Kouvolan 8. apteekki",
+      "name": "Kouvolan Valkealan apteekki",
       "address": "Kustaa III tie 3",
       "postcode": "45370",
       "city": "Valkeala",
@@ -6145,7 +6145,7 @@
     },
     {
       "id": "1.2.246.553.1.570",
-      "name": "Nurmeksen 3. apteekki",
+      "name": "Valtimon apteekki",
       "address": "Keskuskatu 38",
       "postcode": "75700",
       "city": "Valtimo",
@@ -6156,7 +6156,7 @@
     },
     {
       "id": "1.2.246.553.1.571",
-      "name": "Sastamalan 1. apteekki",
+      "name": "Hyvinvointiapteekki Sastamala",
       "address": "Vammalantie 7",
       "postcode": "38200",
       "city": "Sastamala",
@@ -6167,7 +6167,7 @@
     },
     {
       "id": "1.2.246.553.1.572",
-      "name": "Sastamalan 2. apteekki",
+      "name": "Apteekki Sastamala",
       "address": "Itsenäisyydentie 66",
       "postcode": "38200",
       "city": "Sastamala",
@@ -6189,7 +6189,7 @@
     },
     {
       "id": "1.2.246.553.1.574",
-      "name": "Vantaan 1. apteekki",
+      "name": "Vantaan Tikkurilan Ykkösapteekki",
       "address": "Kielotie 11",
       "postcode": "01300",
       "city": "Vantaa",
@@ -6200,7 +6200,7 @@
     },
     {
       "id": "1.2.246.553.1.575",
-      "name": "Vantaan 2. apteekki",
+      "name": "Vantaan Jumbon Apteekki",
       "address": "Vantaanportinkatu 3",
       "postcode": "01510",
       "city": "Vantaa",
@@ -6211,7 +6211,7 @@
     },
     {
       "id": "1.2.246.553.1.576",
-      "name": "Vantaan 3. apteekki",
+      "name": "Vantaan Korson apteekki",
       "address": "Metsolantie 1",
       "postcode": "01450",
       "city": "Vantaa",
@@ -6222,7 +6222,7 @@
     },
     {
       "id": "1.2.246.553.1.577",
-      "name": "Vantaan 4. apteekki",
+      "name": "Vantaan Tikkurilan Uusi apteekki",
       "address": "Talvikkitie 37",
       "postcode": "01300",
       "city": "Vantaa",
@@ -6233,7 +6233,7 @@
     },
     {
       "id": "1.2.246.553.1.578",
-      "name": "Vantaan 5. apteekki",
+      "name": "Vantaan Myyrmäen apteekki",
       "address": "Jönsaksentie 5",
       "postcode": "01600",
       "city": "Vantaa",
@@ -6244,7 +6244,7 @@
     },
     {
       "id": "1.2.246.553.1.579",
-      "name": "Vantaan 6. apteekki",
+      "name": "Vantaan Hakunilan apteekki",
       "address": "Laukkarinne 6",
       "postcode": "01200",
       "city": "Vantaa",
@@ -6255,7 +6255,7 @@
     },
     {
       "id": "1.2.246.553.1.580",
-      "name": "Vantaan 7. apteekki",
+      "name": "Vantaan Martinlaakson apteekki",
       "address": "Kivivuorentie 4",
       "postcode": "01620",
       "city": "Vantaa",
@@ -6266,7 +6266,7 @@
     },
     {
       "id": "1.2.246.553.1.581",
-      "name": "Vantaan 8. apteekki",
+      "name": "Vantaan Koivukylän apteekki",
       "address": "Ojalehdonkuja 1",
       "postcode": "01400",
       "city": "Vantaa",
@@ -6277,7 +6277,7 @@
     },
     {
       "id": "1.2.246.553.1.582",
-      "name": "Vantaan 9. apteekki",
+      "name": "Vantaan Myyrmannin apteekki",
       "address": "Iskoskuja 3 A 37",
       "postcode": "01600",
       "city": "Vantaa",
@@ -6288,7 +6288,7 @@
     },
     {
       "id": "1.2.246.553.1.583",
-      "name": "Vantaan 10. apteekki",
+      "name": "Vantaan Tikkurilan Asema-apteekki",
       "address": "Kauppakeskus Tikkuri",
       "postcode": "01300",
       "city": "Vantaa",
@@ -6299,7 +6299,7 @@
     },
     {
       "id": "1.2.246.553.1.584",
-      "name": "Vantaan 11. apteekki",
+      "name": "Vantaan Pähkinärinteen apteekki",
       "address": "Pähkinärinteen ostoskeskus",
       "postcode": "01710",
       "city": "Vantaa",
@@ -6310,7 +6310,7 @@
     },
     {
       "id": "1.2.246.553.1.585",
-      "name": "Vantaan 12. apteekki",
+      "name": "Vantaan Simonkylän Uusi apteekki",
       "address": "Leinikkitie 22",
       "postcode": "01350",
       "city": "Vantaa",
@@ -6321,7 +6321,7 @@
     },
     {
       "id": "1.2.246.553.1.586",
-      "name": "Varkauden 1. apteekki",
+      "name": "Varkauden Vanha apteekki",
       "address": "Sorvikatu 3",
       "postcode": "78200",
       "city": "Varkaus",
@@ -6332,7 +6332,7 @@
     },
     {
       "id": "1.2.246.553.1.587",
-      "name": "Varkauden 2. apteekki",
+      "name": "Varkauden Taulumäen apteekki",
       "address": "Relanderinkatu 30 (Citymarket)",
       "postcode": "78200",
       "city": "Varkaus",
@@ -6343,7 +6343,7 @@
     },
     {
       "id": "1.2.246.553.1.588",
-      "name": "Varkauden 3. apteekki",
+      "name": "Varkauden Kommilan apteekki",
       "address": "Savontie 42",
       "postcode": "78300",
       "city": "Varkaus",
@@ -6354,7 +6354,7 @@
     },
     {
       "id": "1.2.246.553.1.589",
-      "name": "Lapinlahden 2. apteekki",
+      "name": "Lapinlahden Varpaisjärven apteekki",
       "address": "Urheilutie 1 (huoneisto L6)",
       "postcode": "73200",
       "city": "Varpaisjärvi",
@@ -6409,7 +6409,7 @@
     },
     {
       "id": "1.2.246.553.1.594",
-      "name": "Raahen 4. apteekki",
+      "name": "Vihannin apteekki",
       "address": "Asematie 3 LT 8",
       "postcode": "86400",
       "city": "Vihanti",
@@ -6420,7 +6420,7 @@
     },
     {
       "id": "1.2.246.553.1.595",
-      "name": "Vihdin 1. apteekki",
+      "name": "Vihdin I apteekki",
       "address": "Helsingintie 26 a",
       "postcode": "03400",
       "city": "Vihti",
@@ -6431,7 +6431,7 @@
     },
     {
       "id": "1.2.246.553.1.596",
-      "name": "Vihdin 2. apteekki",
+      "name": "Vihdin Nummelan apteekki",
       "address": "Tuusankaari 1",
       "postcode": "03100",
       "city": "Nummela",
@@ -6442,7 +6442,7 @@
     },
     {
       "id": "1.2.246.553.1.597",
-      "name": "Akaan 2. apteekki",
+      "name": "Akaan Viialan apteekki",
       "address": "Keskuskatu 47",
       "postcode": "37830",
       "city": "Akaa",
@@ -6464,7 +6464,7 @@
     },
     {
       "id": "1.2.246.553.1.600",
-      "name": "Mänttä-Vilppulan 2. apteekki",
+      "name": "Vilppulan apteekki",
       "address": "Keskuskatu 5",
       "postcode": "35700",
       "city": "Vilppula",
@@ -6508,7 +6508,7 @@
     },
     {
       "id": "1.2.246.553.1.604",
-      "name": "Vaasan 7. apteekki",
+      "name": "Vähänkyrön apteekki",
       "address": "Heikkiläntie 1",
       "postcode": "66500",
       "city": "Vähäkyrö",
@@ -6519,7 +6519,7 @@
     },
     {
       "id": "1.2.246.553.1.605",
-      "name": "Vöyrin 1. apteekki",
+      "name": "Vöyrin apteekki",
       "address": "Vöyrintie 5",
       "postcode": "66600",
       "city": "Vöyri",
@@ -6530,7 +6530,7 @@
     },
     {
       "id": "1.2.246.553.1.606",
-      "name": "Kauhavan 3. apteekki",
+      "name": "Kauhavan Ylihärmän apteekki",
       "address": "Järventie 1",
       "postcode": "62375",
       "city": "Ylihärmä",
@@ -6541,7 +6541,7 @@
     },
     {
       "id": "1.2.246.553.1.607",
-      "name": "Seinäjoen 6. apteekki",
+      "name": "Seinäjoen Ylistaron apteekki",
       "address": "Kaukolanraitti 2",
       "postcode": "61400",
       "city": "Ylistaro",
@@ -6563,7 +6563,7 @@
     },
     {
       "id": "1.2.246.553.1.609",
-      "name": "Ylivieskan 1. apteekki",
+      "name": "Ylivieskan Ykkösapteekki",
       "address": "Rautatienkatu 6",
       "postcode": "84100",
       "city": "Ylivieska",
@@ -6574,7 +6574,7 @@
     },
     {
       "id": "1.2.246.553.1.610",
-      "name": "Yläneen sivuapteekki",
+      "name": "Pöytyän Yläneen sivuapteekki",
       "address": "Kuntolantie 1 B",
       "postcode": "21900",
       "city": "Yläne",
@@ -6585,7 +6585,7 @@
     },
     {
       "id": "1.2.246.553.1.611",
-      "name": "Ylöjärven 1. apteekki",
+      "name": "Ylöjärven apteekki",
       "address": "Mikkolantie 7",
       "postcode": "33470",
       "city": "Ylöjärvi",
@@ -6607,7 +6607,7 @@
     },
     {
       "id": "1.2.246.553.1.613",
-      "name": "Sastamalan 4. apteekki",
+      "name": "Sastamalan Äetsän apteekki",
       "address": "Päätie 11",
       "postcode": "32740",
       "city": "Sastamala",
@@ -6629,7 +6629,7 @@
     },
     {
       "id": "1.2.246.553.1.615",
-      "name": "Äänekosken 1. apteekki",
+      "name": "Äänekosken apteekki",
       "address": "Matkakatu 2",
       "postcode": "44100",
       "city": "Äänekoski",
@@ -6662,7 +6662,7 @@
     },
     {
       "id": "1.2.246.553.1.621",
-      "name": "Riihikedon sivuapteekki",
+      "name": "Porin Kampuksen sivuapteekki",
       "address": "Satakunnankatu 23 D",
       "postcode": "28130",
       "city": "Pori",
@@ -6739,7 +6739,7 @@
     },
     {
       "id": "1.2.246.553.1.628",
-      "name": "Heinolan 3. apteekki",
+      "name": "Heinolan Kirkonkylän apteekki",
       "address": "Työmiehentie 33",
       "postcode": "18200",
       "city": "Heinola",
@@ -6750,7 +6750,7 @@
     },
     {
       "id": "1.2.246.553.1.629",
-      "name": "Lentoaseman sivuapteekki",
+      "name": "Vantaan Lentoaseman sivuapteekki",
       "address": "Lentoasemantie 1",
       "postcode": "01530",
       "city": "Vantaa",
@@ -6783,7 +6783,7 @@
     },
     {
       "id": "1.2.246.553.1.634",
-      "name": "Lempäälän 3. apteekki",
+      "name": "Lempäälän Apteekki Ideapark",
       "address": "Ideaparkinkatu 4",
       "postcode": "37570",
       "city": "Lempäälä",
@@ -6827,7 +6827,7 @@
     },
     {
       "id": "1.2.246.553.1.639",
-      "name": "Kuopion 15. apteekki",
+      "name": "Kuopion Apteekki Männistö",
       "address": "Kalevalankatu 23 A2",
       "postcode": "70500",
       "city": "Kuopio",
@@ -6937,7 +6937,7 @@
     },
     {
       "id": "1.2.246.553.1.654",
-      "name": "Tuusulan 3. apteekki",
+      "name": "Tuusulan Kellokosken apteekki",
       "address": "Vanha Valtatie 197",
       "postcode": "04500",
       "city": "Kellokoski",
@@ -6959,7 +6959,7 @@
     },
     {
       "id": "1.2.246.553.1.656",
-      "name": "Kiihtelysvaaran sivuapteekki",
+      "name": "Kiihtelysvaaran apteekki",
       "address": "Mäkräntie 8",
       "postcode": "82140",
       "city": "Kiihtelysvaara",
@@ -7003,7 +7003,7 @@
     },
     {
       "id": "1.2.246.553.1.661",
-      "name": "Kiveriön sivuapteekki",
+      "name": "Lähiapteekki Kiveriö",
       "address": "Kiveriönkatu 32",
       "postcode": "15200",
       "city": "Lahti",
@@ -7113,7 +7113,7 @@
     },
     {
       "id": "1.2.246.553.1.678",
-      "name": "Jyväskylän 12. apteekki",
+      "name": "Jyväskylän Kuokkalan apteekki",
       "address": "Polttolinja 7",
       "postcode": "40520",
       "city": "Jyväskylä",
@@ -7124,7 +7124,7 @@
     },
     {
       "id": "1.2.246.553.1.679",
-      "name": "Hallin (Kuoreveden) sivuapteekki",
+      "name": "Hallin sivuapteekki",
       "address": "Korpitie 4",
       "postcode": "35600",
       "city": "Halli",
@@ -7190,7 +7190,7 @@
     },
     {
       "id": "1.2.246.553.1.687",
-      "name": "Kontiolahden 2. apteekki",
+      "name": "Lehmon apteekki",
       "address": "Ensolantie 1",
       "postcode": "80710",
       "city": "Lehmo",
@@ -7201,7 +7201,7 @@
     },
     {
       "id": "1.2.246.553.1.688",
-      "name": "Lehtimäen sivuapteekki",
+      "name": "Lehtimäen apteekki",
       "address": "Keskustie 2",
       "postcode": "63500",
       "city": "Lehtimäki",
@@ -7256,7 +7256,7 @@
     },
     {
       "id": "1.2.246.553.1.694",
-      "name": "Lohtajan sivuapteekki",
+      "name": "Kajaanin Lohtajan sivuapteekki",
       "address": "Taikatie 4",
       "postcode": "87700",
       "city": "Kajaani",
@@ -7267,7 +7267,7 @@
     },
     {
       "id": "1.2.246.553.1.695",
-      "name": "Lohtajan sivuapteekki",
+      "name": "Himangan Lohtajan sivuapteekki",
       "address": "Metsäpellontie 2",
       "postcode": "68230",
       "city": "Lohtaja",
@@ -7300,7 +7300,7 @@
     },
     {
       "id": "1.2.246.553.1.701",
-      "name": "Malminkartanon sivuapteekki",
+      "name": "Malminkartanon apteekki",
       "address": "Luutnantintie 5",
       "postcode": "00410",
       "city": "Helsinki",
@@ -7344,7 +7344,7 @@
     },
     {
       "id": "1.2.246.553.1.706",
-      "name": "Metsolan sivuapteekki",
+      "name": "Metsolan apteekki",
       "address": "Kotkantie 41 (Kymenlaakson keskussairaala 1krs.)",
       "postcode": "48210",
       "city": "Kotka",
@@ -7355,7 +7355,7 @@
     },
     {
       "id": "1.2.246.553.1.710",
-      "name": "Joensuun 8. apteekki",
+      "name": "Joensuun Noljakan apteekki",
       "address": "K-Citymarket Joensuu Pilkko",
       "postcode": "80140",
       "city": "Joensuu",
@@ -7399,7 +7399,7 @@
     },
     {
       "id": "1.2.246.553.1.714",
-      "name": "Rovaniemen 5. apteekki",
+      "name": "Rovaniemen Ounas apteekki",
       "address": "Ounasvaarantie 15",
       "postcode": "96400",
       "city": "Rovaniemi",
@@ -7421,7 +7421,7 @@
     },
     {
       "id": "1.2.246.553.1.718",
-      "name": "Peipohjan sivuapteekki",
+      "name": "Peipohjan apteekki",
       "address": "Skaffarinkatu 1",
       "postcode": "32810",
       "city": "Kokemäki",
@@ -7520,7 +7520,7 @@
     },
     {
       "id": "1.2.246.553.1.730",
-      "name": "Kuopion 10. apteekki",
+      "name": "Kuopion Päivärannan apteekki",
       "address": "Päivärannantie 18",
       "postcode": "70420",
       "city": "Kuopio",
@@ -7553,7 +7553,7 @@
     },
     {
       "id": "1.2.246.553.1.735",
-      "name": "Mikkelin 7. apteekki",
+      "name": "Mikkelin Rantakylän apteekki",
       "address": "Puusepäntie 5",
       "postcode": "50600",
       "city": "Mikkeli",
@@ -7652,7 +7652,7 @@
     },
     {
       "id": "1.2.246.553.1.748",
-      "name": "Lahden 13. apteekki",
+      "name": "Lahden Salpausselän apteekki",
       "address": "Petsamonkatu 9",
       "postcode": "15830",
       "city": "Lahti",
@@ -7674,7 +7674,7 @@
     },
     {
       "id": "1.2.246.553.1.750",
-      "name": "Lappeenrannan 6. apteekki",
+      "name": "Lappeenrannan Sammonlahden apteekki",
       "address": "Orioninkatu 2",
       "postcode": "53850",
       "city": "Lappeenranta",
@@ -7685,7 +7685,7 @@
     },
     {
       "id": "1.2.246.553.1.751",
-      "name": "Porin 13. apteekki",
+      "name": "Porin Itä-Porin apteekki",
       "address": "Herralahdenraitti 2",
       "postcode": "28360",
       "city": "Pori",
@@ -7740,7 +7740,7 @@
     },
     {
       "id": "1.2.246.553.1.756",
-      "name": "Sirkan sivuapteekki",
+      "name": "Levin sivuapteekki",
       "address": "Leviraitti 1",
       "postcode": "99130",
       "city": "Sirkka",
@@ -7751,7 +7751,7 @@
     },
     {
       "id": "1.2.246.553.1.757",
-      "name": "Siuntion sivuapteekki",
+      "name": "Siuntion Omena-apteekki",
       "address": "Flemingintie 2",
       "postcode": "02580",
       "city": "Siuntio",
@@ -7850,7 +7850,7 @@
     },
     {
       "id": "1.2.246.553.1.768",
-      "name": "Porin 12. apteekki",
+      "name": "Porin Toejoen apteekki",
       "address": "Kolmiokatu 2",
       "postcode": "28200",
       "city": "Pori",
@@ -7883,7 +7883,7 @@
     },
     {
       "id": "1.2.246.553.1.772",
-      "name": "Tyrvään sivuapteekki",
+      "name": "Sastamalan Tyrvään sivuapteekki",
       "address": "Asemakatu 10",
       "postcode": "38210",
       "city": "Sastamala",
@@ -7916,7 +7916,7 @@
     },
     {
       "id": "1.2.246.553.1.775",
-      "name": "Valkiavuoren sivuapteekki",
+      "name": "Nurmon sivuapteekki",
       "address": "Nurmontie 22",
       "postcode": "60550",
       "city": "Nurmo",
@@ -7960,7 +7960,7 @@
     },
     {
       "id": "1.2.246.553.1.780",
-      "name": "Viinijärven sivuapteekki",
+      "name": "Viinijärven apteekki",
       "address": "Viinijärventie 17",
       "postcode": "83400",
       "city": "Viinijärvi",
@@ -8004,7 +8004,7 @@
     },
     {
       "id": "1.2.246.553.1.788",
-      "name": "YA:n Eläinlääketieteellisen tiedekunnan sivuapteekki",
+      "name": "YA:n Viikin sivuapteekki",
       "address": "Viikintori 3",
       "postcode": "00790",
       "city": "Helsinki",
@@ -8015,7 +8015,7 @@
     },
     {
       "id": "1.2.246.553.1.789",
-      "name": "YA:n Helsingin sivuapteekki",
+      "name": "YA:n Mannerheimintien sivuapteekki",
       "address": "Mannerheimintie 96",
       "postcode": "00250",
       "city": "Helsinki",
@@ -8037,7 +8037,7 @@
     },
     {
       "id": "1.2.246.553.1.791",
-      "name": "YA:n Jyväskylän 1. sivuapteekki",
+      "name": "YA:n Jyväskylän sivuapteekki",
       "address": "Kauppakatu 20-22",
       "postcode": "40100",
       "city": "Jyväskylä",
@@ -8070,7 +8070,7 @@
     },
     {
       "id": "1.2.246.553.1.795",
-      "name": "YA:n Lappeenrannan sivuapteekki",
+      "name": "Yliopiston Apteekki Lappeenranta",
       "address": "Kaivokatu 5 B",
       "postcode": "53100",
       "city": "Lappeenranta",
@@ -8180,7 +8180,7 @@
     },
     {
       "id": "1.2.246.553.1.806",
-      "name": "Liperin 2. apteekki",
+      "name": "Liperin Ylämyllyn apteekki",
       "address": "Ylämyllyntie 78",
       "postcode": "80400",
       "city": "Ylämylly",
@@ -8202,7 +8202,7 @@
     },
     {
       "id": "1.2.246.553.1.808",
-      "name": "Raision 3. apteekki",
+      "name": "Raision Myllyn apteekki",
       "address": "Myllynkatu 1003",
       "postcode": "21280",
       "city": "Raisio",
@@ -8224,7 +8224,7 @@
     },
     {
       "id": "1.2.246.553.1.810",
-      "name": "Lohjan 5. apteekki",
+      "name": "Lohjan Onni apteekki",
       "address": "Ojamonharjuntie 61",
       "postcode": "08200",
       "city": "Lohja",
@@ -8235,7 +8235,7 @@
     },
     {
       "id": "1.2.246.553.1.811",
-      "name": "Siilinjärven 2. apteekki",
+      "name": "Siilinjärven Vuorelan apteekki",
       "address": "Simpantie 2",
       "postcode": "70910",
       "city": "Vuorela",
@@ -8257,7 +8257,7 @@
     },
     {
       "id": "1.2.246.553.1.813",
-      "name": "Lahden 11. apteekki",
+      "name": "Lahden Holman apteekki",
       "address": "Johanneksenkatu 4",
       "postcode": "15240",
       "city": "Lahti",
@@ -8268,7 +8268,7 @@
     },
     {
       "id": "1.2.246.553.1.814",
-      "name": "Turun 19. apteekki",
+      "name": "Turun Pansion apteekki",
       "address": "Pernontie 20",
       "postcode": "20240",
       "city": "Turku",
@@ -8290,7 +8290,7 @@
     },
     {
       "id": "1.2.246.553.1.821",
-      "name": "Ylöjärven 4. apteekki",
+      "name": "Ylöjärven Hyvän Mielen Apteekki Ylöjärvi",
       "address": "Elotie 1",
       "postcode": "33470",
       "city": "Ylöjärvi",
@@ -8301,7 +8301,7 @@
     },
     {
       "id": "1.2.246.553.1.822",
-      "name": "Turun 20. apteekki",
+      "name": "Turun Skanssin apteekki",
       "address": "Skanssinkatu 10",
       "postcode": "20730",
       "city": "Turku",
@@ -8312,7 +8312,7 @@
     },
     {
       "id": "1.2.246.553.1.823",
-      "name": "Oulun 12. apteekki",
+      "name": "Oulun Yki apteekki",
       "address": "Harjutie 16",
       "postcode": "91300",
       "city": "Ylikiiminki",
@@ -8400,7 +8400,7 @@
     },
     {
       "id": "1.2.246.553.1.832",
-      "name": "Lahden 12. apteekki",
+      "name": "Ahtialan apteekki",
       "address": "Alasenkatu 1",
       "postcode": "15300",
       "city": "Lahti",
@@ -8422,7 +8422,7 @@
     },
     {
       "id": "1.2.246.553.1.834",
-      "name": "Hämeenlinnan 7. apteekki",
+      "name": "Hämeenlinnan Jukolan apteekki",
       "address": "Hongistonkuja 8",
       "postcode": "13500",
       "city": "Hämeenlinna",
@@ -8433,7 +8433,7 @@
     },
     {
       "id": "1.2.246.553.1.835",
-      "name": "Riihimäen 3. apteekki",
+      "name": "Riihimäen Apteekki Merkos",
       "address": "Merkoksenkatu 5",
       "postcode": "11710",
       "city": "Riihimäki",
@@ -8444,7 +8444,7 @@
     },
     {
       "id": "1.2.246.553.1.836",
-      "name": "Pieksämäen 3. apteekki",
+      "name": "Pieksämäen Naarajärven apteekki",
       "address": "Seunalantie 1",
       "postcode": "76850",
       "city": "Naarajärvi",
@@ -8477,7 +8477,7 @@
     },
     {
       "id": "1.2.246.553.1.839",
-      "name": "Mikkelin 6. apteekki",
+      "name": "Mikkelin Urpolan apteekki",
       "address": "Setrikatu 3",
       "postcode": "50100",
       "city": "Mikkeli",
@@ -8499,7 +8499,7 @@
     },
     {
       "id": "1.2.246.553.1.843",
-      "name": "Pirkkalan 2. apteekki",
+      "name": "Pirkkalan Itä-apteekki",
       "address": "Palmrothintie 2",
       "postcode": "33950",
       "city": "Pirkkala",
@@ -8510,7 +8510,7 @@
     },
     {
       "id": "1.2.246.553.1.844",
-      "name": "YA:n Vantaan sivuapteekki",
+      "name": "YA:n Vantaan Tammiston sivuapteekki",
       "address": "Tammiston kauppatie 9",
       "postcode": "01510",
       "city": "Vantaa",
@@ -8532,7 +8532,7 @@
     },
     {
       "id": "1.2.246.553.1.846",
-      "name": "Turun 21. apteekki",
+      "name": "Turun Runosmäen apteekki",
       "address": "Friskinkatu 4",
       "postcode": "20360",
       "city": "Turku",
@@ -8543,7 +8543,7 @@
     },
     {
       "id": "1.2.246.553.1.847",
-      "name": "Tampereen 20. apteekki",
+      "name": "Tampereen Tammedica apteekki",
       "address": "Elämänaukio 2",
       "postcode": "33520",
       "city": "Tampere",
@@ -8554,7 +8554,7 @@
     },
     {
       "id": "1.2.246.553.1.848",
-      "name": "Kuopion 14. apteekki",
+      "name": "Kuopion Mölymäen apteekki",
       "address": "Saaristokatu 1",
       "postcode": "70260",
       "city": "Kuopio",
@@ -8576,7 +8576,7 @@
     },
     {
       "id": "1.2.246.553.1.850",
-      "name": "Järvenpään 3. apteekki",
+      "name": "Järvenpään Lähiapteekki",
       "address": "Mannilantie 44",
       "postcode": "04400",
       "city": "Järvenpää",
@@ -8587,7 +8587,7 @@
     },
     {
       "id": "1.2.246.553.1.851",
-      "name": "Mäntsälän 2. apteekki",
+      "name": "Mäntsälän Kotoapteekki",
       "address": "Sälinkääntie 2",
       "postcode": "04600",
       "city": "Mäntsälä",
@@ -8598,7 +8598,7 @@
     },
     {
       "id": "1.2.246.553.1.852",
-      "name": "Ylivieskan 2. apteekki",
+      "name": "Ylivieskan Savarin apteekki",
       "address": "Savarinkatu 9",
       "postcode": "84100",
       "city": "Ylivieska",
@@ -8609,7 +8609,7 @@
     },
     {
       "id": "1.2.246.553.1.853",
-      "name": "Naantalin 2. apteekki",
+      "name": "Naantalin Apteekkisydän apteekki",
       "address": "Tuulensuunkatu 12",
       "postcode": "21100",
       "city": "Naantali",
@@ -8620,7 +8620,7 @@
     },
     {
       "id": "1.2.246.553.1.854",
-      "name": "Hyvinkään 4. apteekki",
+      "name": "Hyvinkään Vehkojan apteekki",
       "address": "Uudenmaankatu 106",
       "postcode": "05840",
       "city": "Hyvinkää",
@@ -8631,7 +8631,7 @@
     },
     {
       "id": "1.2.246.553.1.855",
-      "name": "Valkeakosken 3. apteekki",
+      "name": "Valkeakosken Uusi apteekki",
       "address": "Lempääläntie 286",
       "postcode": "37630",
       "city": "Valkeakoski",
@@ -8642,7 +8642,7 @@
     },
     {
       "id": "1.2.246.553.1.856",
-      "name": "Espoon 11. apteekki",
+      "name": "Espoon Jorvin Apteekki",
       "address": "Espoon sairaala, Jorvin sairaalakampus",
       "postcode": "02740",
       "city": "Espoo",
@@ -8653,7 +8653,7 @@
     },
     {
       "id": "1.2.246.553.1.857",
-      "name": "Espoon 12. apteekki",
+      "name": "Espoon Mankkaan Oma Apteekki",
       "address": "Sinikalliontie 1",
       "postcode": "02630",
       "city": "Espoo",
@@ -8664,7 +8664,7 @@
     },
     {
       "id": "1.2.246.553.1.858",
-      "name": "Espoon 13. apteekki",
+      "name": "Espoon Sanitum apteekki Sello",
       "address": "Leppävaarankatu 3-9",
       "postcode": "02600",
       "city": "Espoo",
@@ -8674,7 +8674,7 @@
     },
     {
       "id": "1.2.246.553.1.859",
-      "name": "Espoon 14. apteekki",
+      "name": "Espoon Olarin Uusi apteekki",
       "address": "Komeetankatu 2",
       "postcode": "02210",
       "city": "Espoo",
@@ -8685,7 +8685,7 @@
     },
     {
       "id": "1.2.246.553.1.860",
-      "name": "Espoon 15. apteekki",
+      "name": "Espoon Apteekki Niitty",
       "address": "Kauppakeskus Niitty",
       "postcode": "02200",
       "city": "Espoo",
@@ -8695,7 +8695,7 @@
     },
     {
       "id": "1.2.246.553.1.861",
-      "name": "Espoon 16. apteekki",
+      "name": "Espoon Kiltakallion apteekki",
       "address": "Siltakatu 13",
       "postcode": "02770",
       "city": "Espoo",
@@ -8706,7 +8706,7 @@
     },
     {
       "id": "1.2.246.553.1.862",
-      "name": "Vantaan 13. apteekki",
+      "name": "Vantaan Korson Uusi apteekki",
       "address": "Maakotkantie 19",
       "postcode": "01450",
       "city": "Vantaa",
@@ -8717,7 +8717,7 @@
     },
     {
       "id": "1.2.246.553.1.863",
-      "name": "Vantaan 14. apteekki",
+      "name": "Vantaan Apteekki Koivuhaka",
       "address": "Kuriiritie 23-25",
       "postcode": "01300",
       "city": "Vantaa",
@@ -8728,7 +8728,7 @@
     },
     {
       "id": "1.2.246.553.1.864",
-      "name": "Vantaan 15. apteekki",
+      "name": "Tammiston Uusi apteekki",
       "address": "Säätökuja 2B",
       "postcode": "01510",
       "city": "Vantaa",
@@ -8739,7 +8739,7 @@
     },
     {
       "id": "1.2.246.553.1.865",
-      "name": "Vantaan 16. apteekki",
+      "name": "Vantaan Kivistön apteekki",
       "address": "Topaasikuja 8",
       "postcode": "01700",
       "city": "Vantaa",
@@ -8750,7 +8750,7 @@
     },
     {
       "id": "1.2.246.553.1.866",
-      "name": "Nurmijärven 4. apteekki",
+      "name": "Nurmijärven Klaukkalan Uusi apteekki",
       "address": "Lepsämäntie 2",
       "postcode": "01800",
       "city": "Klaukkala",
@@ -8761,7 +8761,7 @@
     },
     {
       "id": "1.2.246.553.1.867",
-      "name": "Vihdin 3. apteekki",
+      "name": "Vihdin Nummelan Uusi apteekki",
       "address": "Naaranpajuntie 3",
       "postcode": "03100",
       "city": "Nummela",
@@ -8783,7 +8783,7 @@
     },
     {
       "id": "1.2.246.553.1.869",
-      "name": "Porvoon 5. apteekki",
+      "name": "Porvoon Vanha apteekki",
       "address": "Näsin koulukatu 2",
       "postcode": "06100",
       "city": "Porvoo",
@@ -8794,7 +8794,7 @@
     },
     {
       "id": "1.2.246.553.1.870",
-      "name": "Loviisan 2. apteekki",
+      "name": "Loviisan Uusi apteekki",
       "address": "Arkkitehdintie 5",
       "postcode": "07900",
       "city": "Loviisa",
@@ -8805,7 +8805,7 @@
     },
     {
       "id": "1.2.246.553.1.871",
-      "name": "YA:n Espoon sivuapteekki",
+      "name": "YA:n Espoon Matinkylän sivuapteekki",
       "address": "Kauppakeskus Iso Omena",
       "postcode": "02230",
       "city": "Espoo",
@@ -8816,7 +8816,7 @@
     },
     {
       "id": "1.2.246.553.1.872",
-      "name": "Kuninkaantie sivuapteekki",
+      "name": "Kuninkaantien sivuapteekki",
       "address": "Vanhankyläntie 77",
       "postcode": "07740",
       "city": "Gammelby",
@@ -8827,7 +8827,7 @@
     },
     {
       "id": "1.2.246.553.1.873",
-      "name": "Seinäjoen 7. apteekki",
+      "name": "Seinäjoen Alvar apteekki",
       "address": "Keskuskatu 5",
       "postcode": "60100",
       "city": "Seinäjoki",
@@ -8838,7 +8838,7 @@
     },
     {
       "id": "1.2.246.553.1.874",
-      "name": "Vaasan 8. apteekki",
+      "name": "Vaasan Hietalahden apteekki",
       "address": "Hietalahdenkatu 2-6",
       "postcode": "65130",
       "city": "Vaasa",
@@ -8849,7 +8849,7 @@
     },
     {
       "id": "1.2.246.553.1.875",
-      "name": "Helsingin 63. apteekki",
+      "name": "Helsingin Meilahden apteekki",
       "address": "Haartmaninkatu 4, rakennus 1",
       "postcode": "00290",
       "city": "Helsinki",
@@ -8881,7 +8881,7 @@
     },
     {
       "id": "1.2.246.553.1.878",
-      "name": "Helsingin 66. apteekki",
+      "name": "Helsingin Apteekki Kompassi",
       "address": "Tyynylaavantie 5",
       "postcode": "00980",
       "city": "Helsinki",
@@ -8903,7 +8903,7 @@
     },
     {
       "id": "1.2.246.553.1.880",
-      "name": "Oulun 16. apteekki",
+      "name": "Oulun Hiukkavaaran apteekki",
       "address": "Paraatikatu 8",
       "postcode": "90670",
       "city": "Oulu",
@@ -8914,7 +8914,7 @@
     },
     {
       "id": "1.2.246.553.1.881",
-      "name": "Oulun 17. apteekki",
+      "name": "Oulun uusi apteekki",
       "address": "Kauppurienkatu 27-29",
       "postcode": "90100",
       "city": "Oulu",
@@ -8925,7 +8925,7 @@
     },
     {
       "id": "1.2.246.553.1.882",
-      "name": "Oulun 18. apteekki",
+      "name": "Joutsensillan apteekki",
       "address": "Paljetie 4",
       "postcode": "90140",
       "city": "Oulu",
@@ -8936,7 +8936,7 @@
     },
     {
       "id": "1.2.246.553.1.883",
-      "name": "Rovaniemen 6. apteekki",
+      "name": "Rovaniemen Lampelan apteekki",
       "address": "Lampelankatu 3",
       "postcode": "96320",
       "city": "Rovaniemi",
