@@ -40,7 +40,7 @@ Deploy the SPA and `/api/geocode` as **one Worker with static assets**.
 
 **Good**
 
-- One origin. No CORS, and a tight CSP (`connect-src 'self'` plus the Overpass endpoints).
+- One origin. No CORS, and a tight CSP (`connect-src 'self'`): the pharmacy list is a static asset and geocoding goes through our own Worker.
 - One deploy and one config file. Dev runs the same runtime as production.
 - Hosting stays optional. The client build (`dist/client`) is plain static files that any static host can serve. Moving away only loses the geocoding proxy.
 

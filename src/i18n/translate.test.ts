@@ -15,7 +15,7 @@ describe("detectLocale", () => {
 
 describe("translate", () => {
   it("looks up nested keys", () => {
-    expect(translate(fi, "fi", "results.unnamed")).toBe("Apteekki");
+    expect(translate(fi, "fi", "results.phone")).toBe("Puhelin:");
   });
 
   it("interpolates variables", () => {
@@ -27,11 +27,7 @@ describe("translate", () => {
 
 describe("translatePlural", () => {
   it("chooses the plural form and formats the count", () => {
-    expect(translatePlural(en, "en", "status.found", 1, { radius: "2 km" })).toBe(
-      "1 pharmacy found within 2 km.",
-    );
-    expect(translatePlural(en, "en", "status.found", 3, { radius: "2 km" })).toBe(
-      "3 pharmacies found within 2 km.",
-    );
+    expect(translatePlural(en, "en", "status.found", 1)).toBe("Showing the nearest pharmacy.");
+    expect(translatePlural(fi, "fi", "status.found", 3)).toBe("Näytetään 3 lähintä apteekkia.");
   });
 });

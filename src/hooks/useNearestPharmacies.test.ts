@@ -1,15 +1,21 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { jsonResponse, mockFetch, mockGeolocation, overpassResponse } from "../test/mocks";
-import { useNearestPharmacies } from "./useNearestPharmacies";
+import { loadPharmacies } from "../data/pharmacies";
+import type { Pharmacy } from "../lib/pharmacy";
+import { mockGeolocation, pharmacy } from "../test/mocks";
+import { NEAREST_COUNT, useNearestPharmacies } from "./useNearestPharmacies";
+
+// The list import is the network boundary now: in the browser it fetches a JS chunk.
+vi.mock("../data/pharmacies", () => ({ loadPharmacies: vi.fn() }));
+const load = vi.mocked(loadPharmacies);
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+  load.mockReset();
 });
 
 it("goes from locating to loading to results", async () => {
   const geo = mockGeolocation();
-  let respond!: (r: Response) => void;
-  mockFetch(() => new Promise((resolve) => (respond = resolve)));
+  let respond!: (list: Pharmacy[]) => void;
+  load.mockReturnValueOnce(new Promise((resolve) => (respond = resolve)));
   const { result } = renderHook(() => useNearestPharmacies());
 
   act(() => result.current.locate());
@@ -18,8 +24,29 @@ it("goes from locating to loading to results", async () => {
   act(() => geo.succeed());
   expect(result.current.state.status).toBe("loading");
 
-  await act(async () => respond(overpassResponse([{ id: 1, lat: 60.172, lon: 24.942 }])));
+  await act(async () => respond([pharmacy({ id: "a", lat: 60.172, lon: 24.942 })]));
   await waitFor(() => expect(result.current.state.status).toBe("results"));
+});
+
+it(`shows the ${NEAREST_COUNT} nearest, however far away`, async () => {
+  const geo = mockGeolocation();
+  load.mockResolvedValueOnce([
+    pharmacy({ id: "rovaniemi", lat: 66.5, lon: 25.7 }),
+    pharmacy({ id: "tampere", lat: 61.5, lon: 23.8 }),
+    pharmacy({ id: "espoo", lat: 60.2, lon: 24.7 }),
+    pharmacy({ id: "turku", lat: 60.45, lon: 22.27 }),
+  ]);
+  const { result } = renderHook(() => useNearestPharmacies());
+
+  act(() => result.current.locate());
+  await act(async () => geo.succeed(52.52, 13.4)); // Berlin still gets the nearest in Finland
+  await waitFor(() => expect(result.current.state.status).toBe("results"));
+  const state = result.current.state;
+  expect(state.status === "results" && state.pharmacies.map((p) => p.id)).toEqual([
+    "turku",
+    "espoo",
+    "tampere",
+  ]);
 });
 
 it("reports denied permission", () => {
@@ -42,11 +69,10 @@ it("reports other location failures as a location error", () => {
 
 it("shows only the latest search when a new one starts while one is running", async () => {
   const geo = mockGeolocation();
-  let respondFirst!: (r: Response) => void;
-  mockFetch(
-    () => new Promise((resolve) => (respondFirst = resolve)),
-    async () => overpassResponse([{ id: 2, lat: 60.172, lon: 24.942, tags: { name: "Second" } }]),
-  );
+  let respondFirst!: (list: Pharmacy[]) => void;
+  load
+    .mockReturnValueOnce(new Promise((resolve) => (respondFirst = resolve)))
+    .mockResolvedValueOnce([pharmacy({ id: "second", lat: 60.172, lon: 24.942 })]);
   const { result } = renderHook(() => useNearestPharmacies());
 
   act(() => result.current.locate());
@@ -55,21 +81,17 @@ it("shows only the latest search when a new one starts while one is running", as
   await act(async () => geo.succeed());
   await waitFor(() => expect(result.current.state.status).toBe("results"));
 
-  // The first request answers late; it must not replace the newer result.
-  await act(async () =>
-    respondFirst(overpassResponse([{ id: 1, lat: 60.172, lon: 24.942, tags: { name: "First" } }])),
-  );
+  // The first load answers late; it must not replace the newer result.
+  await act(async () => respondFirst([pharmacy({ id: "first", lat: 60.172, lon: 24.942 })]));
   const state = result.current.state;
-  expect(state.status === "results" && state.pharmacies.map((p) => p.name)).toEqual(["Second"]);
+  expect(state.status === "results" && state.pharmacies.map((p) => p.id)).toEqual(["second"]);
 });
 
-it("can retry after a network error", async () => {
+it("can retry after the list fails to load", async () => {
   const geo = mockGeolocation();
-  mockFetch(
-    jsonResponse({}, 503),
-    jsonResponse({}, 503),
-    overpassResponse([{ id: 1, lat: 60.172, lon: 24.942 }]),
-  );
+  load
+    .mockRejectedValueOnce(new TypeError("Failed to fetch dynamically imported module"))
+    .mockResolvedValueOnce([pharmacy({ id: "a", lat: 60.172, lon: 24.942 })]);
   const { result } = renderHook(() => useNearestPharmacies());
 
   act(() => result.current.locate());

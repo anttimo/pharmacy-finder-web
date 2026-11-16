@@ -1,72 +1,70 @@
-# 1. Pharmacy data source: OpenStreetMap via Overpass
+# 1. Pharmacy data source: the Fimea register, geocoded at build time
 
 - Status: Accepted
-- Date: 2026-11-11
+- Date: 2026-11-16 (rewritten in place; replaces the 2026-11-11 Overpass decision)
 - Applies to: web app and iOS app (the iOS app lives in its own repository)
 
 ## Context
 
-Both apps need to answer the same question: where is the nearest pharmacy to the user? That needs coordinates, a name and ideally an address and opening hours, for anywhere in Finland.
+Both apps answer one question: where is the nearest pharmacy? That needs a name, an address and coordinates for every pharmacy in Finland.
 
-Finland has no single official spatial API for pharmacies. We looked at these sources:
+Fimea's pharmacy register is the official list of licensed pharmacies. It's published as an open classification on the Kanta code server (OID `1.2.246.537.6.200`, "Fimea - Apteekkirekisteri"), with a JSON API that needs no key. It has names, visiting and postal addresses, phone numbers, the pharmacy type and open/closed dates. It has **no coordinates and no opening hours**.
 
-| Source                                 | Coverage                                 | Coordinates | Problem                                                     |
-| -------------------------------------- | ---------------------------------------- | ----------- | ----------------------------------------------------------- |
-| OpenStreetMap (Overpass API)           | Nationwide                               | Yes         | Community-maintained, so completeness varies                |
-| Helsinki Region Service Map API        | Helsinki, Espoo, Vantaa, Kauniainen only | Yes         | Regional only                                               |
-| PRH / YTJ open data (TOL 47730)        | Nationwide                               | No          | Lists businesses, not locations                             |
-| Suomi.fi Service Data Repository (PTV) | Public and municipal services            | Partial     | Patchy coverage of private pharmacies                       |
-| Fimea open data                        | —                                        | —           | We didn't find a dataset with locations that can be queried |
+It also lists more than the public can use. In November 2026 it had 983 entries: 814 open pharmacies and branch pharmacies (_sivuapteekki_), one pharmacy not yet open, and the rest closed entries kept for history, hospital pharmacies (_sairaala-apteekki_) and medicine centres (_lääkekeskus_).
 
-The PRH registry is a poor fit for another reason. A pharmacy licence belongs to a pharmacist, who often trades as a sole proprietor and may also run up to three branch pharmacies (_sivuapteekki_) under the same registration. One business record can therefore stand for several physical locations, and the addresses would still have to be geocoded through another API.
+Entries close about twice a month (19 so far in 2026), mostly branches. A list that's a few weeks old is acceptable if we say so. Asking a live API on every search turned out not to be (see "Rejected: Overpass").
 
 ## Decision
 
-Use OpenStreetMap through the Overpass API as the only data source. Query it directly from the client, with no API key. The Worker added in [ADR-0004](0004-hosting.md) does **not** proxy Overpass (see "Revisited" below).
+Use the Fimea register as the only source. A build script turns it into a static file, `src/data/pharmacies.json`, which is committed. The app finds the nearest pharmacies on the device, from that file, with straight-line distance. The user's location never leaves the device.
 
-The query is a radius search around the user's location:
+- **Loading:** the app loads the file with a dynamic `import()`, so Vite serves it as its own chunk (about 34 KB gzipped), fetched from our own origin on the first search, not on page load. If that fetch fails, the user gets the error state with a retry.
+- **Results:** the 3 nearest pharmacies, with no distance limit. Someone outside Finland still gets the nearest ones in Finland, each with its distance, so there's no empty state.
+- **Each result** shows the name, address, straight-line distance and phone number (a `tel:` link). The page footer names the data source.
 
-```
-[out:json][timeout:15];
-(
-  nwr["amenity"="pharmacy"](around:{radius},{lat},{lon});
-  nwr["healthcare"="pharmacy"](around:{radius},{lat},{lon});
-);
-out center tags;
-```
+### Build pipeline: `npm run build:pharmacies`
 
-- `nwr` covers pharmacies mapped as points, buildings or areas, and `out center` gives every result one coordinate.
-- The query centre is rounded to 3 decimals (about 100 m) before it's sent, so Overpass never sees the user's exact position. Distances and sorting use the exact position on the device. The radius steps are much larger than the rounding.
-- The results are de-duplicated by OSM id, sorted by straight-line distance on the client, and shown with `name`, `addr:*` and `opening_hours` when those tags exist. The UI labels distances as straight-line, since walking or driving distance will be longer.
-- If nothing is found, the app widens the radius in steps (for example 2 → 10 → 50 km) before showing the empty state.
+`scripts/build-pharmacies.ts` runs on Node without dependencies ([ADR-0002](0002-minimal-dependencies.md)). The response parsing is in `scripts/kanta.ts`, with unit tests.
 
-### Scope: Finland-first, global data path
+1. **Fetch every page** of `…/classifications/1.2.246.537.6.200/conceptcodes?pageSize=500&page=N` until `totalPages`.
+2. **Check the count.** The order inside a page changes between requests, so the script counts unique `conceptCodeId`s and stops without writing if that differs from `totalItems`, or if `totalItems` changes while paging.
+3. **Filter:** keep entries whose `beginDate` is today or earlier, whose `expirationDate` is today or later, and whose `ApteekkiTyyppi` is `Apteekki` or `Sivuapteekki`. This drops closed entries and the hospital-internal types `ApteekkiTyyppi: "Sairaala-apteekki"` (23 active) and `"Lääkekeskus"` (39 active). Those supply hospital wards and don't serve the public, and some sit at logistics sites away from any hospital (for example OYS's at Vihikari 10, Kempele). A public pharmacy on hospital grounds is a normal `Apteekki` entry and stays in: Espoon 11. apteekki at Jorvi is one. The `beginDate` check keeps out pharmacies that are licensed but not open yet. In November 2026 that was Imatran 4. apteekki (`beginDate` 2026-12-01, no address yet). It joins the list on the first rebuild after that date, once it has an address that geocodes.
+4. **Map:** `conceptCodeId` → `id`, `LongName` → `name`, `StreetAddress` → `address` (falling back to the street part of `PostAddress`), `PostNumber`, `PostOffice`, `PhoneNumber`, and `branch` for branch pharmacies.
+5. **Geocode** each address with the Digitransit search API (`boundary.country=FIN`, one result, about 6 requests/s), with the same key as [ADR-0003](0003-geocoding.md), read from `DIGITRANSIT_API_KEY` or `.dev.vars`. The build runs locally, so the key still never reaches the browser. The query is "street, postcode post office". If that fails, a second query drops the post office, because the register often gives a village ("Söderkulla", "Vääksy") that the geocoder doesn't know as a town. The postcode still pins the area. The first run, on 2026-11-16, placed 813 of 815: the second query rescued 13 entries, and all 13 reverse-geocoded to the right street and postcode. The remaining one, Kalajärven sivuapteekki, is placed through an address override (step 6).
+6. **Accept a match (from either query) only if** Pelias `confidence` is at least **0.8**, the layer is `address` or `venue` (a `street` match is a road's midpoint, which can be kilometres off), and the point is inside Finland's bounding box. Everything else goes to `scripts/needs-review.json` (gitignored) with a reason. **We never guess coordinates.** An entry stays out of the app until its address is fixed in the register or someone adds a checked address to `scripts/address-overrides.json` (committed). An override is keyed by register id, gives a street address (never coordinates), and is geocoded by the same rules. It records the register address it replaces. If the register's address later changes, the override is ignored with a warning, so a fix upstream always wins and stale overrides show up.
+7. **Write** `src/data/pharmacies.json` with `generatedAt`, `sourceTotal`, `openTotal` and `needsReview`, so a reviewer can see how fresh and how complete the file is.
 
-Nothing requires the app to be Finland-only, but we build for Finland: the UI languages are fi/en (Swedish was dropped on 2026-11-13 because nobody could review it), and web address search uses a Finnish geocoder ([ADR-0003](0003-geocoding.md)). The pharmacy data path itself is not Finland-specific. The query has no country filter, so "Use my location" works anywhere OSM has pharmacies mapped, and iOS address search (Apple) works worldwide.
+### Staleness and rerunning
 
-Going global would mean a different web geocoder (Digitransit covers Finland only), larger radius steps for sparse regions, and new languages and copy.
+Rerun the script before each release and at least monthly, then review the diff and commit it. A large drop in `openTotal`, or a jump in `needsReview`, means something changed upstream: check it before you commit.
+
+### Later: refresh on the server
+
+When hosting exists ([ADR-0004](0004-hosting.md)), a scheduled job (a Worker Cron Trigger) could run the same pipeline daily and publish the file (for example to KV or R2), with the committed file as the fallback. That would need its own ADR (secret handling, storage, what to do when the count check fails). Not worth it until the list's freshness becomes a real problem.
 
 ## Consequences
 
 **Good**
 
-- One code path and the same behaviour everywhere in Finland, in both apps.
-- No keys, secrets or backend to host, which fits our "minimal dependencies" principle.
-- Opening hours are shown as the raw OSM text when present. There is no "open now" status: it would need an `opening_hours` parser, and the tool doesn't need it.
+- **Authoritative and complete.** Every licensed pharmacy that geocodes cleanly is listed, and the list doesn't depend on volunteers having mapped it.
+- **Fast and private.** Search is a local sort over about 800 entries. No third party sees the user's location or IP address because of a pharmacy lookup.
+- **Works without a key or hosting.** Anyone who clones the repo gets the committed file, so "Use my location" works without a Digitransit key.
+- **Same data on both apps.** The iOS app can ship or download the same file.
 
 **Bad, and how we handle it**
 
-- **Data quality.** Some pharmacies may be missing or have out-of-date details. In a healthcare context we say so clearly: the UI tells users to check opening hours with the pharmacy before going, and we never claim the list is complete.
-- **Availability and fair use.** The public Overpass instances are shared and rate-limited. We use a bounded radius, a request timeout and one fallback endpoint. There is no client-side cache: a user searches once or twice per visit, so it would add code without much benefit. Native clients set a descriptive `User-Agent`, as the Overpass usage guidelines ask. Errors lead to a clear retry state, not a blank screen.
-- **Licence.** OSM data is under ODbL. Both apps show "© OpenStreetMap contributors" wherever results appear.
-- **The Overpass operator sees the user's IP address** along with the rounded location. The privacy note says so. If that becomes unacceptable, it's a reason to move Overpass behind the Worker (see below).
+- **Stale between builds.** A pharmacy that closed last week can still appear. The UI already tells people to check with the pharmacy before going, and `generatedAt` makes the age visible.
+- **Gaps from geocoding.** Entries in `needs-review.json` are missing from the app. That's why we never claim the list is complete.
+- **No opening hours.** The register doesn't have them. The UI shows the phone number and the "check opening hours with the pharmacy" note, and never an "open now" status.
+- **Finland only.** The data path is no longer global. Going beyond Finland would need a different source per country.
+- **Attribution.** The page footer always shows the source: "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)" (fi: "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / THL Koodistopalvelu"). A footer rather than an About page, because the app is a single view with no router ([ADR-0002](0002-minimal-dependencies.md)).
 
-## Revisited 2026-11-11: should Overpass go through the Worker?
+## Rejected: Overpass (OpenStreetMap)
 
-[ADR-0003](0003-geocoding.md) and [ADR-0004](0004-hosting.md) add a Cloudflare Worker, so "no backend" no longer holds for the web app. We checked whether pharmacy queries should also go through it. **Decision: no, Overpass stays client-side.** Reasons:
+The first version of this ADR (2026-11-11) queried OpenStreetMap through the public Overpass API from the client, by radius around the user. We dropped it because:
 
-1. **The proxy exists to protect a secret, and Overpass has none.** Proxying it adds code and attack surface (a route that forwards queries is hard to lock down) without fixing anything.
-2. **Rate limits would get worse.** Overpass limits requests per IP address. Through a Worker, every user would share Cloudflare's outbound addresses. Called from the client, each user gets their own allowance.
-3. **The core feature keeps working without hosting** ([ADR-0004](0004-hosting.md)), and both apps send the same query and get the same results.
+- **It timed out in practice.** The shared public instances often kept a request waiting for a free slot beyond any reasonable timeout, even with a fallback endpoint. A healthcare lookup can't depend on that.
+- **Completeness varies.** OSM is community-mapped, with no guarantee that a pharmacy exists or is still open. The register is the official source.
+- **Privacy.** The Overpass operator saw each user's IP address and rounded location.
 
-**When to revisit:** if Overpass returns `429` errors often in practice, a shared cache becomes worthwhile, or the IP exposure becomes unacceptable. Then add a server route that builds the query itself (never forwarding raw Overpass QL) and caches by rounded location.
+Other options looked at then still don't fit: the Helsinki Region Service Map API is regional only, PRH/YTJ lists businesses rather than locations, and PTV covers private pharmacies patchily.

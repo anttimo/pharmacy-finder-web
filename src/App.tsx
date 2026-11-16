@@ -3,13 +3,12 @@ import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { ResultsList } from "./components/ResultsList";
 import { useNearestPharmacies, type NearestState } from "./hooks/useNearestPharmacies";
 import { useI18n, type I18n } from "./i18n/context";
-import { formatDistance } from "./lib/format";
 
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 aria-disabled:cursor-not-allowed aria-disabled:opacity-60 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
 /** The one message for the polite live region. */
-function statusMessage(state: NearestState, { t, tn, locale }: I18n): string {
+function statusMessage(state: NearestState, { t, tn }: I18n): string {
   switch (state.status) {
     case "idle":
       return "";
@@ -18,11 +17,7 @@ function statusMessage(state: NearestState, { t, tn, locale }: I18n): string {
     case "loading":
       return t("status.loading");
     case "results":
-      return tn("status.found", state.pharmacies.length, {
-        radius: formatDistance(state.radiusMeters, locale),
-      });
-    case "empty":
-      return t("status.empty", { radius: formatDistance(state.radiusMeters, locale) });
+      return tn("status.found", state.pharmacies.length);
     case "denied":
       return t("status.denied");
     case "error":
@@ -85,10 +80,12 @@ function App() {
           </>
         )}
 
-        {state.status === "empty" && <p className="mt-1">{t("empty.body")}</p>}
-
         {state.status === "results" && <ResultsList pharmacies={state.pharmacies} />}
       </main>
+
+      <footer className="mx-auto max-w-2xl border-t border-slate-200 px-4 py-4 text-sm text-slate-700">
+        <p>{t("footer.source")}</p>
+      </footer>
     </div>
   );
 }

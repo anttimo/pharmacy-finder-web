@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
-import { findNearestPharmacies } from "../data/overpass";
-import type { PharmacyWithDistance } from "../lib/pharmacy";
+import { loadPharmacies } from "../data/pharmacies";
+import { nearest, type PharmacyWithDistance } from "../lib/pharmacy";
+
+/** How many pharmacies to show. There's no distance limit: the nearest are shown however far. */
+export const NEAREST_COUNT = 3;
 
 export type NearestState =
   | { status: "idle" }
   | { status: "locating" }
   | { status: "loading" }
-  | { status: "results"; pharmacies: PharmacyWithDistance[]; radiusMeters: number }
-  | { status: "empty"; radiusMeters: number }
+  | { status: "results"; pharmacies: PharmacyWithDistance[] }
   | { status: "denied" }
   | { status: "error"; kind: "location" | "network" };
 
@@ -21,8 +23,9 @@ const GEOLOCATION_OPTIONS: PositionOptions = {
 };
 
 /**
- * Device location → nearest pharmacies. `locate()` starts a new search (also used to
- * retry) and cancels any search still running, so only the latest result is shown.
+ * Device location → nearest pharmacies, found on the device: the location is never sent
+ * anywhere. `locate()` starts a new search (also used to retry) and supersedes any search
+ * still running, so only the latest result is shown.
  */
 export function useNearestPharmacies() {
   const [state, dispatch] = useReducer(reducer, { status: "idle" });
@@ -44,18 +47,15 @@ export function useNearestPharmacies() {
     dispatch({ status: "locating" });
     navigator.geolocation.getCurrentPosition(
       async (position) => {
-        // Geolocation can't be cancelled, so ignore answers to a superseded request.
+        // Neither geolocation nor the list import can be cancelled, so ignore answers to a
+        // superseded search.
         if (signal.aborted) return;
         dispatch({ status: "loading" });
         try {
-          const origin = { lat: position.coords.latitude, lon: position.coords.longitude };
-          const { pharmacies, radiusMeters } = await findNearestPharmacies(origin, signal);
+          const all = await loadPharmacies();
           if (signal.aborted) return;
-          dispatch(
-            pharmacies.length > 0
-              ? { status: "results", pharmacies, radiusMeters }
-              : { status: "empty", radiusMeters },
-          );
+          const origin = { lat: position.coords.latitude, lon: position.coords.longitude };
+          dispatch({ status: "results", pharmacies: nearest(all, origin, NEAREST_COUNT) });
         } catch {
           if (signal.aborted) return;
           dispatch({ status: "error", kind: "network" });

@@ -15,9 +15,3 @@ export function haversineMeters(a: LatLon, b: LatLon): number {
     Math.cos(toRadians(a.lat)) * Math.cos(toRadians(b.lat)) * Math.sin(dLon / 2) ** 2;
   return 2 * EARTH_RADIUS_METERS * Math.asin(Math.min(1, Math.sqrt(h)));
 }
-
-/** Rounds a coordinate to `decimals` places (3 ≈ 100 m), so we never send the exact position. */
-export function roundCoord(value: number, decimals = 3): number {
-  const factor = 10 ** decimals;
-  return Math.round(value * factor) / factor;
-}

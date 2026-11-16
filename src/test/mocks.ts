@@ -1,17 +1,25 @@
 // Network and browser-API fakes shared by tests.
+import type { Pharmacy } from "../lib/pharmacy";
+
+/** A pharmacy for tests; only the fields a test cares about need to be given. */
+export function pharmacy(
+  fields: Partial<Pharmacy> & Pick<Pharmacy, "id" | "lat" | "lon">,
+): Pharmacy {
+  return {
+    name: `Apteekki ${fields.id}`,
+    address: "Mannerheimintie 1",
+    postcode: "00100",
+    city: "Helsinki",
+    branch: false,
+    ...fields,
+  };
+}
 
 export function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: { "Content-Type": "application/json" },
   });
-}
-
-/** An Overpass response with one node per pharmacy. */
-export function overpassResponse(
-  pharmacies: { id: number; lat: number; lon: number; tags?: Record<string, string> }[],
-): Response {
-  return jsonResponse({ elements: pharmacies.map((p) => ({ type: "node", ...p })) });
 }
 
 /** Stubs global fetch; each call returns the next queued response (or throws it, if an Error). */
@@ -26,11 +34,6 @@ export function mockFetch(...responses: (Response | Error | (() => Promise<Respo
   });
   vi.stubGlobal("fetch", fn);
   return fn;
-}
-
-/** The Overpass query text sent in a mocked fetch call. */
-export function sentQuery(init: RequestInit | undefined): string {
-  return new URLSearchParams(String(init?.body)).get("data") ?? "";
 }
 
 type Success = (position: GeolocationPosition) => void;

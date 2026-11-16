@@ -1,9 +1,14 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+import { loadPharmacies } from "./data/pharmacies";
 import { I18nProvider } from "./i18n/I18nProvider";
 import type { Locale } from "./i18n/translate";
-import { jsonResponse, mockFetch, mockGeolocation, overpassResponse } from "./test/mocks";
+import { mockGeolocation, pharmacy } from "./test/mocks";
+
+// The list import is the network boundary: in the browser it fetches a JS chunk.
+vi.mock("./data/pharmacies", () => ({ loadPharmacies: vi.fn() }));
+const load = vi.mocked(loadPharmacies);
 
 function renderApp(locale: Locale = "en") {
   return render(
@@ -14,30 +19,42 @@ function renderApp(locale: Locale = "en") {
 }
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+  load.mockReset();
 });
 
-it("does not ask for location on page load", () => {
+it("does not ask for location or load the list on page load", () => {
   const geo = mockGeolocation();
   renderApp();
   expect(screen.getByRole("heading", { level: 1, name: "Nearest pharmacy" })).toBeInTheDocument();
   expect(geo.getCurrentPosition).not.toHaveBeenCalled();
+  expect(load).not.toHaveBeenCalled();
 });
 
-it("lists nearby pharmacies, nearest first, with the required notes", async () => {
+it("shows the data source in the footer", () => {
+  renderApp();
+  expect(screen.getByRole("contentinfo")).toHaveTextContent(
+    "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)",
+  );
+});
+
+it("lists the three nearest pharmacies, nearest first, with the required notes", async () => {
   const user = userEvent.setup();
   const geo = mockGeolocation();
-  mockFetch(
-    overpassResponse([
-      { id: 1, lat: 60.18, lon: 24.9414, tags: { name: "Far Apteekki" } },
-      {
-        id: 2,
-        lat: 60.1729,
-        lon: 24.9414,
-        tags: { name: "Near Apteekki", opening_hours: "Mo-Fr 08:00-20:00" },
-      },
-    ]),
-  );
+  load.mockResolvedValueOnce([
+    pharmacy({ id: "far", name: "Far Apteekki", lat: 60.2, lon: 24.9414 }),
+    pharmacy({
+      id: "near",
+      name: "Near Apteekki",
+      lat: 60.1729,
+      lon: 24.9414,
+      address: "Kaivokatu 1",
+      postcode: "00100",
+      city: "Helsinki",
+      phone: "(09) 123 4567",
+    }),
+    pharmacy({ id: "middle", name: "Middle Apteekki", lat: 60.18, lon: 24.9414 }),
+    pharmacy({ id: "farthest", name: "Farthest Apteekki", lat: 61, lon: 24.9414 }),
+  ]);
   renderApp();
 
   await user.click(screen.getByRole("button", { name: "Use my location" }));
@@ -46,17 +63,21 @@ it("lists nearby pharmacies, nearest first, with the required notes", async () =
 
   const heading = await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
   expect(heading).toHaveFocus();
-  expect(screen.getByRole("status")).toHaveTextContent("2 pharmacies found within 2 kilometres.");
+  expect(screen.getByRole("status")).toHaveTextContent("Showing the 3 nearest pharmacies.");
 
   const items = screen.getAllByRole("listitem");
   expect(items.map((li) => li.querySelector("h3")?.textContent)).toEqual([
     "Near Apteekki",
+    "Middle Apteekki",
     "Far Apteekki",
   ]);
   expect(items[0]).toHaveTextContent("110 metres in a straight line");
-  expect(items[0]).toHaveTextContent("Opening hours: Mo-Fr 08:00-20:00");
+  expect(items[0]).toHaveTextContent("Kaivokatu 1, 00100 Helsinki");
+  expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveAttribute(
+    "href",
+    "tel:+35891234567",
+  );
   expect(screen.getByText(/Check opening hours with the pharmacy/)).toBeInTheDocument();
-  expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toBeInTheDocument();
 });
 
 it("explains what to do when location permission is denied", async () => {
@@ -71,14 +92,12 @@ it("explains what to do when location permission is denied", async () => {
   expect(screen.getByText(/allow location access for this site/)).toBeInTheDocument();
 });
 
-it("offers a retry after a network error", async () => {
+it("offers a retry when the pharmacy list can't be loaded", async () => {
   const user = userEvent.setup();
   const geo = mockGeolocation();
-  mockFetch(
-    new TypeError("Failed to fetch"),
-    new TypeError("Failed to fetch"),
-    overpassResponse([{ id: 1, lat: 60.172, lon: 24.9414, tags: { name: "Apteekki" } }]),
-  );
+  load
+    .mockRejectedValueOnce(new TypeError("Failed to fetch dynamically imported module"))
+    .mockResolvedValueOnce([pharmacy({ id: "a", lat: 60.172, lon: 24.9414 })]);
   renderApp();
 
   await user.click(screen.getByRole("button", { name: "Use my location" }));
@@ -91,23 +110,6 @@ it("offers a retry after a network error", async () => {
   expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
   geo.succeed();
   expect(await screen.findByRole("heading", { name: "Pharmacies near you" })).toBeInTheDocument();
-});
-
-it("says so when nothing is found within the widest radius", async () => {
-  const user = userEvent.setup();
-  const geo = mockGeolocation();
-  mockFetch(overpassResponse([]), overpassResponse([]), jsonResponse({ elements: [] }));
-  renderApp();
-
-  await user.click(screen.getByRole("button", { name: "Use my location" }));
-  geo.succeed();
-
-  await waitFor(() =>
-    expect(screen.getByRole("status")).toHaveTextContent(
-      "No pharmacies found within 50 kilometres.",
-    ),
-  );
-  expect(screen.queryByRole("list")).not.toBeInTheDocument();
 });
 
 it("switches language and updates the page language", async () => {

@@ -1,8 +1,8 @@
 # Nearest pharmacy (web)
 
-Finds the pharmacies nearest to the user, or to a place they search for, in Finland. Single view. Pharmacy data comes from OpenStreetMap via the Overpass API, called straight from the browser ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)). Address search uses the Digitransit geocoding API through our own proxy ([ADR 0003](docs/adr/0003-geocoding.md)).
+Finds the pharmacies nearest to the user, or to a place they search for, in Finland. Single view. Pharmacy data comes from Fimea's pharmacy register, geocoded at build time into `src/data/pharmacies.json` by `npm run build:pharmacies`; the app searches it on the device ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)). Address search uses the Digitransit geocoding API through our own proxy ([ADR 0003](docs/adr/0003-geocoding.md)).
 
-**Scope:** Finland-first (fi/en UI, Finnish address search), but the pharmacy data path is global. Keep the Overpass client free of Finland-specific assumptions (no country filters or Finnish-only parsing). Finland-specific behaviour belongs in the geocoding and UI layers.
+**Scope:** Finland only. The pharmacy data (the Fimea register), the address search (Digitransit) and the UI (fi/en) are all built for Finland ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
 
 ## Stack
 
@@ -17,6 +17,7 @@ Finds the pharmacies nearest to the user, or to a place they search for, in Finl
 - `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`
 - `npm run format` (oxfmt) formats the code; `npm run format:check` verifies it. Config in `.oxfmtrc.json`.
 - `npm run cf-typegen`: regenerate Worker types after changing `wrangler.jsonc`
+- `npm run build:pharmacies`: rebuild `src/data/pharmacies.json` from the Fimea register (needs `DIGITRANSIT_API_KEY` in `.dev.vars`). `-- --inspect` prints the raw API shape. Review the diff and `scripts/needs-review.json` before committing. Fix unplaceable addresses in `scripts/address-overrides.json` (checked street address, never coordinates) ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
 
 Before saying a task is done, run lint, format:check, typecheck and tests, and report the results.
 
@@ -24,14 +25,14 @@ Before saying a task is done, run lint, format:check, typecheck and tests, and r
 
 - **Minimal dependencies.** Don't add a package without asking first. A new runtime dependency needs an ADR. No data-fetching library, state library, router, component library, i18n library or SSR. Those were left out on purpose (see [ADR 0002](docs/adr/0002-minimal-dependencies.md)).
 - **npm safety.** `.npmrc` sets `ignore-scripts=true`, `save-exact=true` (no `^` or `~`) and `min-release-age=7` (skips releases younger than 7 days; needs npm 11.10 or newer). If a new package really needs its install script (for example `esbuild` or `workerd`), first check whether it works without it. If not, allow just that package with `npm rebuild <package>` and say so in the commit message. Never turn `ignore-scripts` off globally. Dependabot uses the same 7-day cooldown. CI (`.github/workflows/ci.yml`) keeps `permissions: contents: read` and has no deploy credentials ([ADR 0004](docs/adr/0004-hosting.md)).
-- **Structure.** State lives in `useState` and small custom hooks. Network code goes in `src/data/` as plain async functions (Overpass client, geocode client). `useNearestPharmacies()` wraps them with `useReducer` and `AbortController`. Pure logic (distance, parsing) goes in `src/lib/` and has unit tests. Worker code stays in its own folder and imports nothing from the UI.
-- **Opening hours** are shown as the raw OSM `opening_hours` text when present. Don't compute an "open now" status.
+- **Structure.** State lives in `useState` and small custom hooks. Network code goes in `src/data/` as plain async functions: the pharmacy list loader (a dynamic `import()` of `pharmacies.json`, fetched on the first search) and the geocode client. Small hooks such as `useNearestPharmacies()` wrap them with `useReducer` and `AbortController`. Node-only build scripts live in `scripts/` (typechecked via `tsconfig.node.json`), never in `src/`. Pure logic (distance, parsing) goes in `src/lib/` and has unit tests. Worker code stays in its own folder and imports nothing from the UI.
+- **Opening hours** aren't in the data. Don't show or compute an "open now" status; show the phone number and the "check opening hours with the pharmacy" note.
 - **Location UX.** Ask for location only when the user taps "Use my location", never on page load. The address/place search field is always visible: it covers denied permission, checking another area and desktop. No IP geolocation.
 - **The Digitransit key never reaches the browser.** It lives only as a Worker secret: never in a Vite-bundled `.env` file, never in commits. Don't widen the proxy contract without updating [ADR 0003](docs/adr/0003-geocoding.md).
 - **No hard-coded UI text.** Every visible string, `aria-label` and error message goes through `t()` and exists in fi and en. Use the `add-ui-string` skill. (Swedish was dropped because nobody on the team can review it. Add it back only together with someone who can.) Geocoding requests send the active language.
 - **Accessibility is a requirement, not polish.** Use semantic HTML first and ARIA only where needed. Everything must be keyboard-reachable with a visible focus ring, and state changes are announced through one polite live region. The autocomplete follows the ARIA combobox pattern. The UI must work at 320 px width and 200 % zoom and respect `prefers-reduced-motion`. Run the `a11y-check` skill before finishing any UI work.
-- **Every async state has UI:** idle, locating, loading, results, empty (after widening the radius), location denied, no search matches, and offline or API error with a retry.
-- **Healthcare tone.** Plain, calm and short. Never claim the list is complete or that a pharmacy is definitely open. Wherever results appear, show the "check opening hours with the pharmacy" note and "© OpenStreetMap contributors".
+- **Every async state has UI:** idle, locating, loading, results, location denied, no search matches, and offline or API error with a retry.
+- **Healthcare tone.** Plain, calm and short. Never claim the list is complete or that a pharmacy is definitely open. Wherever results appear, show the "check opening hours with the pharmacy" note. The page footer always shows the data source: "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)" / "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / THL Koodistopalvelu" ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
 
 ## Decisions
 

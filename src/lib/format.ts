@@ -23,3 +23,12 @@ export function formatDistance(meters: number, locale: Locale): string {
     maximumFractionDigits: km < 10 ? 1 : 0,
   }).format(km);
 }
+
+/**
+ * A `tel:` link for a Finnish phone number as the register writes it ("(09) 849 2370",
+ * "010 5824430"): digits only, with the leading 0 replaced by the +358 country code.
+ */
+export function telHref(phone: string): string {
+  const digits = phone.replace(/[^\d+]/g, "");
+  return `tel:${digits.startsWith("0") ? `+358${digits.slice(1)}` : digits}`;
+}

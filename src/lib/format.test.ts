@@ -1,4 +1,4 @@
-import { formatDistance } from "./format";
+import { formatDistance, telHref } from "./format";
 
 // Intl may use non-breaking spaces between number and unit.
 const normalize = (s: string) => s.replace(/\s/g, " ");
@@ -19,5 +19,16 @@ describe("formatDistance", () => {
 
   it("switches to kilometres when metres round up to 1000", () => {
     expect(normalize(formatDistance(996, "en"))).toBe("1 kilometre");
+  });
+});
+
+describe("telHref", () => {
+  it("turns a Finnish number into an international tel: link", () => {
+    expect(telHref("(09) 849 2370")).toBe("tel:+35898492370");
+    expect(telHref("010 5824430")).toBe("tel:+358105824430");
+  });
+
+  it("keeps a number that already has a country code", () => {
+    expect(telHref("+358 40 123 4567")).toBe("tel:+358401234567");
   });
 });
