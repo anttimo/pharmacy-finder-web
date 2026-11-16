@@ -27,16 +27,17 @@ For a deployed Worker, you will set the key with `npx wrangler secret put DIGITR
 
 ## Scripts
 
-| Command                    | What it does                                      |
-| -------------------------- | ------------------------------------------------- |
-| `npm run dev`              | Start the dev server                              |
-| `npm run build`            | Typecheck and build for production                |
-| `npm run lint`             | Lint with oxlint                                  |
-| `npm run typecheck`        | Typecheck with `tsc -b`                           |
-| `npm test`                 | Run the tests once                                |
-| `npm run format`           | Format the code with oxfmt                        |
-| `npm run format:check`     | Check formatting                                  |
-| `npm run build:pharmacies` | Rebuild the pharmacy list from the Fimea register |
+| Command                    | What it does                                       |
+| -------------------------- | -------------------------------------------------- |
+| `npm run dev`              | Start the dev server                               |
+| `npm run build`            | Typecheck and build for production                 |
+| `npm run lint`             | Lint with oxlint                                   |
+| `npm run typecheck`        | Typecheck with `tsc -b`                            |
+| `npm test`                 | Run the tests once                                 |
+| `npm run test:e2e`         | Browser smoke tests (Playwright, installed Chrome) |
+| `npm run format`           | Format the code with oxfmt                         |
+| `npm run format:check`     | Check formatting                                   |
+| `npm run build:pharmacies` | Rebuild the pharmacy list from the Fimea register  |
 
 ## Project docs
 
