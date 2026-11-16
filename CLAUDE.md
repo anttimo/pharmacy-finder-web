@@ -36,7 +36,7 @@ Before saying a task is done, run lint, format:check, typecheck and tests, and r
 
 ## Decisions
 
-Architecture decisions live in `docs/adr/` (index: [docs/adr/README.md](docs/adr/README.md)). Read the relevant ADRs before changing anything structural. Don't silently contradict an accepted ADR: propose a superseding one with the `write-adr` skill, and update the ADR index and any rule in this file that changes.
+Architecture decisions live in `docs/adr/` (index: [docs/adr/README.md](docs/adr/README.md)). Read the relevant ADRs before changing anything structural. Don't silently contradict an accepted ADR: propose a superseding one with the `write-adr` skill, and update the ADR index and any rule in this file that changes. Until the first release, an ADR may be rewritten in place instead (see the skill).
 
 ## Working style
 
