@@ -16,13 +16,13 @@ Every dependency adds bundle size, upgrade work and code a reviewer has to trust
 
 Use React, TypeScript, Vite and Tailwind. Do not add the libraries usually reached for in larger apps:
 
-| Usually              | Here instead                                                                                                    | Why it's enough                                                                                                                      |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| TanStack Query / SWR | Plain async functions in `src/data/` (geocode client) + small hooks built on `useReducer` and `AbortController` | There is one remote request type. Autocomplete needs only a delay before the request and cancelling the previous one: about 20 lines |
-| Redux / Zustand      | `useState` and custom hooks                                                                                     | No state shared across screens                                                                                                       |
-| React Router         | None                                                                                                            | Single view                                                                                                                          |
-| Component library    | Small accessible components built by hand, including the combobox                                               | A few components, and full control over a11y and look                                                                                |
-| i18next / FormatJS   | A typed dictionary (fi/en) + `Intl`                                                                             | A few dozen strings. Typecheck catches missing translations                                                                          |
+| Usually                         | Here instead                                                                                                    | Why it's enough                                                                                                                      |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TanStack Query / SWR            | Plain async functions in `src/data/` (geocode client) + small hooks built on `useReducer` and `AbortController` | There is one remote request type. Autocomplete needs only a delay before the request and cancelling the previous one: about 20 lines |
+| Redux / Zustand                 | `useState` and custom hooks                                                                                     | No state shared across screens                                                                                                       |
+| React Router                    | None                                                                                                            | Single view                                                                                                                          |
+| Component library               | Small accessible components built by hand, including the combobox                                               | A few components, and full control over a11y and look                                                                                |
+| i18next / FormatJS (react-intl) | A typed dictionary (fi/en) + `Intl`                                                                             | A few dozen strings. Typecheck catches missing translations                                                                          |
 
 The rule covers **runtime** dependencies, meaning code that ships to the browser or runs in the Worker. Dev-only tools that add nothing to the bundle (Vitest, oxlint, `wrangler`, `@cloudflare/vite-plugin`; see [ADR-0004](0004-hosting.md)) are fine when they earn their place. Tailwind counts as build-time: it compiles to one small CSS file and ships no JavaScript.
 
@@ -43,4 +43,5 @@ A new runtime dependency needs a short ADR that supersedes or amends this one.
   - typing quickly in the search field (only the last request's result is shown)
   - retry after an error
 - **No devtools or ready-made retry/backoff.** That's acceptable for one simple request type and a manual retry button.
+- **No ICU messages.** We considered react-intl (FormatJS). For about 25 strings in two languages it adds bundle size without a clear gain, and a missing translation would only show up at runtime instead of failing typecheck. Revisit if more languages are added, or if messages need `select` or links inside text.
 - **Autocomplete is the weakest point.** If it grows beyond a debounced request (caching suggestions, prefetching), revisit this ADR. TanStack Query would be the first addition.
