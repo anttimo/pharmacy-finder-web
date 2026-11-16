@@ -34,8 +34,10 @@ export function I18nProvider({
 }) {
   const [locale, setLocaleState] = useState<Locale>(() => forcedLocale ?? initialLocale());
 
+  // index.html has the English title and lang as the fallback until this runs.
   useEffect(() => {
     document.documentElement.lang = locale;
+    document.title = translate(dictionaries[locale], locale, "app.title");
   }, [locale]);
 
   const value = useMemo<I18n>(() => {

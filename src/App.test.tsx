@@ -132,13 +132,15 @@ it("offers a retry when the pharmacy list can't be loaded", async () => {
   expect(await screen.findByRole("heading", { name: "Pharmacies near you" })).toBeInTheDocument();
 });
 
-it("switches language and updates the page language", async () => {
+it("switches language and updates the page language and title", async () => {
   const user = userEvent.setup();
   renderApp("en");
+  expect(document.title).toBe("Nearest pharmacy");
 
   await user.selectOptions(screen.getByRole("combobox", { name: "Language" }), "fi");
 
   expect(screen.getByRole("heading", { level: 1, name: "Lähin apteekki" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Käytä sijaintiani" })).toBeInTheDocument();
   expect(document.documentElement.lang).toBe("fi");
+  expect(document.title).toBe("Lähin apteekki");
 });
