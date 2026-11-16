@@ -90,7 +90,9 @@ export function toRecord(item: KantaItem): PharmacyRecord {
   // PostAddress is "street, postcode, office". StreetAddress (the visiting address) is missing
   // on a few records, so fall back to the postal street.
   const postalStreet = attr(item, "PostAddress").split(",")[0]?.trim() ?? "";
-  const phone = attr(item, "PhoneNumber");
+  // A few entries list two numbers ("010 371 7610, 010 37", the second cut off). Keep the
+  // first, so the tel: link stays dialable.
+  const phone = attr(item, "PhoneNumber").split(/[,;]/)[0]?.trim() ?? "";
   const rec: PharmacyRecord = {
     id: item.conceptCodeId,
     // Abbreviation is the everyday name ("Helsingin Vuosaaren apteekki"); LongName is often

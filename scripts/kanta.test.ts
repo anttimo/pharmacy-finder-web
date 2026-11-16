@@ -70,6 +70,12 @@ describe("toRecord", () => {
     );
   });
 
+  it("keeps only the first phone number when the register lists several", () => {
+    expect(toRecord(item({ ...helsinki4, PhoneNumber: "010 371 7610, 010 37" })).phone).toBe(
+      "010 371 7610",
+    );
+  });
+
   it("marks branch pharmacies", () => {
     expect(toRecord(item({ ...helsinki4, ApteekkiTyyppi: "Sivuapteekki" })).branch).toBe(true);
   });
