@@ -1,4 +1,4 @@
-// Network and browser-API fakes shared by tests.
+// Test data and browser-API fakes shared by tests.
 import type { Pharmacy } from "../lib/pharmacy";
 
 /** A pharmacy for tests; only the fields a test cares about need to be given. */
@@ -13,27 +13,6 @@ export function pharmacy(
     branch: false,
     ...fields,
   };
-}
-
-export function jsonResponse(body: unknown, status = 200): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-/** Stubs global fetch; each call returns the next queued response (or throws it, if an Error). */
-export function mockFetch(...responses: (Response | Error | (() => Promise<Response>))[]) {
-  const queue = [...responses];
-  const fn = vi.fn(async (_input: RequestInfo | URL, _init?: RequestInit) => {
-    const next = queue.shift();
-    if (!next) throw new Error("Unexpected fetch call");
-    if (next instanceof Error) throw next;
-    if (typeof next === "function") return next();
-    return next;
-  });
-  vi.stubGlobal("fetch", fn);
-  return fn;
 }
 
 type Success = (position: GeolocationPosition) => void;
