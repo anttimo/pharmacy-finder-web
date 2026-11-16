@@ -135,7 +135,8 @@ async function main() {
   }
   let key: string | undefined;
   const raw = await fetchAll(false);
-  const today = new Date().toISOString().slice(0, 10);
+  // The register's dates are Finnish calendar days. "sv-SE" formats as YYYY-MM-DD.
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Helsinki" });
   const open = raw.filter((item) => isOpenToPublic(item, today));
   console.log(`${open.length} of ${raw.length} register entries are open pharmacies or branches.`);
 
