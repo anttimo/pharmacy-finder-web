@@ -146,3 +146,18 @@ export function judgeMatch(
   if (!inFinland) return `outside Finland ${lat},${lon} (${label})`;
   return { lat, lon };
 }
+
+/**
+ * Coordinates from the previous build, if this record's geocoding input (address, postcode,
+ * city, after any override) hasn't changed. Saves geocoding calls on a rebuild.
+ */
+export function previousLocation(
+  rec: PharmacyRecord,
+  previous: ReadonlyMap<string, Pharmacy>,
+): { lat: number; lon: number } | undefined {
+  const p = previous.get(rec.id);
+  if (!p || p.address !== rec.address || p.postcode !== rec.postcode || p.city !== rec.city) {
+    return undefined;
+  }
+  return { lat: p.lat, lon: p.lon };
+}

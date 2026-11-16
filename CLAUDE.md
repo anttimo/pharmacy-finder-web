@@ -17,7 +17,7 @@ Finds the pharmacies nearest to the user, or to a place they search for, in Finl
 - `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`
 - `npm run format` (oxfmt) formats the code; `npm run format:check` verifies it. Config in `.oxfmtrc.json`.
 - `npm run cf-typegen`: regenerate Worker types after changing `wrangler.jsonc`
-- `npm run build:pharmacies`: rebuild `src/data/pharmacies.json` from the Fimea register (needs `DIGITRANSIT_API_KEY` in `.dev.vars`). `-- --inspect` prints the raw API shape. Review the diff and `scripts/needs-review.json` before committing. Fix unplaceable addresses in `scripts/address-overrides.json` (checked street address, never coordinates) ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
+- `npm run build:pharmacies`: rebuild `src/data/pharmacies.json` from the Fimea register (needs `DIGITRANSIT_API_KEY` in `.dev.vars`). It reuses known coordinates when an address is unchanged; `-- --regeocode` geocodes everything again. `-- --inspect` prints the raw API shape. Review the diff and `scripts/needs-review.json` before committing. Fix unplaceable addresses in `scripts/address-overrides.json` (checked street address, never coordinates) ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
 
 Before saying a task is done, run lint, format:check, typecheck and tests, and report the results.
 

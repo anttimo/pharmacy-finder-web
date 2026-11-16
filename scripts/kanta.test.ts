@@ -5,6 +5,7 @@ import {
   geocodeQueries,
   isOpenToPublic,
   judgeMatch,
+  previousLocation,
   type KantaItem,
   toRecord,
 } from "./kanta.ts";
@@ -147,5 +148,27 @@ describe("applyOverride", () => {
   it("leaves records without an override alone", () => {
     const rec = toRecord(item(helsinki4));
     expect(applyOverride(rec, undefined)).toEqual({ rec, stale: false });
+  });
+});
+
+describe("previousLocation", () => {
+  const rec = toRecord(item(helsinki4));
+  const previous = new Map([[rec.id, { ...rec, lat: 60.17, lon: 24.94 }]]);
+
+  it("reuses coordinates when the address is unchanged", () => {
+    expect(previousLocation(rec, previous)).toEqual({ lat: 60.17, lon: 24.94 });
+  });
+
+  it("geocodes again when the address changed or the pharmacy is new", () => {
+    expect(previousLocation({ ...rec, address: "Kaivokatu 1" }, previous)).toBeUndefined();
+    expect(previousLocation({ ...rec, postcode: "00101" }, previous)).toBeUndefined();
+    expect(previousLocation({ ...rec, id: "new" }, previous)).toBeUndefined();
+  });
+
+  it("ignores changes that don't affect the location, like the name", () => {
+    expect(previousLocation({ ...rec, name: "Uusi nimi" }, previous)).toEqual({
+      lat: 60.17,
+      lon: 24.94,
+    });
   });
 });

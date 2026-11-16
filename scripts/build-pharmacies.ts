@@ -3,10 +3,15 @@
  * geocoding each address with Digitransit. See ADR 0001.
  *
  *   npm run build:pharmacies -- --inspect   # print the first page's metadata and first raw item
- *   npm run build:pharmacies                # full build
+ *   npm run build:pharmacies                # rebuild, reusing known coordinates
+ *   npm run build:pharmacies -- --regeocode # rebuild, geocoding every address again
  *
- * Node 24+ runs this .ts file directly. Needs DIGITRANSIT_API_KEY in the environment or in
- * .dev.vars (never in .env). No runtime dependencies (ADR 0002).
+ * A rebuild keeps a pharmacy's coordinates from the current pharmacies.json when its id and
+ * address are unchanged. Use --regeocode after changing the geocoding rules.
+ *
+ * Node 24+ runs this .ts file directly. Geocoding needs DIGITRANSIT_API_KEY in the environment
+ * or in .dev.vars (never in .env); it's only read if something needs geocoding. No runtime
+ * dependencies (ADR 0002).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -21,6 +26,7 @@ import {
   type KantaPage,
   type Pharmacy,
   type PharmacyRecord,
+  previousLocation,
   toRecord,
 } from "./kanta.ts";
 
@@ -127,30 +133,46 @@ async function main() {
     await fetchAll(true);
     return;
   }
-  const key = apiKey();
+  let key: string | undefined;
   const raw = await fetchAll(false);
   const today = new Date().toISOString().slice(0, 10);
   const open = raw.filter((item) => isOpenToPublic(item, today));
   console.log(`${open.length} of ${raw.length} register entries are open pharmacies or branches.`);
 
   const overrides = JSON.parse(readFileSync(OVERRIDES, "utf8")) as Record<string, AddressOverride>;
+  const previous = new Map<string, Pharmacy>();
+  if (!process.argv.includes("--regeocode") && existsSync(OUT)) {
+    const old = JSON.parse(readFileSync(OUT, "utf8")) as { pharmacies: Pharmacy[] };
+    for (const p of old.pharmacies) previous.set(p.id, p);
+  }
+  let reused = 0;
+  let geocoded = 0;
   const pharmacies: Pharmacy[] = [];
   const review: Unresolved[] = [];
-  for (const [i, item] of open.entries()) {
+  for (const item of open) {
     const { rec, stale } = applyOverride(toRecord(item), overrides[item.conceptCodeId]);
     if (stale) {
       console.warn(`Override for ${rec.id} (${rec.name}) ignored: the register address changed.`);
     }
-    const result = await geocode(rec, key);
+    const known = previousLocation(rec, previous);
+    let result: { lat: number; lon: number } | string;
+    if (known) {
+      result = known;
+      reused++;
+    } else {
+      result = await geocode(rec, (key ??= apiKey()));
+      geocoded++;
+      if (geocoded % 100 === 0) console.log(`geocoded ${geocoded}`);
+      await sleep(DELAY_MS);
+    }
     if (typeof result === "string") {
       const query = `${rec.name}: ${rec.address}, ${rec.postcode} ${rec.city}`;
       review.push({ id: rec.id, query, reason: result });
     } else {
       pharmacies.push({ ...rec, ...result });
     }
-    if ((i + 1) % 100 === 0) console.log(`geocoded ${i + 1}/${open.length}`);
-    await sleep(DELAY_MS);
   }
+  console.log(`Reused ${reused} known locations, geocoded ${geocoded}.`);
 
   pharmacies.sort((a, b) => a.id.localeCompare(b.id, "en", { numeric: true }));
   mkdirSync(dirname(OUT), { recursive: true });
