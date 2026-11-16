@@ -56,7 +56,7 @@ When hosting exists ([ADR-0004](0004-hosting.md)), a scheduled job (a Worker Cro
 - **Stale between builds.** A pharmacy that closed last week can still appear. The UI already tells people to check with the pharmacy before going, and `generatedAt` makes the age visible.
 - **Gaps from geocoding.** Entries in `needs-review.json` are missing from the app. That's why we never claim the list is complete.
 - **No opening hours.** The register doesn't have them. The UI shows the phone number and the "check opening hours with the pharmacy" note, and never an "open now" status.
-- **Finland only.** The data path is no longer global. Going beyond Finland would need a different source per country.
+- **Finland only.** The data path is no longer global. Going beyond Finland would need a different source per country or using global source like Google Places.
 - **Attribution.** The page footer always shows the source: "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)" (fi: "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / THL Koodistopalvelu"). A footer rather than an About page, because the app is a single view with no router ([ADR-0002](0002-minimal-dependencies.md)).
 
 ## Rejected: Overpass (OpenStreetMap)
