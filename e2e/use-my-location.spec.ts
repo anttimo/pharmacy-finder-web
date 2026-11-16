@@ -59,7 +59,7 @@ test.describe("Helsinki centre, English", () => {
 
     const results = page.getByRole("region", { name: "Pharmacies near you" });
     await expectThreeNearestFirst(results);
-    await expect(results.getByRole("heading", { name: "Pharmacies near you" })).toBeFocused();
+    await expect(page.getByRole("button", { name: "Use my location" })).toBeFocused();
     await expect(results).toContainText("Check opening hours with the pharmacy");
     await expect(results.getByRole("listitem").first()).toContainText("in a straight line");
   });

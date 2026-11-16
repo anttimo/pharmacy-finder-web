@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useI18n } from "../i18n/context";
 import { formatDistance, telHref } from "../lib/format";
 import type { PharmacyWithDistance } from "../lib/pharmacy";
@@ -8,21 +7,13 @@ const linkClass =
 
 export function ResultsList({ pharmacies }: { pharmacies: PharmacyWithDistance[] }) {
   const { t, locale } = useI18n();
-  const headingRef = useRef<HTMLHeadingElement>(null);
 
-  // Mounts once per completed search: move focus so the results are the obvious next stop.
-  useEffect(() => {
-    headingRef.current?.focus();
-  }, []);
-
+  // Focus stays on "Use my location": the status live region announces the results, and the
+  // next Tab reaches the first phone link. Moving focus here as well made screen readers
+  // announce the results twice.
   return (
     <section aria-labelledby="results-heading" className="mt-6">
-      <h2
-        id="results-heading"
-        ref={headingRef}
-        tabIndex={-1}
-        className="text-xl font-semibold focus:outline-none"
-      >
+      <h2 id="results-heading" className="text-xl font-semibold">
         {t("results.heading")}
       </h2>
       <p className="mt-2 text-sm text-slate-700">{t("results.checkHours")}</p>

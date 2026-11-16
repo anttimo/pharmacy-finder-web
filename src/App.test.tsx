@@ -61,9 +61,12 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   expect(screen.getByRole("status")).toHaveTextContent("Finding your location…");
   geo.succeed();
 
-  const heading = await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
-  expect(heading).toHaveFocus();
+  await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
   expect(screen.getByRole("status")).toHaveTextContent("Showing the 3 nearest pharmacies.");
+  // Focus stays on the button (the live region announces the results); Tab reaches them next.
+  expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
+  await user.tab();
+  expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveFocus();
 
   const items = screen.getAllByRole("listitem");
   expect(items.map((li) => li.querySelector("h3")?.textContent)).toEqual([
