@@ -7,3 +7,7 @@
 # Built by `npm run build:pharmacies` (ADR 0001). GitHub collapses it in diffs and
 # leaves it out of the language stats.
 src/data/pharmacies.json linguist-generated=true
+
+# Built by `npm run cf-typegen` (ADR 0004). Committed so the Worker typechecks right after a
+# clone; GitHub collapses it in diffs.
+worker-configuration.d.ts linguist-generated=true
