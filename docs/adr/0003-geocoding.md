@@ -27,7 +27,7 @@ Search needs a geocoder that knows Finnish streets and places, returns Finnish a
 
 **Web:** use the Digitransit autocomplete API, called only through `GET /api/geocode` on our Worker ([ADR-0004](0004-hosting.md)). The browser never sees the key.
 
-**iOS:** use `MKLocalSearchCompleter` / `CLGeocoder`. They're built in, free and need no key. The two apps don't need the same geocoder. Each uses its platform's best native option, and both feed the same pharmacy query ([ADR-0001](0001-pharmacy-data-source.md)).
+**iOS:** use `MKLocalSearchCompleter` / `CLGeocoder`. They're built in, free and need no key. The two apps don't need the same geocoder. Each uses its platform's best native option, and both search the same pharmacy list ([ADR-0001](0001-pharmacy-data-source.md)).
 
 ### The proxy contract
 
@@ -60,5 +60,5 @@ On the client, input is debounced and stale requests are aborted (the same patte
 
 - **We now run server code.** It's one route of about 100 lines with no framework and no runtime dependencies ([ADR-0002](0002-minimal-dependencies.md)).
 - **The guards limit how the proxy can be used, not who uses it.** Anyone can still call `/api/geocode` with valid params and spend our quota. That's acceptable at this scale. If abuse shows up, add Cloudflare's rate-limiting binding per IP.
-- **Search depends on hosting.** Without a deployed Worker and key, search shows its error state, but "Use my location" still works because Overpass is called directly ([ADR-0001](0001-pharmacy-data-source.md)).
-- **Different geocoders on web and iOS.** Suggestions can differ slightly between the apps. Pharmacy results won't, because both apps use the same Overpass query.
+- **Search depends on hosting.** Without a deployed Worker and key, search shows its error state, but "Use my location" still works because the pharmacy list ships with the app ([ADR-0001](0001-pharmacy-data-source.md)).
+- **Different geocoders on web and iOS.** Suggestions can differ slightly between the apps. Pharmacy results won't, because both apps use the same pharmacy list.

@@ -39,6 +39,8 @@ description: Record an architecture decision as a short ADR in docs/adr/. Use wh
 5. **Keep it short:** about one screen. Write it for a reviewer who wasn't in the conversation. Prefer concrete reasons over general principles.
 6. **Status stays `Proposed`** until the user accepts it. Then change it to `Accepted`.
 7. **Superseding:** if this replaces an earlier ADR, set the old one's status to `Superseded by NNNN` and link both ways.
+
+   **Exception before the first release:** until the app has been deployed for users, an ADR whose decision changes may be rewritten in place instead. Put the new date in its header with a note of what it replaces, and keep the old decision and why it was dropped in a short "Rejected: …" section. Once the app is released, always supersede.
 8. **Cross-reference.**
    - Link related ADRs with relative links, for example `[ADR-0003](0003-geocoding.md)`.
    - Add a row for it to the table in `docs/adr/README.md`.

@@ -8,10 +8,7 @@
 
 The app does one thing: find a location (device location or an address search) and show the nearest pharmacies as a sorted list. There is one view, no mutations and no state shared between screens.
 
-It makes two kinds of requests:
-
-- **Pharmacy lookup:** one Overpass query each time the user asks ([ADR-0001](0001-pharmacy-data-source.md)).
-- **Address autocomplete:** repeated small requests to `/api/geocode` while the user types ([ADR-0003](0003-geocoding.md)).
+It makes one kind of request: **address autocomplete**, repeated small requests to `/api/geocode` while the user types ([ADR-0003](0003-geocoding.md)). The pharmacy list ships with the app and is searched on the device ([ADR-0001](0001-pharmacy-data-source.md)).
 
 Every dependency adds bundle size, upgrade work and code a reviewer has to trust.
 
@@ -19,13 +16,13 @@ Every dependency adds bundle size, upgrade work and code a reviewer has to trust
 
 Use React, TypeScript, Vite and Tailwind. Do not add the libraries usually reached for in larger apps:
 
-| Usually              | Here instead                                                                                                                     | Why it's enough                                                                                                                                                                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TanStack Query / SWR | Plain async functions in `src/data/` (Overpass client, geocode client) + small hooks built on `useReducer` and `AbortController` | The hard parts of the pharmacy lookup (endpoint fallback, widening the radius) are specific to this app and would live inside a `queryFn` anyway. Autocomplete needs only a delay before the request and cancelling the previous one: about 20 lines |
-| Redux / Zustand      | `useState` and custom hooks                                                                                                      | No state shared across screens                                                                                                                                                                                                                       |
-| React Router         | None                                                                                                                             | Single view                                                                                                                                                                                                                                          |
-| Component library    | Small accessible components built by hand, including the combobox                                                                | A few components, and full control over a11y and look                                                                                                                                                                                                |
-| i18next / FormatJS   | A typed dictionary (fi/en) + `Intl`                                                                                              | A few dozen strings. Typecheck catches missing translations                                                                                                                                                                                          |
+| Usually                         | Here instead                                                                                                  | Why it's enough                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TanStack Query / SWR            | Plain async functions in `src/data/` (geocode client) + small hooks built on `useState` and `AbortController` | There is one remote request type. Autocomplete needs only a delay before the request and cancelling the previous one: about 20 lines |
+| Redux / Zustand                 | `useState` and custom hooks                                                                                   | No state shared across screens                                                                                                       |
+| React Router                    | None                                                                                                          | Single view                                                                                                                          |
+| Component library               | Small accessible components built by hand, including the combobox                                             | A few components, and full control over a11y and look                                                                                |
+| i18next / FormatJS (react-intl) | A typed dictionary (fi/en) + `Intl`                                                                           | A few dozen strings. Typecheck catches missing translations                                                                          |
 
 The rule covers **runtime** dependencies, meaning code that ships to the browser or runs in the Worker. Dev-only tools that add nothing to the bundle (Vitest, oxlint, `wrangler`, `@cloudflare/vite-plugin`; see [ADR-0004](0004-hosting.md)) are fine when they earn their place. Tailwind counts as build-time: it compiles to one small CSS file and ships no JavaScript.
 
@@ -37,7 +34,7 @@ A new runtime dependency needs a short ADR that supersedes or amends this one.
 
 - Small bundle and a fast first load on mobile connections.
 - Each piece is small enough to read and test directly.
-- The request states map one-to-one onto UI states: `idle | locating | loading | results | empty | denied | error`.
+- The request states map one-to-one onto UI states: `idle | locating | loading | results | denied | error`. There is no empty state: the app always shows the nearest pharmacies, however far ([ADR-0001](0001-pharmacy-data-source.md)).
 
 **Bad, and how we handle it**
 
@@ -45,5 +42,6 @@ A new runtime dependency needs a short ADR that supersedes or amends this one.
   - a new search started while one is running
   - typing quickly in the search field (only the last request's result is shown)
   - retry after an error
-- **No devtools or ready-made retry/backoff.** That's acceptable for two simple request types and a manual retry button.
+- **No devtools or ready-made retry/backoff.** That's acceptable for one simple request type and a manual retry button.
+- **No ICU messages.** We considered react-intl (FormatJS). For about 25 strings in two languages it adds bundle size without a clear gain, and a missing translation would only show up at runtime instead of failing typecheck. Revisit if more languages are added, or if messages need `select` or links inside text.
 - **Autocomplete is the weakest point.** If it grows beyond a debounced request (caching suggestions, prefetching), revisit this ADR. TanStack Query would be the first addition.
