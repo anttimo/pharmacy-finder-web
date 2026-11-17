@@ -69,7 +69,27 @@ it("reports no matches", async () => {
   fetchMock.mockResolvedValueOnce(answer());
   const { result } = renderHook(() => usePlaceSuggestions("zzqq", "fi"));
   await settle();
-  expect(result.current.state).toEqual({ status: "empty" });
+  expect(result.current.state).toEqual({ status: "empty", text: "zzqq" });
+});
+
+it("treats an answer for older text as still loading, keeping its places on screen", async () => {
+  fetchMock.mockResolvedValueOnce(answer("Kamppi, Helsinki")).mockResolvedValueOnce(answer());
+  const { result, rerender } = renderHook(({ q }) => usePlaceSuggestions(q, "fi"), {
+    initialProps: { q: "kamp" },
+  });
+  await settle();
+
+  rerender({ q: "kampx" });
+  expect(result.current.state).toEqual({
+    status: "loading",
+    places: [{ label: "Kamppi, Helsinki", lat: 60.17, lon: 24.93 }],
+  });
+  await settle();
+  expect(result.current.state).toEqual({ status: "empty", text: "kampx" });
+
+  // Back to text with matches: the old "no matches" isn't reported for it.
+  rerender({ q: "kamp" });
+  expect(result.current.state).toEqual({ status: "loading", places: [] });
 });
 
 it("reports an error and can retry", async () => {
@@ -78,7 +98,7 @@ it("reports an error and can retry", async () => {
     .mockResolvedValueOnce(answer("Kamppi, Helsinki"));
   const { result } = renderHook(() => usePlaceSuggestions("kamp", "fi"));
   await settle();
-  expect(result.current.state).toEqual({ status: "error" });
+  expect(result.current.state).toEqual({ status: "error", text: "kamp" });
 
   act(() => result.current.retry());
   await settle();

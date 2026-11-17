@@ -359,6 +359,20 @@ describe("address search", () => {
     expect(field()).toHaveFocus();
   });
 
+  it("doesn't judge new text by the old text's 'no matches' on a quick Enter", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValueOnce(places()).mockResolvedValue(places("Kamppi, Helsinki"));
+    renderApp();
+
+    await user.type(field(), "kampx");
+    await waitFor(() => expect(field()).toHaveAccessibleDescription(/No places found/));
+    await user.keyboard("{Backspace}{Enter}");
+    expect(field()).not.toHaveAttribute("aria-invalid");
+    expect(
+      await screen.findByRole("heading", { name: "Pharmacies near Kamppi, Helsinki" }),
+    ).toBeInTheDocument();
+  });
+
   it("offers location first, then the search field", () => {
     renderApp();
     const button = screen.getByRole("button", { name: "Use my location" });

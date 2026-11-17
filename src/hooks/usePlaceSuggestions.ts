@@ -11,16 +11,28 @@ export type SuggestionsState =
   | { status: "idle" }
   // The previous suggestions stay visible while new ones load, so the list doesn't flicker.
   | { status: "loading"; places: Place[] }
-  // `text` is the query these places answer, so fresh results can be told from old ones.
+  // `text` is the query an answer is for, so answers for older text can be told apart.
   | { status: "results"; places: Place[]; text: string }
-  | { status: "empty" }
-  | { status: "error" };
+  | { status: "empty"; text: string }
+  | { status: "error"; text: string };
 
 const IDLE: SuggestionsState = { status: "idle" };
 
 /** The suggestions currently on screen. */
 export function visiblePlaces(state: SuggestionsState): Place[] {
   return state.status === "loading" || state.status === "results" ? state.places : [];
+}
+
+/**
+ * The state for `text`. An answer for older text counts as still loading (keeping its places
+ * on screen), so "no matches" for the old text can't mark the new text invalid.
+ */
+function stateFor(state: SuggestionsState, text: string): SuggestionsState {
+  if (text.length < MIN_QUERY_LENGTH) return IDLE; // too short to search, whatever came before
+  if ("text" in state && state.text !== text) {
+    return { status: "loading", places: visiblePlaces(state) };
+  }
+  return state;
 }
 
 /**
@@ -49,11 +61,13 @@ export function usePlaceSuggestions(
       try {
         const places = await geocode(text, lang, controller.signal);
         if (controller.signal.aborted) return;
-        setState(places.length > 0 ? { status: "results", places, text } : { status: "empty" });
+        setState(
+          places.length > 0 ? { status: "results", places, text } : { status: "empty", text },
+        );
         if (pendingRef.current && places.length > 0) chooseLater(places[0]!);
       } catch {
         if (controller.signal.aborted) return;
-        setState({ status: "error" });
+        setState({ status: "error", text });
       }
       pendingRef.current = false;
     }, DEBOUNCE_MS);
@@ -65,11 +79,10 @@ export function usePlaceSuggestions(
 
   const retry = useCallback(() => setAttempt((n) => n + 1), []);
 
-  // Too short to search: idle, whatever the last answer was.
-  const current: SuggestionsState = text.length < MIN_QUERY_LENGTH ? IDLE : state;
+  const current = stateFor(state, text);
 
   const chooseTop = () => {
-    if (current.status === "results" && current.text === text) onChoose(current.places[0]!);
+    if (current.status === "results") onChoose(current.places[0]!);
     else if (text.length >= MIN_QUERY_LENGTH) pendingRef.current = true;
   };
 
