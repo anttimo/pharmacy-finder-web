@@ -3,7 +3,7 @@
 - Status: Accepted
 - Date: 2026-11-11
 - Applies to: web app (proxy, Digitransit) and iOS app (Apple; the iOS app lives in its own repository)
-- Implementation: planned, the Worker is not in the repo yet
+- Implementation: done 2026-11-17 (`worker/geocode.ts`, `src/components/PlaceSearch.tsx`)
 
 ## Context
 
@@ -41,13 +41,15 @@ The proxy is deliberately narrow, so it can't be used as an open relay:
 - **GET only.** Anything else gets `405`.
 - **Allowlisted params:** `text` (required), `lang` (`fi | sv | en`) and `focus` (`lat,lon`). An unknown or repeated param gets `400`. We reject instead of silently dropping, so client bugs show up.
 - **Length caps:** `text` is at most 100 characters, and the whole query string at most 256 (`414` otherwise).
-- **Fixed upstream:** one hard-coded Digitransit URL. Result count is set on the server. The client can't pick layers, sources or the endpoint.
+- **Fixed upstream:** one hard-coded Digitransit URL. Result count (6) is set on the server; autocomplete ignores `size`, so the Worker also cuts the answer. The client can't pick layers, sources or the endpoint. Results are limited to Finland (`boundary.country=FIN`).
 - **Key in a header** (`digitransit-subscription-key`), not in the URL, so it never appears in a logged URL. It is stored with `wrangler secret put` and kept in `.dev.vars` locally.
 - **Reshaped response.** Only `label`, `lat` and `lon` are returned, so the client doesn't depend on Pelias' GeoJSON.
 - **Focus point rounded to about 1 km** before it goes upstream. That's enough to rank nearby matches higher.
 - **Failures:** a 5 s upstream timeout. Upstream errors become a generic `502` and are never passed through. A missing key returns `500 not_configured`.
 
-On the client, input is debounced and stale requests are aborted (the same pattern as [ADR-0002](0002-minimal-dependencies.md)).
+On the client, input is debounced and stale requests are aborted (the same pattern as [ADR-0002](0002-minimal-dependencies.md)). The web client **doesn't send `focus`**: the UI promises that the device location never leaves the device. The contract keeps `focus` so that promise can be revisited without a contract change.
+
+The page offers "Use my location" first, then "or" and the search field. Choosing a suggestion starts the pharmacy search; Enter takes the top suggestion. There's no separate search button. Leaving the field with text that isn't a found place marks it invalid and clears the results, so the field and the list never disagree. After each search, focus moves to the results heading.
 
 ## Consequences
 

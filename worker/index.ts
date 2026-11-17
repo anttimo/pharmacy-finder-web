@@ -1,12 +1,14 @@
 // The only server code (ADR 0004). Only /api/* requests reach it (run_worker_first in
 // wrangler.jsonc); everything else is a static asset. Imports nothing from the UI.
-
-const json = (body: unknown, status: number) =>
-  Response.json(body, { status, headers: { "cache-control": "no-store" } });
+import { handleGeocode } from "./geocode";
 
 export default {
-  // Routes go here as they are added (/api/geocode, ADR 0003).
-  async fetch(_request: Request): Promise<Response> {
-    return json({ error: "not_found" }, 404);
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const { pathname } = new URL(request.url);
+    if (pathname === "/api/geocode") return handleGeocode(request, env);
+    return Response.json(
+      { error: "not_found" },
+      { status: 404, headers: { "cache-control": "no-store" } },
+    );
   },
 } satisfies ExportedHandler<Env>;

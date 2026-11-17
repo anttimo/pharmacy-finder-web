@@ -4,11 +4,11 @@ Finds the pharmacies nearest to you, or to a place you search for, in Finland. T
 
 Pharmacy data comes from Fimea's pharmacy register, geocoded at build time ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)). It may be incomplete or out of date, so check opening hours with the pharmacy.
 
-**Status:** early. "Use my location" works and shows the three nearest pharmacies. The app is served by a Cloudflare Worker. Address search, and the Worker route behind it, are not built yet; they are planned in the [ADRs](docs/adr/README.md).
+**Status:** early. "Use my location" and address search work and show the three nearest pharmacies. The app is served by a Cloudflare Worker, which also proxies address search.
 
 ## Stack
 
-React, TypeScript (strict), Vite and Tailwind v4, tested with Vitest and Testing Library. A single Cloudflare Worker serves the built app. Address search will go through it to Digitransit, so the API key stays on the server.
+React, TypeScript (strict), Vite and Tailwind v4, tested with Vitest and Testing Library. A single Cloudflare Worker serves the built app and proxies address search to Digitransit, so the API key stays on the server.
 
 ## Getting started
 
@@ -21,7 +21,7 @@ npm run dev
 
 The repo's `.npmrc` disables dependency install scripts, pins exact versions and skips releases younger than 7 days. If a package needs a binary that its install script would download, run `npm rebuild <package>` for that package only.
 
-Once address search lands, it will need a Digitransit API key, which you can get from the [Digitransit developer portal](https://digitransit.fi/en/developers/). Without a key, search will show its error state, and "Use my location" still works because the pharmacy list ships with the app ([ADR 0001](docs/adr/0001-pharmacy-data-source.md), [ADR 0003](docs/adr/0003-geocoding.md)). The same key, in `.dev.vars`, is needed to rebuild that list with `npm run build:pharmacies`. The key must never be committed or placed in a file Vite bundles.
+Address search needs a Digitransit API key, which you can get from the [Digitransit developer portal](https://digitransit.fi/en/developers/). Put it in `.dev.vars` (copy `.dev.vars.example`). Without a key, search shows its error state, and "Use my location" still works because the pharmacy list ships with the app ([ADR 0001](docs/adr/0001-pharmacy-data-source.md), [ADR 0003](docs/adr/0003-geocoding.md)). The same key is needed to rebuild that list with `npm run build:pharmacies`. The key must never be committed or placed in a file Vite bundles.
 
 `npm run dev` runs the app and the Worker on one origin in the real Workers runtime, so the first start is a bit slower. It needs no Cloudflare account.
 

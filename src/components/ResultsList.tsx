@@ -1,5 +1,7 @@
+import type { Ref } from "react";
 import { useI18n } from "../i18n/context";
 import { formatDistance, mapsHref, telHref } from "../lib/format";
+import type { SearchOrigin } from "../hooks/useNearestPharmacies";
 import type { PharmacyWithDistance } from "../lib/pharmacy";
 
 // py-2 gives about 36 px tall targets: under the usual 44 px, chosen so the map and phone
@@ -7,13 +9,30 @@ import type { PharmacyWithDistance } from "../lib/pharmacy";
 const linkClass =
   "inline-block py-2 text-blue-800 underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
-export function ResultsList({ pharmacies }: { pharmacies: PharmacyWithDistance[] }) {
+export function ResultsList({
+  pharmacies,
+  origin,
+  headingRef,
+}: {
+  pharmacies: PharmacyWithDistance[];
+  origin: SearchOrigin;
+  /** Focused after each search, so the new results are noticed and read out. */
+  headingRef?: Ref<HTMLHeadingElement>;
+}) {
   const { t, locale } = useI18n();
 
   return (
-    <section aria-labelledby="results-heading" className="mt-6">
-      <h2 id="results-heading" className="text-xl font-semibold">
-        {t("results.heading")}
+    // Negative margin and padding give the "updated" highlight some room around the text.
+    <section aria-labelledby="results-heading" className="-mx-2 mt-6 rounded px-2 py-1">
+      <h2
+        id="results-heading"
+        ref={headingRef}
+        tabIndex={-1}
+        className="rounded-sm text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+      >
+        {origin.kind === "place"
+          ? t("results.headingPlace", { place: origin.label })
+          : t("results.heading")}
       </h2>
       <p className="mt-2 text-sm text-slate-700">{t("results.checkHours")}</p>
 
