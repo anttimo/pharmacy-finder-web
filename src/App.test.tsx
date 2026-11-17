@@ -20,6 +20,7 @@ function renderApp(locale: Locale = "en") {
 
 afterEach(() => {
   load.mockReset();
+  history.replaceState(null, "", "/");
 });
 
 it("does not ask for location or load the list on page load", () => {
@@ -148,8 +149,15 @@ it("switches language and updates the page language and title", async () => {
   renderApp("en");
   expect(document.title).toBe("Nearest pharmacy");
 
-  await user.selectOptions(screen.getByRole("combobox", { name: "Language" }), "fi");
+  const english = screen.getByRole("link", { name: "en (English)" });
+  const finnish = screen.getByRole("link", { name: "fi (Suomi)" });
+  expect(english).toHaveAttribute("aria-current", "true");
+  expect(finnish).toHaveAttribute("href", expect.stringMatching(/\?lang=fi$/));
+  await user.click(finnish);
 
+  expect(finnish).toHaveAttribute("aria-current", "true");
+  expect(english).not.toHaveAttribute("aria-current");
+  expect(window.location.search).toBe("?lang=fi");
   expect(screen.getByRole("heading", { level: 1, name: "Lähin apteekki" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Käytä sijaintiani" })).toBeInTheDocument();
   expect(document.documentElement.lang).toBe("fi");

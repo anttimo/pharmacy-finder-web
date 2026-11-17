@@ -22,6 +22,7 @@ const englishHeading = () => screen.getByRole("heading", { level: 1, name: "Near
 afterEach(() => {
   vi.restoreAllMocks();
   localStorage.clear();
+  history.replaceState(null, "", "/");
 });
 
 it("starts in the browser's language", () => {
@@ -36,10 +37,19 @@ it("remembers the chosen language over the browser's", async () => {
   browserLanguages(["en-GB"]);
   const { unmount } = renderApp();
 
-  await user.selectOptions(screen.getByRole("combobox", { name: "Language" }), "fi");
+  await user.click(screen.getByRole("link", { name: "fi (Suomi)" }));
   unmount();
-  renderApp(); // a later visit
+  history.replaceState(null, "", "/"); // a later visit, without the language in the address
+  renderApp();
 
+  expect(finnishHeading()).toBeInTheDocument();
+});
+
+it("starts in the language from the address (a language link opened in a new tab)", () => {
+  browserLanguages(["en-GB"]);
+  localStorage.setItem("locale", "en");
+  history.replaceState(null, "", "/?lang=fi");
+  renderApp();
   expect(finnishHeading()).toBeInTheDocument();
 });
 
@@ -63,6 +73,6 @@ it("still works when storage is blocked", async () => {
   expect(finnishHeading()).toBeInTheDocument();
 
   // Switching still applies for this visit even though it can't be saved.
-  await user.selectOptions(screen.getByRole("combobox", { name: "Kieli" }), "en");
+  await user.click(screen.getByRole("link", { name: "en (English)" }));
   expect(englishHeading()).toBeInTheDocument();
 });
