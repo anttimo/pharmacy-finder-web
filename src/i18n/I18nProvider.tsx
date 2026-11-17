@@ -10,11 +10,15 @@ import {
   type Locale,
   type Messages,
 } from "./translate";
+import { localeFromUrl } from "./url";
 
 const dictionaries: Record<Locale, Messages> = { fi, en };
 const STORAGE_KEY = "locale";
 
+/** A language in the URL (from the language links) wins, then the saved choice, then the browser. */
 function initialLocale(): Locale {
+  const fromUrl = localeFromUrl(window.location.href);
+  if (fromUrl) return fromUrl;
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored && (LOCALES as readonly string[]).includes(stored)) return stored as Locale;

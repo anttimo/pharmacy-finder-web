@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { loadPharmacies } from "./data/pharmacies";
@@ -20,6 +20,7 @@ function renderApp(locale: Locale = "en") {
 
 afterEach(() => {
   load.mockReset();
+  history.replaceState(null, "", "/");
 });
 
 it("does not ask for location or load the list on page load", () => {
@@ -30,10 +31,18 @@ it("does not ask for location or load the list on page load", () => {
   expect(load).not.toHaveBeenCalled();
 });
 
-it("shows the data source in the footer", () => {
+it("shows the data source, with a link to the code server, and when the data was updated", () => {
   renderApp();
+  const footer = within(screen.getByRole("contentinfo"));
   expect(screen.getByRole("contentinfo")).toHaveTextContent(
     "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)",
+  );
+  expect(footer.getByRole("link", { name: "THL CodeServer (Kanta Services)" })).toHaveAttribute(
+    "href",
+    "https://koodistopalvelu.kanta.fi/",
+  );
+  expect(screen.getByRole("contentinfo")).toHaveTextContent(
+    /Pharmacy data updated \d{1,2} \w+ \d{4}\./,
   );
 });
 
@@ -66,6 +75,10 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   // Focus stays on the button (the live region announces the results); Tab reaches them next.
   expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
   await user.tab();
+  expect(
+    screen.getByRole("link", { name: "Show on Google Maps: Near Apteekki (opens in a new tab)" }),
+  ).toHaveFocus();
+  await user.tab();
   expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveFocus();
 
   const items = screen.getAllByRole("listitem");
@@ -79,6 +92,15 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveAttribute(
     "href",
     "tel:+35891234567",
+  );
+  const map = screen.getByRole("link", {
+    name: "Show on Google Maps: Near Apteekki (opens in a new tab)",
+  });
+  expect(map).toHaveTextContent("Show on Google Maps");
+  expect(map).toHaveAttribute("target", "_blank");
+  expect(map).toHaveAttribute(
+    "href",
+    expect.stringContaining(encodeURIComponent("Near Apteekki, Kaivokatu 1, 00100 Helsinki")),
   );
   expect(screen.getByText(/Check opening hours with the pharmacy/)).toBeInTheDocument();
 });
@@ -140,8 +162,15 @@ it("switches language and updates the page language and title", async () => {
   renderApp("en");
   expect(document.title).toBe("Nearest pharmacy");
 
-  await user.selectOptions(screen.getByRole("combobox", { name: "Language" }), "fi");
+  const english = screen.getByRole("link", { name: "en (English)" });
+  const finnish = screen.getByRole("link", { name: "fi (Suomi)" });
+  expect(english).toHaveAttribute("aria-current", "true");
+  expect(finnish).toHaveAttribute("href", expect.stringMatching(/\?lang=fi$/));
+  await user.click(finnish);
 
+  expect(finnish).toHaveAttribute("aria-current", "true");
+  expect(english).not.toHaveAttribute("aria-current");
+  expect(window.location.search).toBe("?lang=fi");
   expect(screen.getByRole("heading", { level: 1, name: "Lähin apteekki" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Käytä sijaintiani" })).toBeInTheDocument();
   expect(document.documentElement.lang).toBe("fi");

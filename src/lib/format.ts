@@ -1,4 +1,5 @@
 import { intlLocale, type Locale } from "../i18n/translate";
+import type { Pharmacy } from "./pharmacy";
 
 /**
  * Distance with the unit spelled out ("350 metres", "1,2 kilometriä") so it reads
@@ -25,10 +26,31 @@ export function formatDistance(meters: number, locale: Locale): string {
 }
 
 /**
+ * The calendar date of an ISO timestamp ("16 November 2026", "16. marraskuuta 2026"),
+ * in Finnish time so it doesn't depend on the viewer's time zone.
+ */
+export function formatDate(iso: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(intlLocale(locale), {
+    dateStyle: "long",
+    timeZone: "Europe/Helsinki",
+  }).format(new Date(iso));
+}
+
+/**
  * A `tel:` link for a Finnish phone number as the register writes it ("(09) 849 2370",
  * "010 5824430"): digits only, with the leading 0 replaced by the +358 country code.
  */
 export function telHref(phone: string): string {
   const digits = phone.replace(/[^\d+]/g, "");
   return `tel:${digits.startsWith("0") ? `+358${digits.slice(1)}` : digits}`;
+}
+
+/**
+ * A Google Maps search for the pharmacy by name and address, which usually finds its own
+ * listing (with opening hours) rather than a bare pin. Works on any device: on phones it
+ * opens the Google Maps app if installed. Nothing is sent to Google until the user taps it.
+ */
+export function mapsHref({ name, address, postcode, city }: Pharmacy): string {
+  const query = `${name}, ${address}, ${postcode} ${city}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }

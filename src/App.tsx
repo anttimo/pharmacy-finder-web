@@ -1,8 +1,15 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { ResultsList } from "./components/ResultsList";
 import { useNearestPharmacies, type NearestState } from "./hooks/useNearestPharmacies";
+import { pharmaciesGeneratedAt } from "./data/pharmaciesGeneratedAt";
 import { useI18n, type I18n } from "./i18n/context";
+import { formatDate } from "./lib/format";
+
+const CODE_SERVER_URL = "https://koodistopalvelu.kanta.fi/";
+
+const linkClass =
+  "rounded-sm text-blue-700 underline hover:text-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
@@ -23,6 +30,18 @@ function statusMessage(state: NearestState, { t, tn }: I18n): string {
     case "error":
       return t(state.kind === "location" ? "status.locationError" : "status.networkError");
   }
+}
+
+/** Puts an element where `{name}` is in a translated text, keeping the word order of the language. */
+function withElement(text: string, name: string, element: ReactNode): ReactNode {
+  const [before, after = ""] = text.split(`{${name}}`);
+  return (
+    <>
+      {before}
+      {element}
+      {after}
+    </>
+  );
 }
 
 function App() {
@@ -80,7 +99,24 @@ function App() {
       </main>
 
       <footer className="mx-auto max-w-2xl border-t border-slate-200 px-4 py-4 text-sm text-slate-700">
-        <p>{t("footer.source")}</p>
+        <p>
+          {withElement(
+            t("footer.source"),
+            "codeServer",
+            <a href={CODE_SERVER_URL} className={linkClass}>
+              {t("footer.codeServer")}
+            </a>,
+          )}
+        </p>
+        <p className="mt-1">
+          {withElement(
+            t("footer.updated"),
+            "date",
+            <time dateTime={pharmaciesGeneratedAt}>
+              {formatDate(pharmaciesGeneratedAt, i18n.locale)}
+            </time>,
+          )}
+        </p>
       </footer>
     </div>
   );
