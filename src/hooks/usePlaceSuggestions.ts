@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
 import { geocode, type Place } from "../data/geocode";
 import type { Locale } from "../i18n/translate";
 
@@ -11,7 +11,8 @@ export type SuggestionsState =
   | { status: "idle" }
   // The previous suggestions stay visible while new ones load, so the list doesn't flicker.
   | { status: "loading"; places: Place[] }
-  | { status: "results"; places: Place[] }
+  // `text` is the query these places answer, so fresh results can be told from old ones.
+  | { status: "results"; places: Place[]; text: string }
   | { status: "empty" }
   | { status: "error" };
 
@@ -25,13 +26,22 @@ export function visiblePlaces(state: SuggestionsState): Place[] {
 /**
  * Place suggestions for what the user is typing. Debounced, and a newer query aborts the
  * request for an older one, so only the latest answer is shown. `retry()` asks again.
+ * `chooseTop()` passes the top suggestion for the current text to `onChoose`, waiting for
+ * the answer if it hasn't arrived yet (Enter pressed right after typing).
  */
-export function usePlaceSuggestions(query: string, lang: Locale) {
+export function usePlaceSuggestions(
+  query: string,
+  lang: Locale,
+  onChoose: (place: Place) => void = () => {},
+) {
   const [state, setState] = useState<SuggestionsState>(IDLE);
   const [attempt, setAttempt] = useState(0);
+  const pendingRef = useRef(false);
   const text = query.trim();
+  const chooseLater = useEffectEvent((place: Place) => onChoose(place));
 
   useEffect(() => {
+    pendingRef.current = false; // a wait for the top suggestion belonged to the old text
     if (text.length < MIN_QUERY_LENGTH) return;
     const controller = new AbortController();
     const timer = setTimeout(async () => {
@@ -39,11 +49,13 @@ export function usePlaceSuggestions(query: string, lang: Locale) {
       try {
         const places = await geocode(text, lang, controller.signal);
         if (controller.signal.aborted) return;
-        setState(places.length > 0 ? { status: "results", places } : { status: "empty" });
+        setState(places.length > 0 ? { status: "results", places, text } : { status: "empty" });
+        if (pendingRef.current && places.length > 0) chooseLater(places[0]!);
       } catch {
         if (controller.signal.aborted) return;
         setState({ status: "error" });
       }
+      pendingRef.current = false;
     }, DEBOUNCE_MS);
     return () => {
       clearTimeout(timer);
@@ -52,7 +64,14 @@ export function usePlaceSuggestions(query: string, lang: Locale) {
   }, [text, lang, attempt]);
 
   const retry = useCallback(() => setAttempt((n) => n + 1), []);
+
   // Too short to search: idle, whatever the last answer was.
   const current: SuggestionsState = text.length < MIN_QUERY_LENGTH ? IDLE : state;
-  return { state: current, retry };
+
+  const chooseTop = () => {
+    if (current.status === "results" && current.text === text) onChoose(current.places[0]!);
+    else if (text.length >= MIN_QUERY_LENGTH) pendingRef.current = true;
+  };
+
+  return { state: current, retry, chooseTop };
 }

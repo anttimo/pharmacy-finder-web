@@ -17,6 +17,18 @@ const en = {
     privacy:
       "We ask for your location only when you tap the button. It stays on your device: the nearest pharmacies are found in your browser.",
   },
+  search: {
+    label: "Address or place",
+    hint: "For example Mannerheimintie 1, Helsinki.",
+    privacy: "What you type is sent to the Digitransit place search. Your location is not.",
+    // Announced in the live region when suggestions arrive.
+    suggestions: {
+      one: "1 suggestion.",
+      other: "{count} suggestions.",
+    },
+    noMatches: "No places found. Check the spelling, or try a street or town nearby.",
+    error: "Address search isn't working right now. Try again, or use your location.",
+  },
   status: {
     locating: "Finding your location…",
     loading: "Looking for nearby pharmacies…",
@@ -38,6 +50,8 @@ const en = {
   },
   results: {
     heading: "Pharmacies near you",
+    // {place} is the place the user chose, e.g. "Nihtisilta, Espoo".
+    headingPlace: "Pharmacies near {place}",
     distance: "{distance} in a straight line",
     phone: "Phone:",
     // Accessible name of the phone link. Must contain {phone}, the visible link text.

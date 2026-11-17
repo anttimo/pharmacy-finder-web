@@ -34,6 +34,7 @@ it("asks once typing pauses, not on every keystroke", async () => {
   expect(result.current.state).toEqual({
     status: "results",
     places: [{ label: "Kamppi, Helsinki", lat: 60.17, lon: 24.93 }],
+    text: "kamp",
   });
 });
 
