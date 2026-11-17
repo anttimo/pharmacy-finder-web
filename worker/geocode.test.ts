@@ -105,6 +105,8 @@ describe("handleGeocode", () => {
     const [url, init] = fetchImpl.mock.calls[0]!;
     expect(String(url)).not.toContain("secret-key");
     expect(new Headers(init?.headers).get("digitransit-subscription-key")).toBe("secret-key");
+    // A followed redirect would take the key header along.
+    expect(init?.redirect).toBe("manual");
   });
 
   it("answers bad requests without calling upstream", async () => {
@@ -127,6 +129,13 @@ describe("handleGeocode", () => {
 
   it.each([
     ["an upstream error", () => Promise.resolve(new Response("quota exceeded", { status: 429 }))],
+    [
+      "a redirect",
+      () =>
+        Promise.resolve(
+          new Response(null, { status: 302, headers: { location: "https://elsewhere.test/" } }),
+        ),
+    ],
     ["a network failure", () => Promise.reject(new TypeError("fetch failed"))],
     ["a non-JSON body", () => Promise.resolve(new Response("<html>"))],
   ])("turns %s into a generic 502", async (_, upstream) => {

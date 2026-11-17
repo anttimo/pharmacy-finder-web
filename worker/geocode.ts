@@ -128,6 +128,9 @@ export async function handleGeocode(
   try {
     const upstream = await fetchImpl(upstreamUrl(parsed.query), {
       headers: { "digitransit-subscription-key": env.DIGITRANSIT_API_KEY },
+      // Following a redirect would send the key header to wherever it points. A 3xx isn't
+      // `ok`, so it becomes the generic 502 below.
+      redirect: "manual",
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
     if (!upstream.ok) return json({ error: "upstream_error" }, 502);
