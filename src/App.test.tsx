@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { loadPharmacies } from "./data/pharmacies";
@@ -30,10 +30,18 @@ it("does not ask for location or load the list on page load", () => {
   expect(load).not.toHaveBeenCalled();
 });
 
-it("shows the data source in the footer", () => {
+it("shows the data source, with a link to the code server, and when the data was updated", () => {
   renderApp();
+  const footer = within(screen.getByRole("contentinfo"));
   expect(screen.getByRole("contentinfo")).toHaveTextContent(
     "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)",
+  );
+  expect(footer.getByRole("link", { name: "THL CodeServer (Kanta Services)" })).toHaveAttribute(
+    "href",
+    "https://koodistopalvelu.kanta.fi/",
+  );
+  expect(screen.getByRole("contentinfo")).toHaveTextContent(
+    /Pharmacy data updated \d{1,2} \w+ \d{4}\./,
   );
 });
 

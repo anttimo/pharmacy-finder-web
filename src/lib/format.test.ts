@@ -1,4 +1,4 @@
-import { formatDistance, telHref } from "./format";
+import { formatDate, formatDistance, telHref } from "./format";
 
 // Intl may use non-breaking spaces between number and unit.
 const normalize = (s: string) => s.replace(/\s/g, " ");
@@ -30,5 +30,17 @@ describe("telHref", () => {
 
   it("keeps a number that already has a country code", () => {
     expect(telHref("+358 40 123 4567")).toBe("tel:+358401234567");
+  });
+});
+
+describe("formatDate", () => {
+  it("writes the date in the active language", () => {
+    expect(formatDate("2026-11-16T12:00:00.000Z", "en")).toBe("16 November 2026");
+    expect(formatDate("2026-11-16T12:00:00.000Z", "fi")).toBe("16. marraskuuta 2026");
+  });
+
+  it("uses Finnish time, not the viewer's time zone", () => {
+    // 23:30 UTC is already the next day in Helsinki.
+    expect(formatDate("2026-11-16T23:30:00.000Z", "en")).toBe("17 November 2026");
   });
 });

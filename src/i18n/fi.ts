@@ -47,7 +47,9 @@ const fi: Messages = {
   },
   footer: {
     source:
-      "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / THL Koodistopalvelu",
+      "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / {codeServer}",
+    codeServer: "THL Koodistopalvelu",
+    updated: "Apteekkitiedot päivitetty {date}.",
   },
 };
 

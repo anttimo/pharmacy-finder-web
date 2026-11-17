@@ -47,8 +47,11 @@ const en = {
     distanceNote: "Distances are measured in a straight line. The route there is longer.",
   },
   footer: {
-    source:
-      "Pharmacy data source: Finnish Medicines Agency (Fimea) / THL CodeServer (Kanta Services)",
+    // {codeServer} is replaced by a link with the footer.codeServer text.
+    source: "Pharmacy data source: Finnish Medicines Agency (Fimea) / {codeServer}",
+    codeServer: "THL CodeServer (Kanta Services)",
+    // {date} is replaced by the date the list was generated, e.g. "16 November 2026".
+    updated: "Pharmacy data updated {date}.",
   },
 } as const;
 

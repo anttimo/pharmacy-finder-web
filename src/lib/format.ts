@@ -25,6 +25,17 @@ export function formatDistance(meters: number, locale: Locale): string {
 }
 
 /**
+ * The calendar date of an ISO timestamp ("16 November 2026", "16. marraskuuta 2026"),
+ * in Finnish time so it doesn't depend on the viewer's time zone.
+ */
+export function formatDate(iso: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(intlLocale(locale), {
+    dateStyle: "long",
+    timeZone: "Europe/Helsinki",
+  }).format(new Date(iso));
+}
+
+/**
  * A `tel:` link for a Finnish phone number as the register writes it ("(09) 849 2370",
  * "010 5824430"): digits only, with the leading 0 replaced by the +358 country code.
  */
