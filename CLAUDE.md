@@ -7,7 +7,7 @@ Finds the pharmacies nearest to the user, or to a place they search for, in Finl
 ## Stack
 
 - React + TypeScript (strict) + Vite + Tailwind v4. Vitest + Testing Library.
-- One Cloudflare Worker (`worker/`, config in `wrangler.jsonc`) serves the built SPA and exposes `/api/geocode` (not built yet), which proxies Digitransit. It is the only server code, with no framework ([ADR 0004](docs/adr/0004-hosting.md)).
+- One Cloudflare Worker (`worker/`, config in `wrangler.jsonc`) serves the built SPA and exposes `/api/geocode`, which proxies Digitransit. It is the only server code, with no framework ([ADR 0004](docs/adr/0004-hosting.md)).
 
 ## Commands
 
