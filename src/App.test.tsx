@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { loadPharmacies } from "./data/pharmacies";
@@ -59,7 +59,7 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
 
   await user.click(screen.getByRole("button", { name: "Use my location" }));
   expect(screen.getByRole("status")).toHaveTextContent("Finding your location…");
-  geo.succeed();
+  await act(async () => geo.succeed());
 
   await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
   expect(screen.getByRole("status")).toHaveTextContent("Showing the 3 nearest pharmacies.");
@@ -99,7 +99,7 @@ it("starts over when the button is tapped again while the browser hasn't answere
   expect(geo.getCurrentPosition).toHaveBeenCalledTimes(2);
 
   geo.ignore();
-  geo.succeed();
+  await act(async () => geo.succeed());
   expect(await screen.findByRole("heading", { name: "Pharmacies near you" })).toBeInTheDocument();
 });
 
@@ -109,7 +109,7 @@ it("explains what to do when location permission is denied", async () => {
   renderApp();
 
   await user.click(screen.getByRole("button", { name: "Use my location" }));
-  geo.fail(1);
+  act(() => geo.fail(1));
 
   expect(await screen.findByRole("status")).toHaveTextContent("Location access is turned off.");
   expect(screen.getByText(/allow location access for this site/)).toBeInTheDocument();
@@ -124,14 +124,14 @@ it("offers a retry when the pharmacy list can't be loaded", async () => {
   renderApp();
 
   await user.click(screen.getByRole("button", { name: "Use my location" }));
-  geo.succeed();
+  await act(async () => geo.succeed());
   await waitFor(() =>
     expect(screen.getByRole("status")).toHaveTextContent("We couldn't load pharmacy information."),
   );
 
   await user.click(screen.getByRole("button", { name: "Try again" }));
   expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
-  geo.succeed();
+  await act(async () => geo.succeed());
   expect(await screen.findByRole("heading", { name: "Pharmacies near you" })).toBeInTheDocument();
 });
 
