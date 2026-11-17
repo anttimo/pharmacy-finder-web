@@ -8,9 +8,6 @@ const linkClass =
 export function ResultsList({ pharmacies }: { pharmacies: PharmacyWithDistance[] }) {
   const { t, locale } = useI18n();
 
-  // Focus stays on "Use my location": the status live region announces the results, and the
-  // next Tab reaches the first phone link. Moving focus here as well made screen readers
-  // announce the results twice.
   return (
     <section aria-labelledby="results-heading" className="mt-6">
       <h2 id="results-heading" className="text-xl font-semibold">
