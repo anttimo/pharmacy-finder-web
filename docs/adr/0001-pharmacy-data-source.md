@@ -12,8 +12,6 @@ Fimea's pharmacy register is the official list of licensed pharmacies. It's publ
 
 It also lists more than the public can use. Next to about 800 open pharmacies and branch pharmacies (_sivuapteekki_), it keeps closed entries for history, pharmacies licensed but not open yet, hospital pharmacies (_sairaala-apteekki_) and medicine centres (_lääkekeskus_).
 
-Entries close a few times a month, mostly branches. A list that's a few weeks old is acceptable if we say so. Asking a live API on every search turned out not to be (see "Rejected: Overpass").
-
 ## Decision
 
 Use the Fimea register as the only source. A build script turns it into a static file, `src/data/pharmacies.json`, which is committed. The app finds the nearest pharmacies on the device, from that file, with straight-line distance. The user's location never leaves the device.
@@ -36,7 +34,9 @@ Use the Fimea register as the only source. A build script turns it into a static
 
 ### Staleness and rerunning
 
-Rerun the script before each release and at least monthly, then review the diff and commit it. A large drop in `openTotal`, or a jump in `needsReview`, means something changed upstream: check it before you commit.
+Pharmacies open and close rarely, so updating the list daily or even weekly is enough. For this demo the list is updated manually. A live service could automate it with a cron job (see "Later: refresh on the server").
+
+After a rerun, review the diff and commit it. A large drop in `openTotal`, or a jump in `needsReview`, means something changed upstream: check it before you commit.
 
 ### Later: refresh on the server
 
