@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
@@ -17,27 +17,42 @@ const linkClass =
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
+/** What the search field says about itself, shown under it: see PlaceSearch `message`. */
+function fieldMessage(
+  suggestions: SuggestionsState,
+  invalid: boolean,
+  { t }: I18n,
+): { text: string; error: boolean } | null {
+  if (invalid) {
+    return {
+      text: t(suggestions.status === "empty" ? "search.noMatches" : "search.chooseFromList"),
+      error: true,
+    };
+  }
+  if (suggestions.status === "empty") return { text: t("search.noMatches"), error: false };
+  if (suggestions.status === "error") return { text: t("search.error"), error: true };
+  return null;
+}
+
 /**
- * The one message for the polite live region. While the user is typing, it's about the
- * suggestions; otherwise about the pharmacy search. `visible: false` keeps it for screen
- * readers only, when the same information is already on screen.
+ * The one message for the polite live region. While the user is typing, or the field is
+ * invalid, it's about the search field; otherwise about the pharmacy search. Messages that
+ * are already on screen under the field are for screen readers only (`visible: false`).
  */
 function statusMessage(
   state: NearestState,
   suggestions: SuggestionsState,
+  field: { text: string } | null,
   { t, tn }: I18n,
 ): { text: string; visible: boolean } {
+  if (field) return { text: field.text, visible: false };
   switch (suggestions.status) {
     case "idle":
       break;
-    case "loading":
-      return { text: "", visible: true };
     case "results":
       return { text: tn("search.suggestions", suggestions.places.length), visible: false };
-    case "empty":
-      return { text: t("search.noMatches"), visible: true };
-    case "error":
-      return { text: t("search.error"), visible: true };
+    default:
+      return { text: "", visible: false };
   }
   switch (state.status) {
     case "idle":
@@ -75,17 +90,20 @@ type LastSearch = { kind: "device" } | { kind: "place"; place: Place };
 function App() {
   const i18n = useI18n();
   const { t, locale } = i18n;
-  const { state, locate, searchAt } = useNearestPharmacies();
+  const { state, locate, searchAt, clear } = useNearestPharmacies();
 
   // The field's text, and the label of the place chosen from it. While they match, the
   // field shows a chosen place and there's nothing to suggest.
   const [text, setText] = useState("");
   const [chosen, setChosen] = useState<string | null>(null);
   const query = text === chosen ? "" : text;
+  // Left (or submitted) with text that isn't a found place. Cleared by typing or refocusing.
+  const [invalid, setInvalid] = useState(false);
 
   const lastSearchRef = useRef<LastSearch>({ kind: "device" });
   const locateButtonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultsHeadingRef = useRef<HTMLHeadingElement>(null);
 
   // The button stays active during a search: tapping it again starts over. That's the way out
   // if the browser never answers, for example when its permission prompt is dismissed.
@@ -93,6 +111,7 @@ function App() {
     lastSearchRef.current = { kind: "device" };
     setText("");
     setChosen(null);
+    setInvalid(false);
     locate();
   };
 
@@ -100,6 +119,7 @@ function App() {
     lastSearchRef.current = { kind: "place", place };
     setText(place.label);
     setChosen(place.label);
+    setInvalid(false);
     searchAt(place);
   };
   const suggestions = usePlaceSuggestions(query, locale, onChoose);
@@ -121,7 +141,44 @@ function App() {
     suggestions.retry();
   };
 
-  const status = statusMessage(state, suggestions.state, i18n);
+  // The field and the results must agree: when the text isn't a place that was found, say so
+  // and drop the results, rather than leave a list for some other place on screen.
+  const markInvalid = () => {
+    setInvalid(true);
+    clear();
+  };
+  const onLeave = () => {
+    if (text.trim() !== "" && text !== chosen) markInvalid();
+  };
+  const onSubmitTop = () => {
+    if (suggestions.state.status === "empty") markInvalid();
+    else suggestions.chooseTop();
+  };
+
+  // Make new results hard to miss: move focus to their heading (which scrolls them into
+  // view, closes a phone keyboard and has screen readers read the heading) and briefly
+  // highlight them. Not while the user is typing a new search, though.
+  const revealResults = useEffectEvent(() => {
+    const input = inputRef.current;
+    if (input && document.activeElement === input && input.value !== chosen) return;
+    const heading = resultsHeadingRef.current;
+    heading?.focus();
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      heading
+        ?.closest("section")
+        ?.animate?.([{ backgroundColor: "#dbeafe" }, { backgroundColor: "transparent" }], {
+          duration: 1500,
+          easing: "ease-out",
+        });
+    }
+  });
+  useEffect(() => {
+    if (state.status === "results") revealResults();
+  }, [state]);
+
+  const field = fieldMessage(suggestions.state, invalid, i18n);
+  const status = statusMessage(state, suggestions.state, field, i18n);
   const showsPharmacyStatus = suggestions.state.status === "idle";
 
   return (
@@ -134,29 +191,54 @@ function App() {
       <main className="mx-auto max-w-2xl px-4 pb-8">
         <p>{t("app.intro")}</p>
 
+        <button
+          ref={locateButtonRef}
+          type="button"
+          onClick={onLocate}
+          className={`mt-4 w-full sm:w-auto ${buttonClass}`}
+        >
+          {t("locate.button")}
+        </button>
+        <p className="mt-2 text-sm text-slate-700">{t("locate.privacy")}</p>
+
+        <div className="my-5 flex items-center gap-3 text-slate-700">
+          <span aria-hidden="true" className="h-px flex-1 bg-slate-300" />
+          {t("search.or")}
+          <span aria-hidden="true" className="h-px flex-1 bg-slate-300" />
+        </div>
+
         <PlaceSearch
           text={text}
-          onTextChange={setText}
+          onTextChange={(value) => {
+            setText(value);
+            setInvalid(false);
+          }}
           suggestions={suggestions.state}
           onChoose={onChoose}
-          onChooseTop={suggestions.chooseTop}
+          onChooseTop={onSubmitTop}
+          onLeave={onLeave}
+          onFocus={() => setInvalid(false)}
+          invalid={invalid}
+          message={
+            field && {
+              ...field,
+              action: suggestions.state.status === "error" && (
+                <button
+                  type="button"
+                  onClick={onRetrySuggestions}
+                  className={`mt-2 ${buttonClass}`}
+                >
+                  {t("error.retry")}
+                </button>
+              ),
+            }
+          }
           inputRef={inputRef}
-        >
-          <button ref={locateButtonRef} type="button" onClick={onLocate} className={buttonClass}>
-            {t("locate.button")}
-          </button>
-        </PlaceSearch>
-        <p className="mt-1 text-sm text-slate-700">{t("locate.privacy")}</p>
+        />
 
         <p role="status" className={status.visible ? "mt-4 font-medium" : "sr-only"}>
           {status.text}
         </p>
-
-        {suggestions.state.status === "error" && (
-          <button type="button" onClick={onRetrySuggestions} className={`mt-3 ${buttonClass}`}>
-            {t("error.retry")}
-          </button>
-        )}
 
         {showsPharmacyStatus && state.status === "denied" && (
           <p className="mt-1">{t("denied.body")}</p>
@@ -174,7 +256,11 @@ function App() {
         )}
 
         {state.status === "results" && (
-          <ResultsList pharmacies={state.pharmacies} origin={state.origin} />
+          <ResultsList
+            pharmacies={state.pharmacies}
+            origin={state.origin}
+            headingRef={resultsHeadingRef}
+          />
         )}
       </main>
 

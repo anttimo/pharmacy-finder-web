@@ -97,5 +97,11 @@ export function useNearestPharmacies() {
     [startSearch, showNearest],
   );
 
-  return { state, locate, searchAt };
+  /** Drops the results (and any search still running), e.g. when the address isn't found. */
+  const clear = useCallback(() => {
+    startSearch();
+    setState({ status: "idle" });
+  }, [startSearch]);
+
+  return { state, locate, searchAt, clear };
 }

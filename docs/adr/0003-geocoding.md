@@ -49,7 +49,7 @@ The proxy is deliberately narrow, so it can't be used as an open relay:
 
 On the client, input is debounced and stale requests are aborted (the same pattern as [ADR-0002](0002-minimal-dependencies.md)). The web client **doesn't send `focus`**: the UI promises that the device location never leaves the device. The contract keeps `focus` so that promise can be revisited without a contract change.
 
-The search field sits next to the "Use my location" button. Choosing a suggestion starts the pharmacy search; Enter takes the top suggestion. There's no separate search button.
+The page offers "Use my location" first, then "or" and the search field. Choosing a suggestion starts the pharmacy search; Enter takes the top suggestion. There's no separate search button. Leaving the field with text that isn't a found place marks it invalid and clears the results, so the field and the list never disagree. After each search, focus moves to the results heading.
 
 ## Consequences
 

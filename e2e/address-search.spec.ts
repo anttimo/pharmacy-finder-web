@@ -38,7 +38,7 @@ test.describe("English", () => {
     await expect(results.getByRole("listitem")).toHaveCount(3);
     await expect(results).toContainText("Check opening hours with the pharmacy");
     await expect(page.getByRole("status")).toHaveText("Showing the 3 nearest pharmacies.");
-    await expect(field).toBeFocused();
+    await expect(results.getByRole("heading", { level: 2 })).toBeFocused();
     await expect(listbox).toBeHidden();
 
     // Debounced: not one request per letter. Only text and language are sent.

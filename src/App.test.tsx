@@ -70,10 +70,10 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   expect(screen.getByRole("status")).toHaveTextContent("Finding your location…");
   await act(async () => geo.succeed());
 
-  await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
+  const heading = await screen.findByRole("heading", { level: 2, name: "Pharmacies near you" });
   expect(screen.getByRole("status")).toHaveTextContent("Showing the 3 nearest pharmacies.");
-  // Focus stays on the button (the live region announces the results); Tab reaches them next.
-  expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
+  // Focus moves to the results, so they are noticed; Tab goes on into them.
+  expect(heading).toHaveFocus();
   await user.tab();
   expect(
     screen.getByRole("link", { name: "Show on Google Maps: Near Apteekki (opens in a new tab)" }),
@@ -294,6 +294,75 @@ describe("address search", () => {
     expect(field()).toHaveValue("kamp");
     await user.keyboard("{Escape}");
     expect(field()).toHaveValue("");
+  });
+
+  /** Chooses Kamppi, so there are results on screen to lose. */
+  async function searchKamppi(user: ReturnType<typeof userEvent.setup>) {
+    await user.type(field(), "kamp");
+    await user.click(await screen.findByRole("option", { name: "Kamppi, Helsinki" }));
+    return screen.findByRole("heading", { name: "Pharmacies near Kamppi, Helsinki" });
+  }
+
+  it("moves focus to the new results", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValue(places("Kamppi, Helsinki"));
+    renderApp();
+
+    const heading = await searchKamppi(user);
+    await waitFor(() => expect(heading).toHaveFocus());
+  });
+
+  it("marks an address that wasn't found as invalid on leaving, and drops the old results", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValueOnce(places("Kamppi, Helsinki")).mockResolvedValue(places());
+    renderApp();
+    const heading = await searchKamppi(user);
+
+    await user.clear(field());
+    await user.type(field(), "zzqq");
+    await waitFor(() => expect(field()).toHaveAccessibleDescription(/No places found/));
+    expect(field()).not.toHaveAttribute("aria-invalid");
+    expect(heading).toBeInTheDocument(); // still typing: nothing dropped yet
+
+    await user.tab();
+    expect(field()).toHaveAttribute("aria-invalid", "true");
+    expect(field()).toHaveAccessibleDescription(/No places found/);
+    expect(screen.getByRole("status")).toHaveTextContent("No places found");
+    expect(screen.queryByRole("region")).not.toBeInTheDocument();
+
+    // Typing again takes the error away.
+    await user.type(field(), "x");
+    expect(field()).not.toHaveAttribute("aria-invalid");
+  });
+
+  it("asks to choose from the suggestions when leaving without choosing", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValue(places("Kamppi, Helsinki"));
+    renderApp();
+
+    await user.type(field(), "kamp");
+    await screen.findByRole("option", { name: "Kamppi, Helsinki" });
+    await user.tab();
+    expect(field()).toHaveAttribute("aria-invalid", "true");
+    expect(field()).toHaveAccessibleDescription(/Choose a place from the suggestions/);
+  });
+
+  it("marks the field invalid on Enter when nothing matches", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValue(places());
+    renderApp();
+
+    await user.type(field(), "zzqq");
+    await waitFor(() => expect(field()).toHaveAccessibleDescription(/No places found/));
+    await user.keyboard("{Enter}");
+    expect(field()).toHaveAttribute("aria-invalid", "true");
+    expect(field()).toHaveFocus();
+  });
+
+  it("offers location first, then the search field", () => {
+    renderApp();
+    const button = screen.getByRole("button", { name: "Use my location" });
+    expect(button.compareDocumentPosition(field()) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it("clears the field when the location button is used", async () => {

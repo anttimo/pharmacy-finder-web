@@ -18,6 +18,7 @@ const fi: Messages = {
       "Kysymme sijaintiasi vain, kun painat painiketta. Sijaintisi ei lähde laitteeltasi: lähimmät apteekit etsitään selaimessasi.",
   },
   search: {
+    or: "tai",
     label: "Osoite tai paikka",
     hint: "Esimerkiksi Mannerheimintie 1, Helsinki.",
     privacy: "Kirjoittamasi teksti lähetetään Digitransitin paikkahakuun. Sijaintiasi ei lähetetä.",
@@ -25,6 +26,7 @@ const fi: Messages = {
       one: "1 ehdotus.",
       other: "{count} ehdotusta.",
     },
+    chooseFromList: "Valitse paikka ehdotuksista.",
     noMatches:
       "Paikkoja ei löytynyt. Tarkista kirjoitusasu tai kokeile lähellä olevaa katua tai kuntaa.",
     error: "Osoitehaku ei toimi juuri nyt. Yritä uudelleen tai käytä sijaintiasi.",

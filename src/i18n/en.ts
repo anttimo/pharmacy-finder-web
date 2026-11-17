@@ -18,6 +18,8 @@ const en = {
       "We ask for your location only when you tap the button. It stays on your device: the nearest pharmacies are found in your browser.",
   },
   search: {
+    // Between the location button and the search field.
+    or: "or",
     label: "Address or place",
     hint: "For example Mannerheimintie 1, Helsinki.",
     privacy: "What you type is sent to the Digitransit place search. Your location is not.",
@@ -26,6 +28,8 @@ const en = {
       one: "1 suggestion.",
       other: "{count} suggestions.",
     },
+    // After leaving the field with text that wasn't chosen from the suggestions.
+    chooseFromList: "Choose a place from the suggestions.",
     noMatches: "No places found. Check the spelling, or try a street or town nearby.",
     error: "Address search isn't working right now. Try again, or use your location.",
   },

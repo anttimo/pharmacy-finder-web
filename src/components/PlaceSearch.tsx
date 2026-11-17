@@ -18,9 +18,14 @@ interface Props {
   onChoose: (place: Place) => void;
   /** Enter with nothing highlighted: choose the top suggestion, once it is there. */
   onChooseTop: () => void;
+  /** Focus left the field (not to the suggestion list). */
+  onLeave: () => void;
+  onFocus: () => void;
+  /** The text isn't a place that was found: marks the field invalid. */
+  invalid: boolean;
+  /** Shown under the field and tied to it: no matches, an error, why it's invalid. */
+  message: { text: string; error: boolean; action?: ReactNode } | null;
   inputRef?: Ref<HTMLInputElement>;
-  /** Shown next to the field, on the same row: the "Use my location" button. */
-  children?: ReactNode;
 }
 
 /**
@@ -34,13 +39,17 @@ export function PlaceSearch({
   suggestions,
   onChoose,
   onChooseTop,
+  onLeave,
+  onFocus,
+  invalid,
+  message,
   inputRef,
-  children,
 }: Props) {
   const { t } = useI18n();
   const inputId = useId();
   const listId = useId();
   const hintId = useId();
+  const messageId = useId();
   const [activeIndex, setActiveIndex] = useState(-1);
   // Closed with Escape or by choosing; typing opens it again.
   const [dismissed, setDismissed] = useState(false);
@@ -92,41 +101,45 @@ export function PlaceSearch({
   };
 
   return (
-    <form role="search" onSubmit={onSubmit} className="mt-4">
+    <form role="search" onSubmit={onSubmit}>
       <label htmlFor={inputId} className="block font-semibold">
         {t("search.label")}
       </label>
-      <div className="mt-1 flex flex-wrap gap-2">
-        <input
-          ref={inputRef}
-          id={inputId}
-          type="text"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-expanded={open}
-          aria-controls={listId}
-          aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
-          aria-describedby={hintId}
-          autoComplete="off"
-          spellCheck={false}
-          enterKeyHint="search"
-          maxLength={MAX_SEARCH_LENGTH}
-          value={text}
-          onChange={(event) => {
-            onTextChange(event.target.value);
-            setDismissed(false);
-            setActiveIndex(-1);
-          }}
-          onKeyDown={onKeyDown}
-          onFocus={() => setFocused(true)}
-          onBlur={() => {
-            setFocused(false);
-            setActiveIndex(-1);
-          }}
-          className="min-h-11 min-w-0 flex-1 basis-56 rounded border border-slate-500 px-3 py-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-        />
-        {children}
-      </div>
+      <input
+        ref={inputRef}
+        id={inputId}
+        type="text"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={open}
+        aria-controls={listId}
+        aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
+        aria-describedby={message ? `${messageId} ${hintId}` : hintId}
+        aria-invalid={invalid || undefined}
+        autoComplete="off"
+        spellCheck={false}
+        enterKeyHint="search"
+        maxLength={MAX_SEARCH_LENGTH}
+        value={text}
+        onChange={(event) => {
+          onTextChange(event.target.value);
+          setDismissed(false);
+          setActiveIndex(-1);
+        }}
+        onKeyDown={onKeyDown}
+        onFocus={() => {
+          setFocused(true);
+          onFocus();
+        }}
+        onBlur={() => {
+          setFocused(false);
+          setActiveIndex(-1);
+          onLeave();
+        }}
+        className={`mt-1 block min-h-11 w-full rounded border px-3 py-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700 ${
+          invalid ? "border-2 border-red-700" : "border-slate-500"
+        }`}
+      />
       <ul
         id={listId}
         role="listbox"
@@ -151,6 +164,14 @@ export function PlaceSearch({
           </li>
         ))}
       </ul>
+      {message && (
+        <div className="mt-2">
+          <p id={messageId} className={message.error ? "font-medium text-red-800" : "font-medium"}>
+            {message.text}
+          </p>
+          {message.action}
+        </div>
+      )}
       <p id={hintId} className="mt-2 text-sm text-slate-700">
         {t("search.hint")} {t("search.privacy")}
       </p>
