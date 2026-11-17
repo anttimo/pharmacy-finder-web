@@ -26,6 +26,18 @@ it("cuts the text to what the proxy accepts", async () => {
   expect(sentUrl().searchParams.get("text")).toHaveLength(100);
 });
 
+it("keeps the encoded query within what the proxy accepts", async () => {
+  fetchMock.mockResolvedValueOnce(Response.json({ results: [] }));
+  // "ä" is six characters encoded (%C3%A4): 100 of them would make the proxy answer 414.
+  const text = "Ääniväylä ".repeat(10);
+  await geocode(text, "fi");
+  const query = String(fetchMock.mock.calls[0]![0]).split("?")[1]!;
+  expect(query.length).toBeLessThanOrEqual(256);
+  const sent = sentUrl().searchParams.get("text")!;
+  expect(sent.length).toBeGreaterThan(50);
+  expect(text.startsWith(sent)).toBe(true);
+});
+
 it.each([
   ["an error status", () => Promise.resolve(Response.json({ error: "x" }, { status: 502 }))],
   ["an unexpected body", () => Promise.resolve(Response.json({ features: [] }))],
