@@ -7,14 +7,12 @@ Finds the pharmacies nearest to the user, or to a place they search for, in Finl
 ## Stack
 
 - React + TypeScript (strict) + Vite + Tailwind v4. Vitest + Testing Library.
-- One Cloudflare Worker (planned, not built yet) serves the built SPA and exposes `/api/geocode`, which proxies Digitransit. It is the only server code, with no framework ([ADR 0004](docs/adr/0004-hosting.md)).
+- One Cloudflare Worker (`worker/`, config in `wrangler.jsonc`) serves the built SPA and exposes `/api/geocode` (not built yet), which proxies Digitransit. It is the only server code, with no framework ([ADR 0004](docs/adr/0004-hosting.md)).
 
 ## Commands
 
-**Status:** the Worker scaffold ([ADR 0003](docs/adr/0003-geocoding.md), [ADR 0004](docs/adr/0004-hosting.md)) isn't in the repo yet, so `npm run dev` runs plain Vite and `cf-typegen` doesn't exist. Delete this note when it lands.
-
 - `npm run dev`: Vite + `@cloudflare/vite-plugin`. The SPA and the Worker run on one origin. Local key goes in `.dev.vars` (copy `.dev.vars.example`). Without it, search shows its error state and "Use my location" still works.
-- `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`
+- `npm run lint`, `npm run typecheck`, `npm test` (uses `vitest.config.ts`, without the Workers runtime), `npm run build`
 - `npm run format` (oxfmt) formats the code; `npm run format:check` verifies it. Config in `.oxfmtrc.json`.
 - `npm run cf-typegen`: regenerate Worker types after changing `wrangler.jsonc`
 - `npm run build:pharmacies`: rebuild `src/data/pharmacies.json` from the Fimea register (needs `DIGITRANSIT_API_KEY` in `.dev.vars`). It reuses known coordinates when an address is unchanged; `-- --regeocode` geocodes everything again. `-- --inspect` prints the raw API shape. Review the diff and `scripts/needs-review.json` before committing. Fix unplaceable addresses in `scripts/address-overrides.json` (checked street address, never coordinates) ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)).
