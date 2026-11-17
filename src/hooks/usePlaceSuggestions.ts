@@ -86,5 +86,10 @@ export function usePlaceSuggestions(
     else if (text.length >= MIN_QUERY_LENGTH) pendingRef.current = true;
   };
 
-  return { state: current, retry, chooseTop };
+  /** Forgets an Enter still waiting for its answer, e.g. when the user leaves the field. */
+  const cancelPending = useCallback(() => {
+    pendingRef.current = false;
+  }, []);
+
+  return { state: current, retry, chooseTop, cancelPending };
 }

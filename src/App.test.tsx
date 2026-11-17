@@ -359,6 +359,24 @@ describe("address search", () => {
     expect(field()).toHaveFocus();
   });
 
+  it("forgets an Enter still waiting for suggestions once the user leaves the field", async () => {
+    const user = userEvent.setup();
+    let answer: (response: Response) => void = () => {};
+    fetchMock.mockImplementation(() => new Promise((resolve) => (answer = resolve)));
+    renderApp();
+
+    await user.type(field(), "kamp{Enter}");
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    await user.tab();
+    const focusedAfterLeaving = document.activeElement;
+    expect(field()).toHaveAttribute("aria-invalid", "true");
+
+    await act(async () => answer(places("Kamppi, Helsinki")));
+    expect(screen.queryByRole("region")).not.toBeInTheDocument();
+    expect(field()).toHaveValue("kamp");
+    expect(document.activeElement).toBe(focusedAfterLeaving);
+  });
+
   it("doesn't judge new text by the old text's 'no matches' on a quick Enter", async () => {
     const user = userEvent.setup();
     fetchMock.mockResolvedValueOnce(places()).mockResolvedValue(places("Kamppi, Helsinki"));

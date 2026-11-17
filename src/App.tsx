@@ -148,6 +148,9 @@ function App() {
     clear();
   };
   const onLeave = () => {
+    // The user has moved on: an Enter still waiting for suggestions mustn't choose a place
+    // (and move focus) later.
+    suggestions.cancelPending();
     if (text.trim() !== "" && text !== chosen) markInvalid();
   };
   const onSubmitTop = () => {
