@@ -50,6 +50,7 @@ function statusMessage(
   state: NearestState,
   suggestions: SuggestionsState,
   field: { text: string } | null,
+  listOpen: boolean,
   { t, tn }: I18n,
 ): { text: string; visible: boolean } {
   if (field) return { text: field.text, visible: false };
@@ -57,7 +58,11 @@ function statusMessage(
     case "idle":
       break;
     case "results":
-      return { text: tn("search.suggestions", suggestions.places.length), visible: false };
+      // Only while the list can be reached: not after Escape or once the user has left.
+      return {
+        text: listOpen ? tn("search.suggestions", suggestions.places.length) : "",
+        visible: false,
+      };
     default:
       return { text: "", visible: false };
   }
@@ -108,6 +113,7 @@ function App() {
   const tooShort = query.trim() !== "" && query.trim().length < MIN_QUERY_LENGTH;
   // Left (or submitted) with text that isn't a found place. Cleared by typing or refocusing.
   const [invalid, setInvalid] = useState(false);
+  const [listOpen, setListOpen] = useState(false);
 
   const lastSearchRef = useRef<LastSearch>({ kind: "device" });
   const locateButtonRef = useRef<HTMLButtonElement>(null);
@@ -190,7 +196,7 @@ function App() {
   }, [state]);
 
   const field = fieldMessage(suggestions.state, invalid, tooShort, i18n);
-  const status = statusMessage(state, suggestions.state, field, i18n);
+  const status = statusMessage(state, suggestions.state, field, listOpen, i18n);
   const showsPharmacyStatus = suggestions.state.status === "idle";
 
   return (
@@ -245,6 +251,7 @@ function App() {
               ),
             }
           }
+          onListOpenChange={setListOpen}
           inputRef={inputRef}
         />
 

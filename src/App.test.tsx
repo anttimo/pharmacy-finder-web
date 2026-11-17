@@ -289,9 +289,12 @@ describe("address search", () => {
 
     await user.type(field(), "kamp");
     await screen.findByRole("option", { name: "Kamppi, Helsinki" });
+    expect(screen.getByRole("status")).toHaveTextContent("1 suggestion.");
     await user.keyboard("{Escape}");
     expect(field()).toHaveAttribute("aria-expanded", "false");
     expect(field()).toHaveValue("kamp");
+    // A closed list can't be reached, so its count isn't announced any more.
+    expect(screen.getByRole("status")).toHaveTextContent("");
     await user.keyboard("{Escape}");
     expect(field()).toHaveValue("");
   });

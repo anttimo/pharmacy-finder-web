@@ -1,4 +1,6 @@
 import {
+  useEffect,
+  useEffectEvent,
   useId,
   useState,
   type FormEvent,
@@ -25,6 +27,8 @@ interface Props {
   invalid: boolean;
   /** Shown under the field and tied to it: no matches, an error, why it's invalid. */
   message: { text: string; error: boolean; action?: ReactNode } | null;
+  /** The suggestion list opened or closed, so the count is announced only when reachable. */
+  onListOpenChange?: (open: boolean) => void;
   inputRef?: Ref<HTMLInputElement>;
 }
 
@@ -43,6 +47,7 @@ export function PlaceSearch({
   onFocus,
   invalid,
   message,
+  onListOpenChange = () => {},
   inputRef,
 }: Props) {
   const { t } = useI18n();
@@ -59,6 +64,9 @@ export function PlaceSearch({
   const places = visiblePlaces(suggestions);
   const open = focused && !dismissed && places.length > 0;
   const active = open && activeIndex < places.length ? activeIndex : -1;
+
+  const reportOpen = useEffectEvent((isOpen: boolean) => onListOpenChange(isOpen));
+  useEffect(() => reportOpen(open), [open]);
 
   const close = () => {
     setDismissed(true);
