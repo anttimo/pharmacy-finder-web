@@ -102,3 +102,69 @@ it("can retry after the list fails to load", async () => {
   await act(async () => geo.succeed());
   await waitFor(() => expect(result.current.state.status).toBe("results"));
 });
+
+const kamppi = { label: "Kamppi, Helsinki", lat: 60.1685, lon: 24.9305 };
+
+it("finds the nearest to a chosen place, without asking for location", async () => {
+  const geo = mockGeolocation();
+  load.mockResolvedValueOnce([
+    pharmacy({ id: "espoo", lat: 60.2, lon: 24.7 }),
+    pharmacy({ id: "kamppi", lat: 60.169, lon: 24.931 }),
+  ]);
+  const { result } = renderHook(() => useNearestPharmacies());
+
+  act(() => result.current.searchAt(kamppi));
+  expect(result.current.state.status).toBe("loading");
+  await waitFor(() => expect(result.current.state.status).toBe("results"));
+
+  const state = result.current.state;
+  expect(state.status === "results" && state.pharmacies[0]!.id).toBe("kamppi");
+  expect(state.status === "results" && state.origin).toEqual({
+    kind: "place",
+    label: "Kamppi, Helsinki",
+  });
+  expect(geo.getCurrentPosition).not.toHaveBeenCalled();
+});
+
+it("marks results from the device location as such", async () => {
+  const geo = mockGeolocation();
+  load.mockResolvedValueOnce([pharmacy({ id: "a", lat: 60.172, lon: 24.942 })]);
+  const { result } = renderHook(() => useNearestPharmacies());
+
+  act(() => result.current.locate());
+  await act(async () => geo.succeed());
+  await waitFor(() => expect(result.current.state.status).toBe("results"));
+  const state = result.current.state;
+  expect(state.status === "results" && state.origin).toEqual({ kind: "device" });
+});
+
+it("ignores a late location answer once a place has been chosen", async () => {
+  const geo = mockGeolocation();
+  load.mockResolvedValue([pharmacy({ id: "a", lat: 60.172, lon: 24.942 })]);
+  const { result } = renderHook(() => useNearestPharmacies());
+
+  act(() => result.current.locate());
+  act(() => result.current.searchAt(kamppi));
+  await act(async () => geo.succeed());
+  await waitFor(() => expect(result.current.state.status).toBe("results"));
+  const state = result.current.state;
+  expect(state.status === "results" && state.origin.kind).toBe("place");
+});
+
+it("lets the location button take over from a place search", async () => {
+  const geo = mockGeolocation();
+  let respondPlace!: (list: Pharmacy[]) => void;
+  load
+    .mockReturnValueOnce(new Promise((resolve) => (respondPlace = resolve)))
+    .mockResolvedValueOnce([pharmacy({ id: "device", lat: 60.172, lon: 24.942 })]);
+  const { result } = renderHook(() => useNearestPharmacies());
+
+  act(() => result.current.searchAt(kamppi));
+  act(() => result.current.locate());
+  await act(async () => geo.succeed());
+  await waitFor(() => expect(result.current.state.status).toBe("results"));
+
+  await act(async () => respondPlace([pharmacy({ id: "place", lat: 60.17, lon: 24.93 })]));
+  const state = result.current.state;
+  expect(state.status === "results" && state.pharmacies.map((p) => p.id)).toEqual(["device"]);
+});
