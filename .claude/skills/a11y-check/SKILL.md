@@ -27,7 +27,8 @@ Go through the changed UI and report every item as **pass**, **fail (fixed)**, *
 - Contrast at least 4.5:1 for text and 3:1 for UI components and focus rings.
 - Meaning never depends on colour alone (e.g. open/closed also has text).
 - No horizontal scrolling at 320 px width. Usable at 200 % zoom.
-- Touch targets at least 44 × 44 px. Animations respect `prefers-reduced-motion`.
+- Touch targets at least 44 × 44 px. Exception: links stacked closely in a pharmacy result (e.g. map and phone) may be about 36 px tall so they don't sit far apart, never below the WCAG 2.2 AA minimum of 24 × 24 px.
+- Animations respect `prefers-reduced-motion`.
 
 ## Tests
 - Add or update Testing Library tests that find the new UI by role and accessible name.

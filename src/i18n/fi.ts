@@ -41,6 +41,8 @@ const fi: Messages = {
     distance: "{distance} linnuntietä",
     phone: "Puhelin:",
     call: "Soita: {name}, {phone}",
+    map: "Näytä Google Mapsissa",
+    mapLabel: "Näytä Google Mapsissa: {name} (avautuu uuteen välilehteen)",
     checkHours:
       "Tarkista aukioloajat apteekista ennen kuin lähdet. Luettelosta voi puuttua apteekkeja.",
     distanceNote: "Etäisyydet on mitattu linnuntietä. Todellinen matka on pidempi.",

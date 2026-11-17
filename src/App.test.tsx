@@ -75,6 +75,10 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   // Focus stays on the button (the live region announces the results); Tab reaches them next.
   expect(screen.getByRole("button", { name: "Use my location" })).toHaveFocus();
   await user.tab();
+  expect(
+    screen.getByRole("link", { name: "Show on Google Maps: Near Apteekki (opens in a new tab)" }),
+  ).toHaveFocus();
+  await user.tab();
   expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveFocus();
 
   const items = screen.getAllByRole("listitem");
@@ -88,6 +92,15 @@ it("lists the three nearest pharmacies, nearest first, with the required notes",
   expect(screen.getByRole("link", { name: "Call Near Apteekki, (09) 123 4567" })).toHaveAttribute(
     "href",
     "tel:+35891234567",
+  );
+  const map = screen.getByRole("link", {
+    name: "Show on Google Maps: Near Apteekki (opens in a new tab)",
+  });
+  expect(map).toHaveTextContent("Show on Google Maps");
+  expect(map).toHaveAttribute("target", "_blank");
+  expect(map).toHaveAttribute(
+    "href",
+    expect.stringContaining(encodeURIComponent("Near Apteekki, Kaivokatu 1, 00100 Helsinki")),
   );
   expect(screen.getByText(/Check opening hours with the pharmacy/)).toBeInTheDocument();
 });

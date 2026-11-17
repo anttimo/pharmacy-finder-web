@@ -1,9 +1,11 @@
 import { useI18n } from "../i18n/context";
-import { formatDistance, telHref } from "../lib/format";
+import { formatDistance, mapsHref, telHref } from "../lib/format";
 import type { PharmacyWithDistance } from "../lib/pharmacy";
 
+// py-2 gives about 36 px tall targets: under the usual 44 px, chosen so the map and phone
+// links don't sit far apart. Still above the WCAG 2.2 AA minimum of 24 px.
 const linkClass =
-  "inline-block py-3 text-blue-800 underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
+  "inline-block py-2 text-blue-800 underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
 export function ResultsList({ pharmacies }: { pharmacies: PharmacyWithDistance[] }) {
   const { t, locale } = useI18n();
@@ -24,6 +26,17 @@ export function ResultsList({ pharmacies }: { pharmacies: PharmacyWithDistance[]
             </p>
             <p className="text-sm">
               {pharmacy.address}, {pharmacy.postcode} {pharmacy.city}
+            </p>
+            <p className="text-sm">
+              <a
+                href={mapsHref(pharmacy)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("results.mapLabel", { name: pharmacy.name })}
+                className={linkClass}
+              >
+                {t("results.map")}
+              </a>
             </p>
             {pharmacy.phone && (
               <p className="text-sm">

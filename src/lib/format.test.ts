@@ -1,4 +1,5 @@
-import { formatDate, formatDistance, telHref } from "./format";
+import { pharmacy } from "../test/mocks";
+import { formatDate, formatDistance, mapsHref, telHref } from "./format";
 
 // Intl may use non-breaking spaces between number and unit.
 const normalize = (s: string) => s.replace(/\s/g, " ");
@@ -42,5 +43,27 @@ describe("formatDate", () => {
   it("uses Finnish time, not the viewer's time zone", () => {
     // 23:30 UTC is already the next day in Helsinki.
     expect(formatDate("2026-11-16T23:30:00.000Z", "en")).toBe("17 November 2026");
+  });
+});
+
+describe("mapsHref", () => {
+  it("searches Google Maps for the pharmacy by name and address", () => {
+    const href = mapsHref(
+      pharmacy({
+        id: "1",
+        lat: 60.19,
+        lon: 24.94,
+        name: "Alppilan apteekki",
+        address: "Fleminginkatu 1",
+        postcode: "00530",
+        city: "Helsinki",
+      }),
+    );
+    const url = new URL(href);
+    expect(url.origin + url.pathname).toBe("https://www.google.com/maps/search/");
+    expect(url.searchParams.get("api")).toBe("1");
+    expect(url.searchParams.get("query")).toBe(
+      "Alppilan apteekki, Fleminginkatu 1, 00530 Helsinki",
+    );
   });
 });

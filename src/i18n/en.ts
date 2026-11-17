@@ -42,6 +42,9 @@ const en = {
     phone: "Phone:",
     // Accessible name of the phone link. Must contain {phone}, the visible link text.
     call: "Call {name}, {phone}",
+    map: "Show on Google Maps",
+    // Accessible name of the map link. Must start with the visible results.map text.
+    mapLabel: "Show on Google Maps: {name} (opens in a new tab)",
     checkHours:
       "Check opening hours with the pharmacy before you go. This list may not include every pharmacy.",
     distanceNote: "Distances are measured in a straight line. The route there is longer.",
