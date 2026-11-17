@@ -359,6 +359,19 @@ describe("address search", () => {
     expect(field()).toHaveFocus();
   });
 
+  it.each([
+    ["Enter", "{Enter}"],
+    ["leaving the field", "{Tab}"],
+  ])("asks for at least two letters on %s with one", async (_, key) => {
+    const user = userEvent.setup();
+    renderApp();
+
+    await user.type(field(), `k${key}`);
+    expect(field()).toHaveAttribute("aria-invalid", "true");
+    expect(field()).toHaveAccessibleDescription(/Type at least two letters/);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("forgets an Enter still waiting for suggestions once the user leaves the field", async () => {
     const user = userEvent.setup();
     let answer: (response: Response) => void = () => {};

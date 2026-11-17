@@ -4,7 +4,11 @@ import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
 import type { Place } from "./data/geocode";
 import { useNearestPharmacies, type NearestState } from "./hooks/useNearestPharmacies";
-import { usePlaceSuggestions, type SuggestionsState } from "./hooks/usePlaceSuggestions";
+import {
+  MIN_QUERY_LENGTH,
+  usePlaceSuggestions,
+  type SuggestionsState,
+} from "./hooks/usePlaceSuggestions";
 import { pharmaciesGeneratedAt } from "./data/pharmaciesGeneratedAt";
 import { useI18n, type I18n } from "./i18n/context";
 import { formatDate } from "./lib/format";
@@ -21,13 +25,16 @@ const buttonClass =
 function fieldMessage(
   suggestions: SuggestionsState,
   invalid: boolean,
+  tooShort: boolean,
   { t }: I18n,
 ): { text: string; error: boolean } | null {
   if (invalid) {
-    return {
-      text: t(suggestions.status === "empty" ? "search.noMatches" : "search.chooseFromList"),
-      error: true,
-    };
+    const key = tooShort
+      ? "search.tooShort"
+      : suggestions.status === "empty"
+        ? "search.noMatches"
+        : "search.chooseFromList";
+    return { text: t(key), error: true };
   }
   if (suggestions.status === "empty") return { text: t("search.noMatches"), error: false };
   if (suggestions.status === "error") return { text: t("search.error"), error: true };
@@ -97,6 +104,8 @@ function App() {
   const [text, setText] = useState("");
   const [chosen, setChosen] = useState<string | null>(null);
   const query = text === chosen ? "" : text;
+  // Some text, but too little to get suggestions for.
+  const tooShort = query.trim() !== "" && query.trim().length < MIN_QUERY_LENGTH;
   // Left (or submitted) with text that isn't a found place. Cleared by typing or refocusing.
   const [invalid, setInvalid] = useState(false);
 
@@ -154,7 +163,7 @@ function App() {
     if (text.trim() !== "" && text !== chosen) markInvalid();
   };
   const onSubmitTop = () => {
-    if (suggestions.state.status === "empty") markInvalid();
+    if (tooShort || suggestions.state.status === "empty") markInvalid();
     else suggestions.chooseTop();
   };
 
@@ -180,7 +189,7 @@ function App() {
     if (state.status === "results") revealResults();
   }, [state]);
 
-  const field = fieldMessage(suggestions.state, invalid, i18n);
+  const field = fieldMessage(suggestions.state, invalid, tooShort, i18n);
   const status = statusMessage(state, suggestions.state, field, i18n);
   const showsPharmacyStatus = suggestions.state.status === "idle";
 

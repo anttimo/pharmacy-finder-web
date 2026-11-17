@@ -27,6 +27,7 @@ const fi: Messages = {
       other: "{count} ehdotusta.",
     },
     chooseFromList: "Valitse paikka ehdotuksista.",
+    tooShort: "Kirjoita vähintään kaksi kirjainta ja valitse paikka ehdotuksista.",
     noMatches:
       "Paikkoja ei löytynyt. Tarkista kirjoitusasu tai kokeile lähellä olevaa katua tai kuntaa.",
     error: "Osoitehaku ei toimi juuri nyt. Yritä uudelleen tai käytä sijaintiasi.",

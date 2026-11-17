@@ -30,6 +30,8 @@ const en = {
     },
     // After leaving the field with text that wasn't chosen from the suggestions.
     chooseFromList: "Choose a place from the suggestions.",
+    // Enter or leaving the field with one letter: suggestions start at two.
+    tooShort: "Type at least two letters, then choose a place from the suggestions.",
     noMatches: "No places found. Check the spelling, or try a street or town nearby.",
     error: "Address search isn't working right now. Try again, or use your location.",
   },
