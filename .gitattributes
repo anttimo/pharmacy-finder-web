@@ -3,3 +3,7 @@
 *.jpg binary
 *.ico binary
 *.woff2 binary
+
+# Built by `npm run build:pharmacies` (ADR 0001). GitHub collapses it in diffs and
+# leaves it out of the language stats.
+src/data/pharmacies.json linguist-generated=true
