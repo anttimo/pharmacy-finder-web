@@ -65,8 +65,10 @@ export function PlaceSearch({
   const open = focused && !dismissed && places.length > 0;
   const active = open && activeIndex < places.length ? activeIndex : -1;
 
-  const reportOpen = useEffectEvent((isOpen: boolean) => onListOpenChange(isOpen));
-  useEffect(() => reportOpen(open), [open]);
+  const reportOpen = useEffectEvent(onListOpenChange);
+  useEffect(() => {
+    reportOpen(open);
+  }, [open]);
 
   const close = () => {
     setDismissed(true);
