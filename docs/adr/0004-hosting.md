@@ -3,7 +3,7 @@
 - Status: Accepted
 - Date: 2026-11-11
 - Applies to: web app
-- Implementation: planned, the Worker scaffold is not in the repo yet
+- Implementation: done 2026-11-17. The `/api/geocode` route follows with [ADR-0003](0003-geocoding.md).
 
 ## Context
 
