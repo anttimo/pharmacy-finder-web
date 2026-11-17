@@ -208,7 +208,7 @@ describe("address search", () => {
     const listbox = await screen.findByRole("listbox", { name: "Address or place" });
     expect(within(listbox).getAllByRole("option")).toHaveLength(2);
     expect(field()).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getByRole("status")).toHaveTextContent("2 suggestions.");
+    await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("2 suggestions."));
 
     await user.keyboard("{ArrowDown}");
     const first = screen.getByRole("option", { name: "Kamppi, Helsinki" });
@@ -289,7 +289,7 @@ describe("address search", () => {
 
     await user.type(field(), "kamp");
     await screen.findByRole("option", { name: "Kamppi, Helsinki" });
-    expect(screen.getByRole("status")).toHaveTextContent("1 suggestion.");
+    await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("1 suggestion."));
     await user.keyboard("{Escape}");
     expect(field()).toHaveAttribute("aria-expanded", "false");
     expect(field()).toHaveValue("kamp");
@@ -305,6 +305,25 @@ describe("address search", () => {
     await user.click(await screen.findByRole("option", { name: "Kamppi, Helsinki" }));
     return screen.findByRole("heading", { name: "Pharmacies near Kamppi, Helsinki" });
   }
+
+  it("retries a failed search near the same place", async () => {
+    const user = userEvent.setup();
+    const geo = mockGeolocation();
+    fetchMock.mockResolvedValue(places("Kamppi, Helsinki"));
+    load.mockRejectedValueOnce(new TypeError("Failed to fetch dynamically imported module"));
+    renderApp();
+
+    await user.type(field(), "kamp");
+    await user.click(await screen.findByRole("option", { name: "Kamppi, Helsinki" }));
+    await user.click(await screen.findByRole("button", { name: "Try again" }));
+
+    expect(
+      await screen.findByRole("heading", { name: "Pharmacies near Kamppi, Helsinki" }),
+    ).toBeInTheDocument();
+    expect(field()).toHaveValue("Kamppi, Helsinki");
+    expect(load).toHaveBeenCalledTimes(2);
+    expect(geo.getCurrentPosition).not.toHaveBeenCalled();
+  });
 
   it("moves focus to the new results", async () => {
     const user = userEvent.setup();

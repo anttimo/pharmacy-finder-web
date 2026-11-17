@@ -143,4 +143,25 @@ describe("handleGeocode", () => {
     expect(response.status).toBe(502);
     expect(await response.json()).toEqual({ error: "upstream_error" });
   });
+
+  it("gives up on upstream after 5 seconds, with a generic 502", async () => {
+    // AbortSignal.timeout runs on internal timers that fake timers don't reach: time out by hand.
+    const timeout = new AbortController();
+    const timeoutSpy = vi.spyOn(AbortSignal, "timeout").mockReturnValue(timeout.signal);
+    const fetchImpl = vi.fn<typeof fetch>(
+      (_, init) =>
+        new Promise((_, reject) =>
+          init?.signal?.addEventListener("abort", () => reject(init.signal?.reason)),
+        ),
+    );
+
+    const pending = handleGeocode(request("?text=kamp"), env, fetchImpl);
+    expect(timeoutSpy).toHaveBeenCalledWith(5_000);
+    timeout.abort(new DOMException("The operation timed out.", "TimeoutError"));
+
+    const response = await pending;
+    expect(response.status).toBe(502);
+    expect(await response.json()).toEqual({ error: "upstream_error" });
+    timeoutSpy.mockRestore();
+  });
 });

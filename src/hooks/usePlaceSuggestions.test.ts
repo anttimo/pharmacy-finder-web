@@ -1,4 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
+import type { Locale } from "../i18n/translate";
 import { DEBOUNCE_MS, usePlaceSuggestions } from "./usePlaceSuggestions";
 
 const fetchMock = vi.fn<typeof fetch>();
@@ -103,6 +104,68 @@ it("reports an error and can retry", async () => {
   act(() => result.current.retry());
   await settle();
   expect(result.current.state.status).toBe("results");
+});
+
+describe("chooseTop (Enter)", () => {
+  const kamppi = { label: "Kamppi, Helsinki", lat: 60.17, lon: 24.93 };
+  const setup = (q: string) => {
+    const onChoose = vi.fn();
+    const hook = renderHook(({ q }) => usePlaceSuggestions(q, "fi", onChoose), {
+      initialProps: { q },
+    });
+    return { onChoose, ...hook };
+  };
+
+  it("chooses the top suggestion right away when it's there", async () => {
+    fetchMock.mockResolvedValue(answer("Kamppi, Helsinki", "Kampinkuja, Helsinki"));
+    const { onChoose, result } = setup("kamp");
+    await settle();
+    act(() => result.current.chooseTop());
+    expect(onChoose).toHaveBeenCalledWith(kamppi);
+  });
+
+  it("waits for the answer when it hasn't arrived yet", async () => {
+    fetchMock.mockResolvedValue(answer("Kamppi, Helsinki"));
+    const { onChoose, result } = setup("kamp");
+    act(() => result.current.chooseTop());
+    expect(onChoose).not.toHaveBeenCalled();
+    await settle();
+    expect(onChoose).toHaveBeenCalledWith(kamppi);
+  });
+
+  it("stops waiting when the text changes", async () => {
+    fetchMock.mockResolvedValue(answer("Kamppi, Helsinki"));
+    const { onChoose, result, rerender } = setup("kamp");
+    act(() => result.current.chooseTop());
+    rerender({ q: "kampi" });
+    await settle();
+    expect(onChoose).not.toHaveBeenCalled();
+  });
+
+  it("stops waiting when cancelled", async () => {
+    fetchMock.mockResolvedValue(answer("Kamppi, Helsinki"));
+    const { onChoose, result } = setup("kamp");
+    act(() => result.current.chooseTop());
+    act(() => result.current.cancelPending());
+    await settle();
+    expect(onChoose).not.toHaveBeenCalled();
+  });
+});
+
+it("asks again in the new language when the language changes", async () => {
+  fetchMock.mockResolvedValue(answer("Kamppi, Helsinki"));
+  const { rerender } = renderHook(({ lang }) => usePlaceSuggestions("kamp", lang), {
+    initialProps: { lang: "fi" as Locale },
+  });
+  await settle();
+  rerender({ lang: "en" });
+  await settle();
+  expect(fetchMock).toHaveBeenCalledTimes(2);
+  const lang = (call: number) =>
+    new URL(String(fetchMock.mock.calls[call]![0]), "https://example.test").searchParams.get(
+      "lang",
+    );
+  expect([lang(0), lang(1)]).toEqual(["fi", "en"]);
 });
 
 it("goes back to idle when the text is cleared", async () => {

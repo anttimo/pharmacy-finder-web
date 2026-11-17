@@ -20,6 +20,13 @@ it("asks our own proxy with the text and language, and nothing else", async () =
   expect(Object.fromEntries(sentUrl().searchParams)).toEqual({ text: "kamp", lang: "en" });
 });
 
+it("passes its abort signal to fetch, so a superseded request is really cancelled", async () => {
+  fetchMock.mockResolvedValueOnce(Response.json({ results: [] }));
+  const controller = new AbortController();
+  await geocode("kamp", "fi", controller.signal);
+  expect(fetchMock.mock.calls[0]![1]?.signal).toBe(controller.signal);
+});
+
 it("cuts the text to what the proxy accepts", async () => {
   fetchMock.mockResolvedValueOnce(Response.json({ results: [] }));
   await geocode("a".repeat(150), "fi");
