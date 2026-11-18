@@ -4,11 +4,11 @@ Finds the pharmacies nearest to you, or to a place you search for, in Finland. T
 
 Pharmacy data comes from Fimea's pharmacy register, geocoded at build time ([ADR 0001](docs/adr/0001-pharmacy-data-source.md)). It may be incomplete or out of date, so check opening hours with the pharmacy.
 
-**Status:** early. "Use my location" and address search work and show the three nearest pharmacies. The app is served by a Cloudflare Worker, which also proxies address search.
+**Status:** a complete demo. "Use my location" and address search both show the three nearest pharmacies, in Finnish or English. The app is served by a Cloudflare Worker, which also proxies address search.
 
 ## Stack
 
-React, TypeScript (strict), Vite and Tailwind v4, tested with Vitest and Testing Library. A single Cloudflare Worker serves the built app and proxies address search to Digitransit, so the API key stays on the server.
+React, TypeScript (strict), Vite and Tailwind v4, tested with Vitest and Testing Library, plus Playwright smoke tests against the production build. A single Cloudflare Worker serves the built app and proxies address search to Digitransit, so the API key stays on the server.
 
 ## Getting started
 
