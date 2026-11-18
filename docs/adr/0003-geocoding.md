@@ -4,7 +4,7 @@
 - Date: 2026-11-11
 - Applies to: web app (proxy, Digitransit) and iOS app (Apple; the iOS app lives in its own repository)
 - Implementation: done 2026-11-17 (`worker/geocode.ts`, `src/components/PlaceSearch.tsx`)
-- Updated: 2026-11-18. iOS uses MapKit's `MKLocalSearch` instead of `CLGeocoder`, which iOS 26 deprecates.
+- Updated: 2026-11-18. iOS uses MapKit's `MKLocalSearch` instead of `CLGeocoder`, which iOS 26 deprecates, and the iOS footer gets its own credit text (see Attribution).
 
 ## Context
 
@@ -58,6 +58,8 @@ Digitransit's data is licensed under CC BY 4.0, and part of it comes from OpenSt
 
 - "Pharmacy locations and address search: © Digitransit {year}", linking to digitransit.fi.
 - The ODbL notice, following the example text in its section 4.3: "Contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL)", linking to the OSM copyright page and the licence.
+
+**iOS:** address search is Apple's, so only the pharmacy coordinates come from Digitransit. The app's footer credits "Pharmacy locations: © Digitransit {year}" (fi: "Apteekkien sijainnit: © Digitransit {year}") and shows the same ODbL notice.
 
 ## Consequences
 
