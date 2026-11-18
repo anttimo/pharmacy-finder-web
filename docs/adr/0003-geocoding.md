@@ -51,6 +51,13 @@ On the client, input is debounced and stale requests are aborted (the same patte
 
 The page offers "Use my location" first, then "or" and the search field. Choosing a suggestion starts the pharmacy search; Enter takes the top suggestion. There's no separate search button. Leaving the field with text that isn't a found place marks it invalid and clears the results, so the field and the list never disagree. After each search, focus moves to the results heading.
 
+### Attribution
+
+Digitransit's data is licensed under CC BY 4.0, and part of it comes from OpenStreetMap (`sources` includes `osm`) under the ODbL. Both address search and the pharmacy coordinates come from it ([ADR-0001](0001-pharmacy-data-source.md)). So the page footer always shows, next to the Fimea source:
+
+- "Pharmacy locations and address search: © Digitransit {year}", linking to digitransit.fi.
+- The ODbL notice, following the example text in its section 4.3: "Contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL)", linking to the OSM copyright page and the licence.
+
 ## Consequences
 
 **Good**
