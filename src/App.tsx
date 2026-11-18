@@ -1,4 +1,12 @@
-import { Fragment, useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
@@ -140,13 +148,16 @@ function App() {
     locate();
   };
 
-  const onChoose = (place: Place) => {
-    lastSearchRef.current = { kind: "place", place };
-    setText(place.label);
-    setChosen(place.label);
-    setInvalid(false);
-    searchAt(place);
-  };
+  const onChoose = useCallback(
+    (place: Place) => {
+      lastSearchRef.current = { kind: "place", place };
+      setText(place.label);
+      setChosen(place.label);
+      setInvalid(false);
+      searchAt(place);
+    },
+    [searchAt],
+  );
   const suggestions = usePlaceSuggestions(query, locale, onChoose);
 
   // Retry buttons disappear once the search restarts, so move focus to where it started.

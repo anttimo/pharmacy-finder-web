@@ -17,6 +17,7 @@ export type SuggestionsState =
   | { status: "error"; text: string };
 
 const IDLE: SuggestionsState = { status: "idle" };
+const ignore = () => {};
 
 /** The suggestions currently on screen. */
 export function visiblePlaces(state: SuggestionsState): Place[] {
@@ -44,7 +45,7 @@ function stateFor(state: SuggestionsState, text: string): SuggestionsState {
 export function usePlaceSuggestions(
   query: string,
   lang: Locale,
-  onChoose: (place: Place) => void = () => {},
+  onChoose: (place: Place) => void = ignore,
 ) {
   const [state, setState] = useState<SuggestionsState>(IDLE);
   const [attempt, setAttempt] = useState(0);
@@ -54,13 +55,17 @@ export function usePlaceSuggestions(
 
   useEffect(() => {
     pendingRef.current = false; // a wait for the top suggestion belonged to the old text
+
     if (text.length < MIN_QUERY_LENGTH) return;
+
     const controller = new AbortController();
+
     const timer = setTimeout(async () => {
       setState((previous) => ({ status: "loading", places: visiblePlaces(previous) }));
       try {
         const places = await geocode(text, lang, controller.signal);
         if (controller.signal.aborted) return;
+
         setState(
           places.length > 0 ? { status: "results", places, text } : { status: "empty", text },
         );
@@ -81,10 +86,10 @@ export function usePlaceSuggestions(
 
   const current = stateFor(state, text);
 
-  const chooseTop = () => {
+  const chooseTop = useCallback(() => {
     if (current.status === "results") onChoose(current.places[0]!);
     else if (text.length >= MIN_QUERY_LENGTH) pendingRef.current = true;
-  };
+  }, [current, text, onChoose]);
 
   /** Forgets an Enter still waiting for its answer, e.g. when the user leaves the field. */
   const cancelPending = useCallback(() => {
