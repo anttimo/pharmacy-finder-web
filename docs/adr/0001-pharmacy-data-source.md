@@ -19,6 +19,7 @@ Use the Fimea register as the only source. A build script turns it into a static
 - **Loading:** the app loads the file with a dynamic `import()`, so Vite serves it as its own chunk (a few tens of KB gzipped), fetched from our own origin on the first search, not on page load. If that fetch fails, the user gets the error state with a retry.
 - **Results:** the 3 nearest pharmacies, with no distance limit. Someone outside Finland still gets the nearest ones in Finland, each with its distance, so there's no empty state.
 - **Each result** shows the name, address, straight-line distance and phone number (a `tel:` link). The page footer names the data source.
+- **Map link:** each result also links to a Google Maps search for the pharmacy's name and address, which usually finds its listing with opening hours. It's a plain link that opens in a new tab. Nothing goes to Google until the user taps it, and the link never includes the user's location.
 
 ### Build pipeline: `npm run build:pharmacies`
 
