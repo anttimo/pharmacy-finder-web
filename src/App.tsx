@@ -41,46 +41,56 @@ function fieldMessage(
   return null;
 }
 
-/**
- * The one message for the polite live region. While the user is typing, or the field is
- * invalid, it's about the search field; otherwise about the pharmacy search. Messages that
- * are already on screen under the field are for screen readers only (`visible: false`).
- */
+type StatusMessage = {
+  text: string;
+  visible: boolean;
+  about: "field" | "suggestions" | "pharmacies";
+};
+
+/** The status line under the search. */
 function statusMessage(
   state: NearestState,
   suggestions: SuggestionsState,
   field: { text: string } | null,
   listOpen: boolean,
-  { t, tn }: I18n,
-): { text: string; visible: boolean } {
-  if (field) return { text: field.text, visible: false };
-  switch (suggestions.status) {
-    case "idle":
-      break;
-    case "results":
-      // Only while the list can be reached: not after Escape or once the user has left.
-      return {
-        text: listOpen ? tn("search.suggestions", suggestions.places.length) : "",
-        visible: false,
-      };
-    default:
-      return { text: "", visible: false };
-  }
+  i18n: I18n,
+): StatusMessage {
+  if (field) return { text: field.text, visible: false, about: "field" };
+  if (suggestions.status !== "idle") return suggestionsStatus(suggestions, listOpen, i18n);
+  return pharmacyStatus(state, i18n);
+}
+
+function suggestionsStatus(
+  suggestions: SuggestionsState,
+  listOpen: boolean,
+  { tn }: I18n,
+): StatusMessage {
+  // Only while the list can be reached: not after Escape or once the user has left.
+  const text =
+    suggestions.status === "results" && listOpen
+      ? tn("search.suggestions", suggestions.places.length)
+      : "";
+  return { text, visible: false, about: "suggestions" };
+}
+
+function pharmacyStatus(state: NearestState, { t, tn }: I18n): StatusMessage {
+  const about = "pharmacies";
   switch (state.status) {
     case "idle":
-      return { text: "", visible: true };
+      return { text: "", visible: false, about };
     case "locating":
-      return { text: t("status.locating"), visible: true };
+      return { text: t("status.locating"), visible: true, about };
     case "loading":
-      return { text: t("status.loading"), visible: true };
+      return { text: t("status.loading"), visible: true, about };
     case "results":
-      return { text: tn("status.found", state.pharmacies.length), visible: true };
+      return { text: tn("status.found", state.pharmacies.length), visible: true, about };
     case "denied":
-      return { text: t("status.denied"), visible: true };
+      return { text: t("status.denied"), visible: true, about };
     case "error":
       return {
         text: t(state.kind === "location" ? "status.locationError" : "status.networkError"),
         visible: true,
+        about,
       };
   }
 }
@@ -197,7 +207,7 @@ function App() {
 
   const field = fieldMessage(suggestions.state, invalid, tooShort, i18n);
   const status = statusMessage(state, suggestions.state, field, listOpen, i18n);
-  const showsPharmacyStatus = suggestions.state.status === "idle";
+  const showsPharmacyStatus = status.about === "pharmacies";
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
