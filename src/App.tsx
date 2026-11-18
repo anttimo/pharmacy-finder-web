@@ -188,7 +188,7 @@ function App() {
   // highlight them. Not while the user is typing a new search, though.
   const revealResults = useEffectEvent(() => {
     const input = inputRef.current;
-    if (input && document.activeElement === input && input.value !== chosen) return;
+    if (input && document.activeElement === input && text !== chosen) return;
     const heading = resultsHeadingRef.current;
     heading?.focus();
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
