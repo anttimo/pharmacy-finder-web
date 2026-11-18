@@ -48,6 +48,34 @@ it("shows the data source, with a link to the code server, and when the data was
   );
 });
 
+it("credits Digitransit, with the current year, for locations and address search", () => {
+  renderApp();
+  const footer = within(screen.getByRole("contentinfo"));
+  expect(screen.getByRole("contentinfo")).toHaveTextContent(
+    `Pharmacy locations and address search: © Digitransit ${new Date().getFullYear()}`,
+  );
+  expect(footer.getByRole("link", { name: "Digitransit" })).toHaveAttribute(
+    "href",
+    "https://digitransit.fi/",
+  );
+});
+
+it("shows the ODbL notice for OpenStreetMap data, linking the database and the licence", () => {
+  renderApp();
+  const footer = within(screen.getByRole("contentinfo"));
+  expect(screen.getByRole("contentinfo")).toHaveTextContent(
+    "Contains information from OpenStreetMap, which is made available here under the Open Database License (ODbL).",
+  );
+  expect(footer.getByRole("link", { name: "OpenStreetMap" })).toHaveAttribute(
+    "href",
+    "https://www.openstreetmap.org/copyright",
+  );
+  expect(footer.getByRole("link", { name: "Open Database License (ODbL)" })).toHaveAttribute(
+    "href",
+    "https://opendatacommons.org/licenses/odbl/1-0/",
+  );
+});
+
 it("lists the three nearest pharmacies, nearest first, with the required notes", async () => {
   const user = userEvent.setup();
   const geo = mockGeolocation();

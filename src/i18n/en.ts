@@ -72,6 +72,15 @@ const en = {
     codeServer: "THL CodeServer (Kanta Services)",
     // {date} is replaced by the date the list was generated, e.g. "16 November 2026".
     updated: "Pharmacy data updated {date}.",
+    // Attribution required by Digitransit's terms of use (CC BY).
+    // {digitransit} is replaced by a link with the footer.digitransit text; {year} by the current year.
+    locations: "Pharmacy locations and address search: © {digitransit} {year}",
+    digitransit: "Digitransit",
+    // Notice required by ODbL section 4.3, following its example text.
+    // {osm} and {odbl} are replaced by links with the footer.osmName and footer.odblName texts.
+    osm: "Contains information from {osm}, which is made available here under the {odbl}.",
+    osmName: "OpenStreetMap",
+    odblName: "Open Database License (ODbL)",
   },
 } as const;
 

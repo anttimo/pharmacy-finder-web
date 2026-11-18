@@ -65,6 +65,11 @@ const fi: Messages = {
       "Apteekkitietojen lähde: Lääkealan turvallisuus- ja kehittämiskeskus Fimea / {codeServer}",
     codeServer: "THL Koodistopalvelu",
     updated: "Apteekkitiedot päivitetty {date}.",
+    locations: "Apteekkien sijainnit ja osoitehaku: © {digitransit} {year}",
+    digitransit: "Digitransit",
+    osm: "Sisältää tietoja {osm}, jonka tiedot ovat saatavilla {odbl} -lisenssillä.",
+    osmName: "OpenStreetMapista",
+    odblName: "Open Database License (ODbL)",
   },
 };
 

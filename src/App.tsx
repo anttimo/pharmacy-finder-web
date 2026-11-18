@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
@@ -14,6 +14,10 @@ import { useI18n, type I18n } from "./i18n/context";
 import { formatDate } from "./lib/format";
 
 const CODE_SERVER_URL = "https://koodistopalvelu.kanta.fi/";
+const DIGITRANSIT_URL = "https://digitransit.fi/";
+const OSM_COPYRIGHT_URL = "https://www.openstreetmap.org/copyright";
+const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
+const CURRENT_YEAR = String(new Date().getFullYear());
 
 const linkClass =
   "rounded-sm text-blue-700 underline hover:text-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
@@ -95,16 +99,12 @@ function pharmacyStatus(state: NearestState, { t, tn }: I18n): StatusMessage {
   }
 }
 
-/** Puts an element where `{name}` is in a translated text, keeping the word order of the language. */
-function withElement(text: string, name: string, element: ReactNode): ReactNode {
-  const [before, after = ""] = text.split(`{${name}}`);
-  return (
-    <>
-      {before}
-      {element}
-      {after}
-    </>
-  );
+/** Puts elements where `{name}`s are in a translated text, keeping the word order of the language. */
+function withElements(text: string, elements: Record<string, ReactNode>): ReactNode {
+  // split() with a capture group alternates plain text and placeholder names.
+  return text
+    .split(/\{(\w+)\}/)
+    .map((part, i) => <Fragment key={i}>{i % 2 === 0 ? part : elements[part]}</Fragment>);
 }
 
 type LastSearch = { kind: "device" } | { kind: "place"; place: Place };
@@ -294,22 +294,45 @@ function App() {
 
       <footer className="mx-auto max-w-2xl border-t border-slate-200 px-4 py-4 text-sm text-slate-700">
         <p>
-          {withElement(
-            t("footer.source"),
-            "codeServer",
-            <a href={CODE_SERVER_URL} className={linkClass}>
-              {t("footer.codeServer")}
-            </a>,
-          )}
+          {withElements(t("footer.source"), {
+            codeServer: (
+              <a href={CODE_SERVER_URL} className={linkClass}>
+                {t("footer.codeServer")}
+              </a>
+            ),
+          })}
         </p>
         <p className="mt-1">
-          {withElement(
-            t("footer.updated"),
-            "date",
-            <time dateTime={pharmaciesGeneratedAt}>
-              {formatDate(pharmaciesGeneratedAt, i18n.locale)}
-            </time>,
-          )}
+          {withElements(t("footer.updated"), {
+            date: (
+              <time dateTime={pharmaciesGeneratedAt}>
+                {formatDate(pharmaciesGeneratedAt, i18n.locale)}
+              </time>
+            ),
+          })}
+        </p>
+        <p className="mt-1">
+          {withElements(t("footer.locations", { year: CURRENT_YEAR }), {
+            digitransit: (
+              <a href={DIGITRANSIT_URL} className={linkClass}>
+                {t("footer.digitransit")}
+              </a>
+            ),
+          })}
+        </p>
+        <p className="mt-1">
+          {withElements(t("footer.osm"), {
+            osm: (
+              <a href={OSM_COPYRIGHT_URL} className={linkClass}>
+                {t("footer.osmName")}
+              </a>
+            ),
+            odbl: (
+              <a href={ODBL_URL} className={linkClass}>
+                {t("footer.odblName")}
+              </a>
+            ),
+          })}
         </p>
       </footer>
     </div>
