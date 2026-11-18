@@ -21,7 +21,9 @@ export type NearestState =
 const GEOLOCATION_OPTIONS: PositionOptions = {
   enableHighAccuracy: false,
   timeout: 10_000,
-  maximumAge: 60_000,
+  // Short, because a car at 100 km/h moves about 280 m in 10 s, and pharmacies in a city can be
+  // closer than that. Still long enough to reuse the position on a double tap or a quick retry.
+  maximumAge: 10_000,
 };
 
 /**
