@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import { useId, type Ref } from "react";
 import { useI18n } from "../i18n/context";
 import { formatDistance, mapsHref, telHref } from "../lib/format";
 import type { SearchOrigin } from "../hooks/useNearestPharmacies";
@@ -20,12 +20,13 @@ export function ResultsList({
   headingRef?: Ref<HTMLHeadingElement>;
 }) {
   const { t, locale } = useI18n();
+  const headingId = useId();
 
   return (
     // Negative margin and padding give the "updated" highlight some room around the text.
-    <section aria-labelledby="results-heading" className="-mx-2 mt-6 rounded px-2 py-1">
+    <section aria-labelledby={headingId} className="-mx-2 mt-6 rounded px-2 py-1">
       <h2
-        id="results-heading"
+        id={headingId}
         ref={headingRef}
         tabIndex={-1}
         className="rounded-sm text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
