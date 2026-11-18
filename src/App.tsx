@@ -1,12 +1,4 @@
-import {
-  Fragment,
-  useCallback,
-  useEffect,
-  useEffectEvent,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
@@ -15,6 +7,7 @@ import { useNearestPharmacies } from "./hooks/useNearestPharmacies";
 import { MIN_QUERY_LENGTH, usePlaceSuggestions } from "./hooks/usePlaceSuggestions";
 import { pharmaciesGeneratedAt } from "./data/pharmaciesGeneratedAt";
 import { useI18n } from "./i18n/context";
+import { withElements } from "./i18n/withElements";
 import { formatDate } from "./lib/format";
 import { fieldMessage, statusMessage } from "./lib/messages";
 
@@ -29,14 +22,6 @@ const linkClass =
 
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
-
-/** Puts elements where `{name}`s are in a translated text, keeping the word order of the language. */
-function withElements(text: string, elements: Record<string, ReactNode>): ReactNode {
-  // split() with a capture group alternates plain text and placeholder names.
-  return text
-    .split(/\{(\w+)\}/)
-    .map((part, i) => <Fragment key={i}>{i % 2 === 0 ? part : elements[part]}</Fragment>);
-}
 
 type LastSearch = { kind: "device" } | { kind: "place"; place: Place };
 
