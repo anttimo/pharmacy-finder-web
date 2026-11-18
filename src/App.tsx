@@ -1,24 +1,13 @@
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
+import { Footer } from "./components/Footer";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
 import type { Place } from "./data/geocode";
 import { useNearestPharmacies } from "./hooks/useNearestPharmacies";
 import { MIN_QUERY_LENGTH, usePlaceSuggestions } from "./hooks/usePlaceSuggestions";
-import { pharmaciesGeneratedAt } from "./data/pharmaciesGeneratedAt";
 import { useI18n } from "./i18n/context";
-import { withElements } from "./i18n/withElements";
-import { formatDate } from "./lib/format";
 import { fieldMessage, statusMessage } from "./lib/messages";
-
-const CODE_SERVER_URL = "https://koodistopalvelu.kanta.fi/";
-const DIGITRANSIT_URL = "https://digitransit.fi/";
-const OSM_COPYRIGHT_URL = "https://www.openstreetmap.org/copyright";
-const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
-const CURRENT_YEAR = String(new Date().getFullYear());
-
-const linkClass =
-  "rounded-sm text-blue-700 underline hover:text-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
 
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
@@ -211,49 +200,7 @@ function App() {
         )}
       </main>
 
-      <footer className="mx-auto max-w-2xl border-t border-slate-200 px-4 py-4 text-sm text-slate-700">
-        <p>
-          {withElements(t("footer.source"), {
-            codeServer: (
-              <a href={CODE_SERVER_URL} className={linkClass}>
-                {t("footer.codeServer")}
-              </a>
-            ),
-          })}
-        </p>
-        <p className="mt-1">
-          {withElements(t("footer.updated"), {
-            date: (
-              <time dateTime={pharmaciesGeneratedAt}>
-                {formatDate(pharmaciesGeneratedAt, i18n.locale)}
-              </time>
-            ),
-          })}
-        </p>
-        <p className="mt-1">
-          {withElements(t("footer.locations", { year: CURRENT_YEAR }), {
-            digitransit: (
-              <a href={DIGITRANSIT_URL} className={linkClass}>
-                {t("footer.digitransit")}
-              </a>
-            ),
-          })}
-        </p>
-        <p className="mt-1">
-          {withElements(t("footer.osm"), {
-            osm: (
-              <a href={OSM_COPYRIGHT_URL} className={linkClass}>
-                {t("footer.osmName")}
-              </a>
-            ),
-            odbl: (
-              <a href={ODBL_URL} className={linkClass}>
-                {t("footer.odblName")}
-              </a>
-            ),
-          })}
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
