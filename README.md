@@ -6,6 +6,8 @@ Pharmacy data comes from Fimea's pharmacy register, geocoded at build time ([ADR
 
 **Status:** a complete demo. "Use my location" and address search both show the three nearest pharmacies, in Finnish or English. The app is served by a Cloudflare Worker, which also proxies address search.
 
+**Live:** <https://pharmacy-finder.pharmacyfinder.workers.dev/>
+
 ## Stack
 
 React, TypeScript (strict), Vite and Tailwind v4, tested with Vitest and Testing Library, plus Playwright smoke tests against the production build. A single Cloudflare Worker serves the built app and proxies address search to Digitransit, so the API key stays on the server.
@@ -25,7 +27,7 @@ Address search needs a Digitransit API key, which you can get from the [Digitran
 
 `npm run dev` runs the app and the Worker on one origin in the real Workers runtime, so the first start is a bit slower. It needs no Cloudflare account.
 
-Hosting is optional. To deploy, connect the repository to Cloudflare Workers Builds (build command `npm run build`, deploy command `npx wrangler deploy`) and set the key with `npx wrangler secret put DIGITRANSIT_API_KEY` ([ADR 0004](docs/adr/0004-hosting.md)).
+Hosting is optional. To deploy by hand, log in with `npx wrangler login`, set the key once with `npx wrangler secret put DIGITRANSIT_API_KEY`, then run `npm run build && npx wrangler deploy`. To deploy on every push to `main`, connect the repository to Cloudflare Workers Builds in the Cloudflare dashboard with the same build and deploy commands. GitHub Actions only runs CI and has no deploy credentials ([ADR 0004](docs/adr/0004-hosting.md)).
 
 ## Scripts
 
