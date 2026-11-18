@@ -65,6 +65,8 @@ export function PlaceSearch({
   const open = focused && !dismissed && places.length > 0;
   const active = open && activeIndex < places.length ? activeIndex : -1;
 
+  // An effect, not event handlers: `open` also changes when suggestions arrive. App needs it
+  // for the one shared live region, so the list's state stays here.
   const reportOpen = useEffectEvent(onListOpenChange);
   useEffect(() => {
     reportOpen(open);
