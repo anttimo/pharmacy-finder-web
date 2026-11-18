@@ -14,8 +14,9 @@ describe("formatDistance", () => {
     expect(normalize(formatDistance(1234, "en"))).toBe("1.2 kilometres");
   });
 
-  it("drops the decimal from 10 km up", () => {
-    expect(normalize(formatDistance(12_600, "en"))).toBe("13 kilometres");
+  it("keeps one decimal from 10 km up", () => {
+    expect(normalize(formatDistance(10_500, "en"))).toBe("10.5 kilometres");
+    expect(normalize(formatDistance(12_640, "fi"))).toBe("12,6 kilometriä");
   });
 
   it("switches to kilometres when metres round up to 1000", () => {
