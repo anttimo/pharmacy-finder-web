@@ -11,15 +11,12 @@ import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { ResultsList } from "./components/ResultsList";
 import type { Place } from "./data/geocode";
-import { useNearestPharmacies, type NearestState } from "./hooks/useNearestPharmacies";
-import {
-  MIN_QUERY_LENGTH,
-  usePlaceSuggestions,
-  type SuggestionsState,
-} from "./hooks/usePlaceSuggestions";
+import { useNearestPharmacies } from "./hooks/useNearestPharmacies";
+import { MIN_QUERY_LENGTH, usePlaceSuggestions } from "./hooks/usePlaceSuggestions";
 import { pharmaciesGeneratedAt } from "./data/pharmaciesGeneratedAt";
-import { useI18n, type I18n } from "./i18n/context";
+import { useI18n } from "./i18n/context";
 import { formatDate } from "./lib/format";
+import { fieldMessage, statusMessage } from "./lib/messages";
 
 const CODE_SERVER_URL = "https://koodistopalvelu.kanta.fi/";
 const DIGITRANSIT_URL = "https://digitransit.fi/";
@@ -32,80 +29,6 @@ const linkClass =
 
 const buttonClass =
   "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
-
-/** What the search field says about itself, shown under it: see PlaceSearch `message`. */
-function fieldMessage(
-  suggestions: SuggestionsState,
-  invalid: boolean,
-  tooShort: boolean,
-  { t }: I18n,
-): { text: string; error: boolean } | null {
-  if (invalid) {
-    const key = tooShort
-      ? "search.tooShort"
-      : suggestions.status === "empty"
-        ? "search.noMatches"
-        : "search.chooseFromList";
-    return { text: t(key), error: true };
-  }
-  if (suggestions.status === "empty") return { text: t("search.noMatches"), error: false };
-  if (suggestions.status === "error") return { text: t("search.error"), error: true };
-  return null;
-}
-
-type StatusMessage = {
-  text: string;
-  visible: boolean;
-  about: "field" | "suggestions" | "pharmacies";
-};
-
-/** The status line under the search. */
-function statusMessage(
-  state: NearestState,
-  suggestions: SuggestionsState,
-  field: { text: string } | null,
-  listOpen: boolean,
-  i18n: I18n,
-): StatusMessage {
-  if (field) return { text: field.text, visible: false, about: "field" };
-  if (suggestions.status !== "idle") return suggestionsStatus(suggestions, listOpen, i18n);
-  return pharmacyStatus(state, i18n);
-}
-
-function suggestionsStatus(
-  suggestions: SuggestionsState,
-  listOpen: boolean,
-  { tn }: I18n,
-): StatusMessage {
-  // Only while the list can be reached: not after Escape or once the user has left.
-  const text =
-    suggestions.status === "results" && listOpen
-      ? tn("search.suggestions", suggestions.places.length)
-      : "";
-  return { text, visible: false, about: "suggestions" };
-}
-
-function pharmacyStatus(state: NearestState, { t, tn }: I18n): StatusMessage {
-  const about = "pharmacies";
-  switch (state.status) {
-    case "idle":
-      return { text: "", visible: false, about };
-    case "locating":
-      return { text: t("status.locating"), visible: true, about };
-    case "loading":
-      return { text: t("status.loading"), visible: true, about };
-    case "results":
-      return { text: tn("status.found", state.pharmacies.length), visible: true, about };
-    case "denied":
-      return { text: t("status.denied"), visible: true, about };
-    case "error":
-      return {
-        text: t(state.kind === "location" ? "status.locationError" : "status.networkError"),
-        visible: true,
-        about,
-      };
-  }
-}
 
 /** Puts elements where `{name}`s are in a translated text, keeping the word order of the language. */
 function withElements(text: string, elements: Record<string, ReactNode>): ReactNode {
