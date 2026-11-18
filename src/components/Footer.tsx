@@ -10,7 +10,7 @@ const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
 const CURRENT_YEAR = String(new Date().getFullYear());
 
 const linkClass =
-  "rounded-sm text-blue-700 underline hover:text-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
+  "rounded-sm text-indigo-700 underline underline-offset-2 hover:text-indigo-800 hover:decoration-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700";
 
 /** Data source, data date and the attributions the licences require (ADR 0001, ADR 0003). */
 export function Footer() {

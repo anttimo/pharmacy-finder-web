@@ -148,7 +148,7 @@ export function PlaceSearch({
           setActiveIndex(-1);
           onLeave();
         }}
-        className={`mt-1 block min-h-11 w-full rounded border px-3 py-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700 ${
+        className={`mt-1 block min-h-11 w-full rounded-lg border bg-white px-3 py-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 ${
           invalid ? "border-2 border-red-700" : "border-slate-500"
         }`}
       />
@@ -157,7 +157,7 @@ export function PlaceSearch({
         role="listbox"
         aria-label={t("search.label")}
         hidden={!open}
-        className="mt-1 divide-y divide-slate-200 rounded border border-slate-500 bg-white"
+        className="mt-1 divide-y divide-slate-200 overflow-hidden rounded-lg border border-slate-500 bg-white"
       >
         {places.map((place, index) => (
           <li
@@ -169,7 +169,7 @@ export function PlaceSearch({
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => choose(place)}
             className={`flex min-h-11 cursor-pointer items-center px-3 py-2 hover:bg-slate-100 ${
-              index === active ? "bg-blue-50 outline-3 -outline-offset-3 outline-blue-700" : ""
+              index === active ? "bg-indigo-50 outline-3 -outline-offset-3 outline-indigo-700" : ""
             }`}
           >
             {place.label}

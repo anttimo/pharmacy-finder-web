@@ -10,7 +10,7 @@ import { useI18n } from "./i18n/context";
 import { fieldMessage, statusMessage } from "./lib/messages";
 
 const buttonClass =
-  "min-h-11 rounded bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
+  "min-h-11 rounded-lg bg-indigo-700 px-4 py-2 font-semibold text-white hover:bg-indigo-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700";
 
 type LastSearch = { kind: "device" } | { kind: "place"; place: Place };
 
@@ -103,7 +103,7 @@ function App() {
     if (!reduceMotion) {
       heading
         ?.closest("section")
-        ?.animate?.([{ backgroundColor: "#dbeafe" }, { backgroundColor: "transparent" }], {
+        ?.animate?.([{ backgroundColor: "#e0e7ff" }, { backgroundColor: "transparent" }], {
           duration: 1500,
           easing: "ease-out",
         });
@@ -118,7 +118,7 @@ function App() {
   const showsPharmacyStatus = status.about === "pharmacies";
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen text-slate-900">
       <header className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-4 p-4">
         <h1 className="text-2xl font-semibold">{t("app.title")}</h1>
         <LanguageSwitcher />

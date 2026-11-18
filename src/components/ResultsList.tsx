@@ -7,7 +7,7 @@ import type { PharmacyWithDistance } from "../lib/pharmacy";
 // py-2 gives about 36 px tall targets: under the usual 44 px, chosen so the map and phone
 // links don't sit far apart. Still above the WCAG 2.2 AA minimum of 24 px.
 const linkClass =
-  "inline-block py-2 text-blue-800 underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700";
+  "inline-block py-2 font-medium text-indigo-700 hover:underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700";
 
 export function ResultsList({
   pharmacies,
@@ -29,7 +29,7 @@ export function ResultsList({
         id={headingId}
         ref={headingRef}
         tabIndex={-1}
-        className="rounded-sm text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+        className="rounded-sm text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
       >
         {origin.kind === "place"
           ? t("results.headingPlace", { place: origin.label })
@@ -39,9 +39,9 @@ export function ResultsList({
         {t("results.checkHours")} {t("results.distanceNote")}
       </p>
 
-      <ul className="mt-4 divide-y divide-slate-200 border-y border-slate-200">
+      <ul className="mt-4 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
         {pharmacies.map((pharmacy) => (
-          <li key={pharmacy.id} className="py-3">
+          <li key={pharmacy.id} className="px-4 py-3">
             <h3 className="font-semibold">{pharmacy.name}</h3>
             <p className="text-sm text-slate-700">
               {t("results.distance", { distance: formatDistance(pharmacy.distanceMeters, locale) })}

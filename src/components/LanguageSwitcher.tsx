@@ -34,7 +34,7 @@ export function LanguageSwitcher() {
             aria-current={code === locale ? "true" : undefined}
             onClick={(event) => onClick(event, code)}
             // 44 px target, with the text pushed towards the separator.
-            className={`inline-flex min-h-11 min-w-11 items-center px-1 ${index === 0 ? "justify-end" : "justify-start"} rounded-sm text-blue-700 underline hover:text-blue-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue-700 aria-[current]:font-semibold aria-[current]:text-slate-900 aria-[current]:no-underline`}
+            className={`inline-flex min-h-11 min-w-11 items-center px-1 ${index === 0 ? "justify-end" : "justify-start"} rounded-sm text-indigo-700 hover:underline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 aria-[current]:font-semibold aria-[current]:text-slate-900`}
           >
             {code} <span className="sr-only">({t(`language.names.${code}`)})</span>
           </a>

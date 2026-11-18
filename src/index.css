@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Off-white page, so the field and the results stand out as white surfaces. Set on html
+   so overscroll shows the same colour. */
+html {
+  background-color: var(--color-slate-50);
+}
