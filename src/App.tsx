@@ -227,7 +227,6 @@ function App() {
         >
           {t("locate.button")}
         </button>
-        <p className="mt-2 text-sm text-slate-700">{t("locate.privacy")}</p>
 
         <div className="my-5 flex items-center gap-3 text-slate-700">
           <span aria-hidden="true" className="h-px flex-1 bg-slate-300" />

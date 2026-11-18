@@ -16,8 +16,10 @@ function browserLanguages(languages: string[]) {
   vi.spyOn(navigator, "languages", "get").mockReturnValue(languages);
 }
 
-const finnishHeading = () => screen.getByRole("heading", { level: 1, name: "Lähin apteekki" });
-const englishHeading = () => screen.getByRole("heading", { level: 1, name: "Nearest pharmacy" });
+const finnishHeading = () =>
+  screen.getByRole("heading", { level: 1, name: "Löydä lähin apteekki" });
+const englishHeading = () =>
+  screen.getByRole("heading", { level: 1, name: "Find the nearest pharmacy" });
 
 afterEach(() => {
   vi.restoreAllMocks();

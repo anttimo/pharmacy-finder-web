@@ -26,7 +26,9 @@ afterEach(() => {
 it("does not ask for location or load the list on page load", () => {
   const geo = mockGeolocation();
   renderApp();
-  expect(screen.getByRole("heading", { level: 1, name: "Nearest pharmacy" })).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { level: 1, name: "Find the nearest pharmacy" }),
+  ).toBeInTheDocument();
   expect(geo.getCurrentPosition).not.toHaveBeenCalled();
   expect(load).not.toHaveBeenCalled();
 });
@@ -160,7 +162,7 @@ it("offers a retry when the pharmacy list can't be loaded", async () => {
 it("switches language and updates the page language and title", async () => {
   const user = userEvent.setup();
   renderApp("en");
-  expect(document.title).toBe("Nearest pharmacy");
+  expect(document.title).toBe("Find the nearest pharmacy");
 
   const english = screen.getByRole("link", { name: "en (English)" });
   const finnish = screen.getByRole("link", { name: "fi (Suomi)" });
@@ -171,10 +173,12 @@ it("switches language and updates the page language and title", async () => {
   expect(finnish).toHaveAttribute("aria-current", "true");
   expect(english).not.toHaveAttribute("aria-current");
   expect(window.location.search).toBe("?lang=fi");
-  expect(screen.getByRole("heading", { level: 1, name: "Lähin apteekki" })).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { level: 1, name: "Löydä lähin apteekki" }),
+  ).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Käytä sijaintiani" })).toBeInTheDocument();
   expect(document.documentElement.lang).toBe("fi");
-  expect(document.title).toBe("Lähin apteekki");
+  expect(document.title).toBe("Löydä lähin apteekki");
 });
 
 describe("address search", () => {

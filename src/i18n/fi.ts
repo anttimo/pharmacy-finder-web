@@ -2,8 +2,8 @@ import type { Messages } from "./translate";
 
 const fi: Messages = {
   app: {
-    title: "Lähin apteekki",
-    intro: "Löydä lähimmät apteekit.",
+    title: "Löydä lähin apteekki",
+    intro: "Löydä lähimmät apteekit käyttämällä sijaintiasi tai antamalla osoite.",
   },
   language: {
     label: "Kieli",
@@ -14,14 +14,12 @@ const fi: Messages = {
   },
   locate: {
     button: "Käytä sijaintiani",
-    privacy:
-      "Kysymme sijaintiasi vain, kun painat painiketta. Sijaintisi ei lähde laitteeltasi: lähimmät apteekit etsitään selaimessasi.",
   },
   search: {
     or: "tai",
     label: "Osoite tai paikka",
     hint: "Esimerkiksi Mannerheimintie 1, Helsinki.",
-    privacy: "Kirjoittamasi teksti lähetetään Digitransitin paikkahakuun. Sijaintiasi ei lähetetä.",
+    privacy: "Kirjoittamasi teksti lähetetään Digitransitin paikkahakuun.",
     suggestions: {
       one: "1 ehdotus.",
       other: "{count} ehdotusta.",
@@ -59,9 +57,8 @@ const fi: Messages = {
     call: "Soita: {name}, {phone}",
     map: "Näytä Google Mapsissa",
     mapLabel: "Näytä Google Mapsissa: {name} (avautuu uuteen välilehteen)",
-    checkHours:
-      "Tarkista aukioloajat apteekista ennen kuin lähdet. Luettelosta voi puuttua apteekkeja.",
-    distanceNote: "Etäisyydet on mitattu linnuntietä. Todellinen matka on pidempi.",
+    checkHours: "Tarkista aukioloajat apteekista ennen kuin lähdet.",
+    distanceNote: "Etäisyydet on mitattu linnuntietä.",
   },
   footer: {
     source:

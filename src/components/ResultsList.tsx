@@ -34,7 +34,9 @@ export function ResultsList({
           ? t("results.headingPlace", { place: origin.label })
           : t("results.heading")}
       </h2>
-      <p className="mt-2 text-sm text-slate-700">{t("results.checkHours")}</p>
+      <p className="mt-2 text-sm text-slate-700">
+        {t("results.checkHours")} {t("results.distanceNote")}
+      </p>
 
       <ul className="mt-4 divide-y divide-slate-200 border-y border-slate-200">
         {pharmacies.map((pharmacy) => (
@@ -72,8 +74,6 @@ export function ResultsList({
           </li>
         ))}
       </ul>
-
-      <p className="mt-3 text-sm text-slate-700">{t("results.distanceNote")}</p>
     </section>
   );
 }

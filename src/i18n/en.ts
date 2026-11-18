@@ -2,8 +2,8 @@
 // Objects with `one` / `other` are plural forms, chosen with Intl.PluralRules (see translate.ts).
 const en = {
   app: {
-    title: "Nearest pharmacy",
-    intro: "Find the pharmacies closest to you.",
+    title: "Find the nearest pharmacy",
+    intro: "Find the pharmacies closest to you by using your location or entering an address.",
   },
   language: {
     label: "Language",
@@ -14,15 +14,13 @@ const en = {
   },
   locate: {
     button: "Use my location",
-    privacy:
-      "We ask for your location only when you tap the button. It stays on your device: the nearest pharmacies are found in your browser.",
   },
   search: {
     // Between the location button and the search field.
     or: "or",
     label: "Address or place",
     hint: "For example Mannerheimintie 1, Helsinki.",
-    privacy: "What you type is sent to the Digitransit place search. Your location is not.",
+    privacy: "What you type is sent to the Digitransit place search.",
     // Announced in the live region when suggestions arrive.
     suggestions: {
       one: "1 suggestion.",
@@ -65,9 +63,8 @@ const en = {
     map: "Show on Google Maps",
     // Accessible name of the map link. Must start with the visible results.map text.
     mapLabel: "Show on Google Maps: {name} (opens in a new tab)",
-    checkHours:
-      "Check opening hours with the pharmacy before you go. This list may not include every pharmacy.",
-    distanceNote: "Distances are measured in a straight line. The route there is longer.",
+    checkHours: "Check opening hours with the pharmacy before you go.",
+    distanceNote: "Distances are measured in a straight line.",
   },
   footer: {
     // {codeServer} is replaced by a link with the footer.codeServer text.
