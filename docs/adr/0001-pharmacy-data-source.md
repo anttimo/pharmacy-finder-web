@@ -3,6 +3,7 @@
 - Status: Accepted
 - Date: 2026-11-16 (rewritten in place; replaces the 2026-11-11 Overpass decision)
 - Applies to: web app and iOS app (the iOS app lives in its own repository)
+- Updated: 2026-11-20. "Later: refresh on the server" became "Next step: a daily rebuild", with a measured reason to use a GitHub Action rather than a Worker Cron Trigger.
 
 ## Context
 
@@ -35,13 +36,26 @@ Use the Fimea register as the only source. A build script turns it into a static
 
 ### Staleness and rerunning
 
-Pharmacies open and close rarely, so updating the list daily or even weekly is enough. For this demo the list is updated manually. A live service could automate it with a cron job (see "Later: refresh on the server").
+Pharmacies open and close rarely, so updating the list daily or even weekly is enough. For this demo the list is updated manually. A live service would rebuild it every day (see "Next step: a daily rebuild").
 
 After a rerun, review the diff and commit it. A large drop in `openTotal`, or a jump in `needsReview`, means something changed upstream: check it before you commit.
 
-### Later: refresh on the server
+### Next step: a daily rebuild
 
-When hosting exists ([ADR-0004](0004-hosting.md)), a scheduled job (a Worker Cron Trigger) could run the same pipeline daily and publish the file (for example to KV or R2), with the committed file as the fallback. That would need its own ADR (secret handling, storage, what to do when the count check fails). Not worth it until the list's freshness becomes a real problem.
+Rebuilding by hand is this design's main weakness. The web app's list is only as fresh as the last rebuild and deploy. The iOS app's copy is only as fresh as its last App Store release, and older still for users who don't update (iOS ADR-0101). Four days after the last rebuild, on 2026-11-20, the register already had one open pharmacy that was new or had moved since.
+
+The demo stops here. The next step would be:
+
+1. **A scheduled GitHub Action** that runs `npm run build:pharmacies` every day and commits `pharmacies.json` when the pharmacies in it change (not when only `generatedAt` does). Cloudflare's Git integration then deploys the commit ([ADR-0004](0004-hosting.md)). Coordinates are reused as today, so Digitransit is called only for new or moved pharmacies, usually none. The Action needs the Digitransit key as a GitHub secret, and only that workflow gets write access to the repo. CI stays read-only.
+2. **Checks instead of a reviewer.** No one reviews the diff any more, so the script refuses to write, and the Action fails, where a reviewer would stop today: if `openTotal` drops by more than about 10 %, or `needsReview` jumps. The deployed list then stays as it was, and GitHub emails the failure.
+3. **A fixed URL for the list** (`/data/pharmacies.json`, a static asset), so the iOS app can download it instead of waiting for a release (iOS ADR-0101, "Next step: live loading").
+
+**Why not a Worker Cron Trigger.** The Worker already holds the key, and it could keep the list in Workers KV without any commits. But a Workers Free plan run may use only 10 ms of CPU, and this job needs more. Measured locally on 2026-11-20, waiting on the network excluded:
+
+- Decoding the register's 1.9 MB of JSON alone takes 5–8 ms.
+- A whole run takes about 12–17 ms, even after fixing its slowest step: sorting with `localeCompare` (10 ms), which a shared `Intl.Collator` cuts to 1 ms.
+
+The paid plan has room for it, but isn't worth paying for a demo.
 
 ## Consequences
 
@@ -54,7 +68,7 @@ When hosting exists ([ADR-0004](0004-hosting.md)), a scheduled job (a Worker Cro
 
 **Bad, and how we handle it**
 
-- **Stale between builds.** A pharmacy that closed last week can still appear. The UI already tells people to check with the pharmacy before going, and `generatedAt` makes the age visible.
+- **Stale between builds.** A pharmacy that closed last week can still appear. The UI already tells people to check with the pharmacy before going, and `generatedAt` makes the age visible. A daily rebuild would fix the cause (see "Next step").
 - **Gaps from geocoding.** Entries in `needs-review.json` are missing from the app. That's why we never claim the list is complete.
 - **No opening hours.** The register doesn't have them. The UI shows the phone number and the "check opening hours with the pharmacy" note, and never an "open now" status.
 - **Finland only.** The data path is no longer global. Going beyond Finland would need a different source per country or using global source like Google Places.
