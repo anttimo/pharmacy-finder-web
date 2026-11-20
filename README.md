@@ -6,6 +6,8 @@ Pharmacy data comes from Fimea's pharmacy register, geocoded at build time ([ADR
 
 **Status:** a complete demo. "Use my location" and address search both show the three nearest pharmacies, in Finnish or English. The app is served by a Cloudflare Worker, which also proxies address search.
 
+**Next step:** the pharmacy list is rebuilt by hand, so it's only as fresh as the last rebuild. The next thing to build would be a daily rebuild with a GitHub Action. A Cloudflare cron job wouldn't fit the Workers Free plan's CPU limit, measured in [ADR 0001](docs/adr/0001-pharmacy-data-source.md) ("Next step: a daily rebuild").
+
 **Live:** <https://pharmacy-finder.pharmacyfinder.workers.dev/>
 
 ## Stack
