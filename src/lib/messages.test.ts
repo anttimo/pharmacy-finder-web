@@ -40,6 +40,10 @@ describe("fieldMessage", () => {
   it("reports a search error", () => {
     expect(fieldMessage(error, false, false, i18n)).toEqual({ text: "search.error", error: true });
   });
+
+  it("keeps reporting a search error once the field is invalid", () => {
+    expect(fieldMessage(error, true, false, i18n)).toEqual({ text: "search.error", error: true });
+  });
 });
 
 describe("statusMessage", () => {
