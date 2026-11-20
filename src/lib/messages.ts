@@ -20,11 +20,14 @@ export function fieldMessage(
   { t }: Translate,
 ): FieldMessage | null {
   if (invalid) {
+    // When the search itself failed there were no suggestions to choose from: keep saying so.
     const key = tooShort
       ? "search.tooShort"
       : suggestions.status === "empty"
         ? "search.noMatches"
-        : "search.chooseFromList";
+        : suggestions.status === "error"
+          ? "search.error"
+          : "search.chooseFromList";
     return { text: t(key), error: true };
   }
   if (suggestions.status === "empty") return { text: t("search.noMatches"), error: false };

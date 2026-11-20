@@ -314,6 +314,22 @@ describe("address search", () => {
     expect(await screen.findByRole("option", { name: "Kamppi, Helsinki" })).toBeInTheDocument();
   });
 
+  it("keeps the search error, not 'choose from the suggestions', after leaving the field", async () => {
+    const user = userEvent.setup();
+    fetchMock.mockResolvedValue(Response.json({ error: "upstream_error" }, { status: 502 }));
+    renderApp();
+
+    await user.type(field(), "kamp");
+    await waitFor(() =>
+      expect(field()).toHaveAccessibleDescription(/Address search isn't working/),
+    );
+
+    await user.tab();
+    expect(field()).toHaveAccessibleDescription(/Address search isn't working/);
+    expect(field()).not.toHaveAccessibleDescription(/Choose a place from the suggestions/);
+    expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
+  });
+
   it("closes the list with Escape, then clears the field", async () => {
     const user = userEvent.setup();
     fetchMock.mockResolvedValue(places("Kamppi, Helsinki"));
